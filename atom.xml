@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Melody404</title>
+  <title>forwork1010</title>
   
-  <subtitle>Melody404</subtitle>
+  <subtitle>大象跳舞</subtitle>
   <link href="http://forwork1010.github.io/atom.xml" rel="self"/>
   
   <link href="http://forwork1010.github.io/"/>
@@ -10,7 +10,7 @@
   <id>http://forwork1010.github.io/</id>
   
   <author>
-    <name>Melody404</name>
+    <name>大象跳舞</name>
     
   </author>
   
