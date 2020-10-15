@@ -6,7 +6,7 @@
   <link href="http://forwork1010.github.io/atom.xml" rel="self"/>
   
   <link href="http://forwork1010.github.io/"/>
-  <updated>2020-10-11T03:28:58.146Z</updated>
+  <updated>2020-10-15T17:13:04.877Z</updated>
   <id>http://forwork1010.github.io/</id>
   
   <author>
@@ -17,23 +17,110 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Hello World</title>
-    <link href="http://forwork1010.github.io/2020/10/11/hello-world/"/>
-    <id>http://forwork1010.github.io/2020/10/11/hello-world/</id>
-    <published>2020-10-11T03:28:58.146Z</published>
-    <updated>2020-10-11T03:28:58.146Z</updated>
+    <title>Part4 跨站请求伪造</title>
+    <link href="http://forwork1010.github.io/2020/10/15/part4-kua-zhan-qing-qiu-wei-zao/"/>
+    <id>http://forwork1010.github.io/2020/10/15/part4-kua-zhan-qing-qiu-wei-zao/</id>
+    <published>2020-10-14T16:27:55.000Z</published>
+    <updated>2020-10-15T17:13:04.877Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
+    <summary type="html">&lt;h1 id=&quot;Part4-跨站请求伪造&quot;&gt;&lt;a href=&quot;#Part4-跨站请求伪造&quot; class=&quot;headerlink&quot; title=&quot;Part4 跨站请求伪造&quot;&gt;&lt;/a&gt;&lt;center&gt;Part4 跨站请求伪造&lt;/center&gt;&lt;/h1&gt;&lt;p&gt; &lt;font</summary>
         
       
     
     
     
+    <category term="Web Hacking 101" scheme="http://forwork1010.github.io/categories/Web-Hacking-101/"/>
+    
+    
+    <category term="漏洞挖掘" scheme="http://forwork1010.github.io/tags/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/"/>
+    
+    <category term="web安全" scheme="http://forwork1010.github.io/tags/web%E5%AE%89%E5%85%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Part3 HTTP参数污染</title>
+    <link href="http://forwork1010.github.io/2020/10/14/part3-http-can-shu-wu-ran/"/>
+    <id>http://forwork1010.github.io/2020/10/14/part3-http-can-shu-wu-ran/</id>
+    <published>2020-10-14T06:30:49.000Z</published>
+    <updated>2020-10-15T05:34:27.616Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Part3-HTTP参数污染&quot;&gt;&lt;a href=&quot;#Part3-HTTP参数污染&quot; class=&quot;headerlink&quot; title=&quot;Part3 HTTP参数污染&quot;&gt;&lt;/a&gt;&lt;center&gt;Part3 HTTP参数污染&lt;/center&gt;&lt;/h1&gt;&lt;p&gt;</summary>
+        
+      
+    
+    
+    
+    <category term="Web Hacking 101" scheme="http://forwork1010.github.io/categories/Web-Hacking-101/"/>
+    
+    
+    <category term="漏洞挖掘" scheme="http://forwork1010.github.io/tags/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/"/>
+    
+    <category term="web安全" scheme="http://forwork1010.github.io/tags/web%E5%AE%89%E5%85%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Part2 开放式重定向</title>
+    <link href="http://forwork1010.github.io/2020/10/14/part2-kai-fang-shi-chong-ding-xiang/"/>
+    <id>http://forwork1010.github.io/2020/10/14/part2-kai-fang-shi-chong-ding-xiang/</id>
+    <published>2020-10-14T04:35:16.000Z</published>
+    <updated>2020-10-15T05:34:13.133Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Part2-开放式重定向&quot;&gt;&lt;a href=&quot;#Part2-开放式重定向&quot; class=&quot;headerlink&quot; title=&quot;Part2 开放式重定向 &quot;&gt;&lt;/a&gt;&lt;center&gt;Part2 开放式重定向 &lt;/center&gt;&lt;/h1&gt;&lt;p&gt;&lt;font</summary>
+        
+      
+    
+    
+    
+    <category term="Web Hacking 101" scheme="http://forwork1010.github.io/categories/Web-Hacking-101/"/>
+    
+    
+    <category term="漏洞挖掘" scheme="http://forwork1010.github.io/tags/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/"/>
+    
+    <category term="web安全" scheme="http://forwork1010.github.io/tags/web%E5%AE%89%E5%85%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Part1 漏洞挖掘基础知识</title>
+    <link href="http://forwork1010.github.io/2020/10/13/part1-lou-dong-wa-jue-ji-chu-zhi-shi/"/>
+    <id>http://forwork1010.github.io/2020/10/13/part1-lou-dong-wa-jue-ji-chu-zhi-shi/</id>
+    <published>2020-10-13T11:01:05.000Z</published>
+    <updated>2020-10-15T05:34:37.559Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Part1-漏洞挖掘基础知识&quot;&gt;&lt;a href=&quot;#Part1-漏洞挖掘基础知识&quot; class=&quot;headerlink&quot; title=&quot;Part1 漏洞挖掘基础知识&quot;&gt;&lt;/a&gt;&lt;center&gt;Part1</summary>
+        
+      
+    
+    
+    
+    <category term="Web Hacking 101" scheme="http://forwork1010.github.io/categories/Web-Hacking-101/"/>
+    
+    
+    <category term="漏洞挖掘" scheme="http://forwork1010.github.io/tags/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/"/>
+    
+    <category term="web安全" scheme="http://forwork1010.github.io/tags/web%E5%AE%89%E5%85%A8/"/>
     
   </entry>
   
