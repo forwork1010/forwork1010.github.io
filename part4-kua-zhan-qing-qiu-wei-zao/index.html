@@ -523,11 +523,11 @@ Connection: keep-alive<span aria-hidden="true" class="line-numbers-rows"><span><
 
 <p> 此外，当链接最初实现时，Shopify并没有验证发送给它的GET请求的合法性，从而使URL容易受到CSRF的攻击。</p>
 <p>提交报告的黑客提供了以下ROC 的HTML文档：</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;html&gt; 
-&lt;body&gt;  
-➊ &lt;img src="https://twitter-commerce.shopifyapps.com/auth/twitter/disconnect"&gt;  
-&lt;/body&gt; 
-&lt;/html&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span> 
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>  
+➊ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://twitter-commerce.shopifyapps.com/auth/twitter/disconnect<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>  
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span> 
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>此HTML文档将使浏览器通过<code>&lt;img&gt;</code>标记的<code>src</code>属性将HTTP GET请求发送到<code>https://twitter-commerce.shopifyapps.com</code>。如果拥有连接到Shopify的Twitter帐户的人访问带有此<code>&lt;img&gt;</code>标记的网页，则其Twitter帐户将与Shopify断开关联。</p>
 <p><strong>重点</strong></p>
@@ -958,7 +958,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">34.1k</span>&nbsp;字
+                class="white-color">38.9k</span>&nbsp;字
             
             
             

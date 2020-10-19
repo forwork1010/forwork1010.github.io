@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://forwork1010.github.io/part8-mo-ban-zhu-ru/</loc>
+    
+    <lastmod>2020-10-19</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://forwork1010.github.io/part4-kua-zhan-qing-qiu-wei-zao/</loc>
+    
+    <lastmod>2020-10-19</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://forwork1010.github.io/part7-xss/</loc>
+    
+    <lastmod>2020-10-19</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://forwork1010.github.io/part1-lou-dong-wa-jue-ji-chu-zhi-shi/</loc>
     
     <lastmod>2020-10-19</lastmod>
@@ -16,21 +37,7 @@
   </url>
   
   <url>
-    <loc>https://forwork1010.github.io/part7-xss/</loc>
-    
-    <lastmod>2020-10-19</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://forwork1010.github.io/part5-html-zhu-ru-he-nei-rong-tian-chong/</loc>
-    
-    <lastmod>2020-10-19</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://forwork1010.github.io/part4-kua-zhan-qing-qiu-wei-zao/</loc>
     
     <lastmod>2020-10-19</lastmod>
     
@@ -130,6 +137,13 @@
   </url>
   
   <url>
+    <loc>https://forwork1010.github.io/tags/HPP/</loc>
+    <lastmod>2020-10-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://forwork1010.github.io/tags/CSRF/</loc>
     <lastmod>2020-10-19</lastmod>
     <changefreq>daily</changefreq>
@@ -137,7 +151,7 @@
   </url>
   
   <url>
-    <loc>https://forwork1010.github.io/tags/HPP/</loc>
+    <loc>https://forwork1010.github.io/tags/SSTI/</loc>
     <lastmod>2020-10-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

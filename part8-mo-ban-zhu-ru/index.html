@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Part1 漏洞挖掘基础知识, forwork1010">
+    <meta name="keywords" content="Part8 模板注入, forwork1010">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Part1 漏洞挖掘基础知识 | forwork1010</title>
+    <title>Part8 模板注入 | forwork1010</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -254,7 +254,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Part1 漏洞挖掘基础知识</h1>
+                    <h1 class="description center-align post-title">Part8 模板注入</h1>
                 </div>
             </div>
         </div>
@@ -379,6 +379,10 @@
                                 <span class="chip bg-color">web安全</span>
                             </a>
                         
+                            <a href="/tags/SSTI/">
+                                <span class="chip bg-color">SSTI</span>
+                            </a>
+                        
                     </div>
                     
                 </div>
@@ -400,7 +404,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-10-13
+                    2020-10-19
                 </div>
                 
 
@@ -409,14 +413,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5.2k
+                    4.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    18 分
+                    17 分
                 </div>
                 
 
@@ -431,95 +435,95 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Part1-漏洞挖掘基础知识"><a href="#Part1-漏洞挖掘基础知识" class="headerlink" title="Part1 漏洞挖掘基础知识"></a><center>Part1 漏洞挖掘基础知识</center></h1><p><font color="#A52A2A" size="4"><em>本文部分翻译自《Web Hacking 101》，仅供参考学习，切勿二传。</em></font></p>
-<p>如果您是黑客新手，这篇文章可以让您对互联网的工作原理有一个基本了解，你会了解到当在浏览器的地址栏中输入URL时，幕后到底发生了什么。尽管导航到网站似乎很简单，但是它涉及许多隐藏的过程，例如准备HTTP请求，将请求发送目的地的域名，将域名转换为IP地址，发送请求，呈现响应等等。 </p>
-<p>在本章中，您将学习基本概念和术语，例如漏洞，漏洞赏金，客户端，服务器，IP地址和HTTP。您将大致了解如何执行意外操作以及提供意外输入或对私人信息的访问会导致漏洞。然后，我们将看到在浏览器的地址栏中输入URL时会发生的情况，包括HTTP请求和响应以及各种HTTP操作。我们将在本章结束时了解HTTP是无状态的含义。</p>
-<h2 id="漏洞和漏洞赏金"><a href="#漏洞和漏洞赏金" class="headerlink" title="漏洞和漏洞赏金"></a>漏洞和漏洞赏金</h2><p>漏洞是应用程序中的一个弱点，它使恶意程序可以执行某些未经许可的操作或访问他们不应该被允许访问的信息。</p>
-<p>在学习和测试应用程序时，请记住，攻击者执行有意和无意的操作可能会导致漏洞。例如，更改记录标识符的ID以访问您不应该访问的信息就是一个无意操作的示例。</p>
-<p>假设一个网站需要您使用您的姓名，电子邮件，生日和地址来创建个人资料。您的信息是保密的，且仅与您的朋友共享。但是，如果网站允许任何人未经您的允许将您加为好友，这将是一个漏洞。即使该网站使您的信息对非朋友而言都是私密的，但通过允许任何人将您添加为朋友，任何人都可以访问您的信息。在测试站点时，请始终考虑到会有人如何滥用现有功能。 </p>
-<p>漏洞赏金是网站或公司对任何发现漏洞并将其报告给该网站或公司的人的奖励。奖励通常是金钱，范围从数万美元到数万美元不等。赏金的其他内容包括加密货币，航空里程，奖励积分，服务积分等。</p>
-<p>当公司提供赏金悬赏时，它会创建一个“程序”，我们将在本书中使用该术语来表示公司为希望测试公司漏洞的人员所建立的规则和框架。请注意，这不同于运行漏洞披露程序（VDP）的公司。漏洞赏金会提供一些金钱奖励，而VDP则不提供付款。 VDP只是道德黑客向公司报告漏洞以使公司修复漏洞的一种方式。尽管本书中描述的报告中并非所有都得到了回报，但它们都是来自于参与漏洞赏金计划的黑客。</p>
-<h2 id="客户端和服务器"><a href="#客户端和服务器" class="headerlink" title="客户端和服务器"></a>客户端和服务器</h2><p>您的浏览器依赖于Internet，Internet是相互发送消息的计算机网络。我们称这些消息为数据包。数据包包括您要发送的数据以及有关该数据的来源和去向的信息。互联网上的每台计算机都有一个向其发送数据包的地址。但是某些计算机只接受某些类型的数据包，而其他计算机仅允许其他计算机的受限列表中的数据包。然后由接收计算机决定如何处理数据包以及如何响应。就本书而言，我们将仅关注数据包（HTTP消息）中包含的数据，而不是数据包本身。</p>
-<p>我将这些计算机称为客户端或服务器。无论请求是否由浏览器，命令行等发起，发起请求的通常都称为客户端。服务器是指接收请求的网站和Web应用程序。如果该概念适用于客户端或服务器，那么我一般指的是计算机。</p>
-<p>因为Internet可以包括任意数量的相互通信的计算机，所以就需要有关计算机应如何通过Internet进行通信的特定准则。它使用了“<strong>Request for Comment</strong>（RFC）”文档的形式，该文档定义了计算机应如何运行的标准。例如，超文本传输协议（HTTP）定义Internet浏览器如何使用Internet协议（IP）与远程服务器通信。在这种情况下，客户端和服务器都必须同意实施相同的标准，以便他们可以理解各自正在发送和接收的数据包。</p>
-<h2 id="您访问网站时会发生什么"><a href="#您访问网站时会发生什么" class="headerlink" title="您访问网站时会发生什么"></a>您访问网站时会发生什么</h2><p> 因为我们将在本书中重点介绍HTTP消息，所以本节为您提供了在浏览器的地址栏中输入URL时发生的过程的高度概述。</p>
-<p><strong><em>步骤1：提取域名</em></strong></p>
-<p>输入<code>http://www.google.com/</code>后，您的浏览器将从URL确定域名。域名用于标识您要访问的网站，并且必须遵守RFC定义的特定规则。例如，域名只能包含字母数字字符和下划线。国际化域名是一个例外，超出了本书的范围。要了解更多信息，请参阅RFC 3490，其中定义了它们的用法。在这种情况下，域名为<code>www.google.com</code>。域名是查找服务器地址的一种方法。</p>
-<p><strong><em>步骤2：解析IP地址</em></strong></p>
-<p>确定域名后，浏览器将使用IP查找与该域关联的IP地址。 此过程称为解析IP地址，并且Internet上的每个域都必须解析为IP地址才能正常工作。</p>
-<p>存在两种类型的IP地址：Internet协议版本4（IPv4）和Internet协议版本6（IPv6）。 IPv4地址被构造为四个由句点连接的数字，每个数字的范围为0到255。IPv6是Internet协议的最新版本。 它旨在解决可用IPv4地址用尽的问题。 IPv6地址由冒号分隔的八组四个十六进制数字组成，但是存在一些缩短IPv6地址的方法。 例如，8.8.8.8是IPv4地址，而2001：4860：4860 :: 8888是缩短的IPv6地址。</p>
-<p>要仅使用域名查找IP地址，您的计算机会向域名系统（DNS）服务器发送请求，该服务器由Internet上的专用服务器组成，这些服务器具有所有域及其匹配IP地址的注册表。前面的IPv4和IPv6地址是Google DNS服务器。</p>
-<p>在此示例中，您连接的DNS服务器会将<code>www.google.com</code>与IPv4地址216.58.201.228匹配，然后将其发送回您的计算机。要了解有关网站IP地址的更多信息，可以从终端使用命令dig命令（linux）。</p>
-<p><strong><em>步骤3：建立TCP连接</em></strong></p>
-<p>接下来，由于您使用http：//访问站点，因此计算机尝试使用IP地址在端口80上建立传输控制协议（TCP）连接。 TCP的详细信息并不重要，除了要注意它是定义计算机相互通信方式的另一种协议。 TCP提供双向通信，因此消息接收者可以验证接收到的信息，并且传输过程中不会丢失任何信息。</p>
-<p>您向其发送请求的服务器可能正在运行多个服务（将服务视为计算机程序），因此它使用端口来标识接收请求的特定进程。您可以将端口视为服务器通往互联网的大门。没有端口，服务将不得不竞争发送到同一位置的信息。这意味着我们需要另一个标准来定义服务之间的协作方式，并确保一项服务的数据不会被另一项窃取。例如，端口80是用于发送和接收未加密的HTTP请求的标准端口。另一个公共端口是443，用于加密的HTTPS请求。尽管端口80是HTTP的标准端口，而端口443是HTTPS的标准端口，但根据管理员配置应用程序的方式，TCP通信可以在任何端口上进行。</p>
-<p>您可以通过打开终端并运行<code>nc &lt;IP ADDRESS&gt; 80</code>，在端口80上建立到网站的TCP连接。它使用Netcat实用程序的nc命令创建用于读取和写入消息的网络连接。</p>
-<p><strong><em>步骤4：发送HTTP请求</em></strong></p>
-<p>以<code>http://www.google.com/</code>为例，如果步骤3中的连接成功，则浏览器应准备并发送HTTP请求，如清单1-1所示：</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">➊ GET / HTTP/1.1 
+                <h1 id="Part8-模板注入"><a href="#Part8-模板注入" class="headerlink" title="Part8 模板注入"></a><center>Part8 模板注入</center></h1><p><font color="#A52A2A" size="4"><em>本文部分翻译自《Web Hacking 101》，仅供参考学习，切勿二传。</em></font></p>
+<p>模板引擎是通过在渲染模板时自动在模板中填充占位符来创建动态网站，电子邮件和其他媒体的代码。通过使用占位符，模板引擎允许开发人员分离应用程序和业务逻辑。例如，一个网站可能仅对用户个人资料页面使用一个模板，而对个人资料字段（例如用户名，电子邮件地址和年龄）使用动态占位符。模板引擎通常还提供其他好处，例如用户输入清理功能，简化的HTML生成和易于维护。但是，这些功能无法使模板引擎不受漏洞的影响。</p>
+<p>当引擎在未正确清理用户输入的情况下出现模板注入漏洞时，有时会导致远程执行代码。</p>
+<p>模板注入漏洞有两种类型：服务器端和客户端。</p>
+<h2 id="服务器端模板注入"><a href="#服务器端模板注入" class="headerlink" title="服务器端模板注入"></a>服务器端模板注入</h2><p>在服务器端逻辑中进行注入时，会发生服务器端模板注入（SSTI）漏洞。因为模板引擎与特定的编程语言相关联，所以当注入时，您有时可以从该语言执行任意代码。是否可以执行此操作取决于引擎提供的安全保护以及站点的预防措施。 Python Jinja2引擎允许任意文件访问和远程执行代码，Rails默认使用的Ruby ERB模板引擎也是如此。相反，Shopify的Liquid Engine允许访问有限数量的Ruby方法，以防止完全执行远程代码。其他流行的引擎包括PHP的Smarty和Twig，Ruby的Haml，Mustache等。</p>
+<p>要测试SSTI漏洞，请使用所用引擎的特定语法提交模板表达式。例如，PHP的Smarty模板引擎使用四个大括号<code>{{}}`来表示表达式，而ERB使用尖括号，百分号和等号`&lt;％=％&gt;`的组合。在Smarty上进行注入的典型测试包括提交`{{7 * 7}}<!--％=％--></code>并查找输入会在页面上反射回来的区域（例如表单，URL参数等）。在这种情况下，您需要查找表达式中执行的代码7 * 7渲染的字符49。如果找到49，则说明您已成功插入表达式。</p>
+<p>由于所有模板引擎的语法都不相同，因此您必须了解用于构建要测试的网站的软件。 Wappalyzer和BuiltWith等工具是专门为此目的而设计的。确定软件后，使用该模板引擎的语法提交简单的有payload，例如7 * 7。</p>
+<h2 id="客户端模板注入"><a href="#客户端模板注入" class="headerlink" title="客户端模板注入"></a>客户端模板注入</h2><p>客户端模板引擎中存在客户端模板注入（CSTI）漏洞，这些漏洞是用JavaScript编写的。流行的客户端模板引擎包括谷歌的AngularJS和Facebook的ReactJS。</p>
+<p>因为csti发生在用户的浏览器中，您通常不能使用它们来实现远程代码执行，但是可以将它们用于XSS。然而，实现XSS有时会很困难，需要绕过预防措施，就像SSTI漏洞一样。例如，ReactJS在默认情况下可以很好地防止XSS。当使用ReactJS测试应用程序时，应该在JavaScript文件中搜索函数 dangerouslysetinerhtml，在那里可以控制提供给函数的输入。这故意绕过ReactJS的XSS保护。对于AngularJS，早于1.6的版本包含一个沙盒，它限制对某些JavaScript函数的访问，并防止XSS攻击（要确认AngularJS版本，请在浏览器的开发人员控制台中输入Angular.version）。但道德黑客通常会在1.6版本发布之前发现并发布AngularJS沙盒绕过。以下是Sandbox版本1.3.0到1.5.7的一个流行绕过方法，当您发现AngularJS注入时，您可以提交它：您可以在以下网站找到其他已发布的AngularJS沙盒逃逸<code>https://pastebin.com/xMXwsm0N</code>以及<code>https://jsfiddle.net/89aj1n7m/</code>。</p>
+<pre class="line-numbers language-none"><code class="language-none">{{a=toString().constructor.prototype;a.charAt=a.trim;$eval('a,alert(1),a')}}<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-➋ Host: www.google.com 
+<p>要演示CSTI漏洞的严重性，需要测试您可能执行的代码。尽管您可能能够评估一些JavaScript代码，但有些站点可能有额外的安全机制来防止攻击。例如，我通过使用有payload {4+4}}发现了一个CSTI漏洞，它在使用AngularJS的站点上返回了8。但是当我使用<code>{4*4}}</code>时，文本<code>{44}}</code>被返回，因为站点通过删除星号来清理输入。该字段还删除了特殊字符，如（）和[]，并且最多允许30个字符。综合起来，这些预防措施有效地使CSTI变得毫无用处。</p>
+<h2 id="漏洞实例"><a href="#漏洞实例" class="headerlink" title="漏洞实例"></a>漏洞实例</h2><h3 id="UBER-ANGULARJS模板注入"><a href="#UBER-ANGULARJS模板注入" class="headerlink" title="UBER ANGULARJS模板注入"></a>UBER ANGULARJS模板注入</h3><p>难度：高</p>
+<p>网址：<code>https://developer.uber.com/</code></p>
+<p>资料来源：<a target="_blank" rel="noopener" href="https://hackerone.com/reports/125027/">https://hackerone.com/reports/125027/</a></p>
+<p>报告日期：2016年3月22日</p>
+<p>悬赏金：3000美元</p>
+<p>2016年3月，PortSwigger（Burp Suite的创建者）的首席安全研究员James Kettle通过URL在Uber子域中发现了一个CSTI漏洞<code>https://deep.com/docslink?q=wrtz{{7*7}}</code>。</p>
+<p>如果在访问链接后查看呈现的页面源代码，您会发现字符串wrtz49，表明模板计算了表达式7*7。事实证明，developer.uber.com使用AngularJS呈现其网页。您可以通过使用wappayzer或BuiltWith之类的工具或者通过查看页面源代码并查找ng-HTML属性来确认这一点。如前所述，</p>
+<p>早期版本的AngularJS实现了一个沙盒，但是Uber使用的版本容易受到沙盒越狱的攻击。所以在本例中，CSTI漏洞意味着您可以执行XSS。</p>
+<p>在Uber URL中使用以下JavaScript，Kettle逃离了AngularJS沙盒并执行了alert函数：</p>
+<pre class="line-numbers language-none"><code class="language-none">https://developer.uber.com/docs/deep-linking?q=wrtz{{(_="".sub).call.call({}
+[$="constructor"].getOwnPropertyDescriptor(_.__proto__,$).value,0,"alert(1)")
+()}}zzzz<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-➌ Connection: keep-alive
+<p>考虑到大量AngularJS沙盒逃逸的发布和版本1.6中沙盒的移除，解构这个payload超出了本书的范围。但是<code>alert(1)</code>的最终结果是JavaScript弹出窗口。这个ROC向Uber证明，攻击者可以利用这个CSTI来实现XSS，从而导致开发人员帐户和相关应用程序受损。</p>
+<p><strong>重点</strong></p>
+<p>在确认站点是否使用客户端模板引擎之后，开始测试站点，方法是使用与引擎相同的语法提交简单的有效负载，例如AngularJS的<code>{{7*7}}</code>，并观察呈现的结果。如果执行payload，请检查站点使用的AngularJS版本，通过在浏览器控制台中键入Angular.version。如果版本大于1.6，则可以从上述资源提交payload，而无需绕过沙盒。如果它小于1.6，你需要提交一个沙盒绕过。</p>
+<h3 id="UBER-FLASK-JINJA2-模板注入"><a href="#UBER-FLASK-JINJA2-模板注入" class="headerlink" title="UBER FLASK JINJA2  模板注入"></a>UBER FLASK JINJA2  模板注入</h3><p>难度：中等</p>
+<p>网址：<code>https://riders.uber.com/</code></p>
+<p>资料来源：<a target="_blank" rel="noopener" href="https://hackerone.com/reports/125980/">https://hackerone.com/reports/125980/</a></p>
+<p>报告日期：2016年3月25日</p>
+<p>悬赏金：10000美元</p>
+<p>当你进行黑客攻击时，确定一家公司使用的技术是很重要的。当Uber在HackerOne上推出公开的bug悬赏计划时，它还在其网站上添加了一张“藏宝图”<code>https://eng.uber.com/bug-bounty/</code></p>
+<p>（修订后的地图于2017年8月在<code>https://medium.com/uber-security-privacy/uber-bug-bountygurey-map-17192af85c1a/</code>). 这张地图确定了Uber运营的一些敏感资产，包括每一处使用的软件。</p>
+<p>优步在地图中披露了这一点<code>riders.uber.com</code>是用Node.js, Express 和 Backbone.js  ，其中没有一个会立即显示出能有潜在的SSTI攻击可能。但是网站<code>vault.uber.com</code>以及<code>partners.uber.com</code>用FLASK和Jinja2进行开发。Jinja2是一个服务器端模板引擎，如果实现不正确，可以允许远程代码执行。尽管<code>riders.uber.com</code>没有使用Jinja2，如果站点向vault或partners子域提供输入，并且这些站点信任输入而不进行清理，则攻击者可能能够利用SSTI漏洞进行攻击。</p>
+<p>发现此漏洞的黑客Orange Tsai输入<code>{{1+1}}</code>作为他的名字，开始测试SSTI漏洞。他寻找子域之间是否发生了相互作用。在他的报告中，Orange解释说，对<code>riders.uber.com</code>的profile进行修改，会导致给帐户所有者发送一封电子邮件，通知他们profile发生更改（这是一种常见的安全方法）。通过在站点上更改他的名字为<code>{1+1}}</code>，他收到了一封名为2的电子邮件，如图8-1所示。</p>
+<p><img src="/part8-mo-ban-zhu-ru/images%5Cwh101_801.png"></p>
+<center> 图8-1：Orange收到的电子邮件，执行他注入自己名字的代码 </center>
 
- ➍ Accept: application/html, */* 
+<p>这一行为立即引起了一个危险信号，因为Uber执行了他的表达式，并将其替换为方程式的结果。Orange然后尝试提交Python代码<code>{% for c in [1,2,3]%} {{c,c,c}} {% endfor %}</code>   ，以确认可以实现更复杂的操作。这段代码在数组[1,2,3]上迭代，并将每个数字打印三次。图8-2中的电子邮件显示Orange的名字显示为9个数字，这是for循环执行的结果，这证实了他的发现。</p>
+<p><img src="/part8-mo-ban-zhu-ru/images%5Cwh101_802.png"></p>
+<center>图8-2：Orange注入更复杂代码的电子邮件</center>
 
-➎ User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36   (KHTML, like Gecko) Chrome/72.0.3626.109 Safari/537.36  （KHTML，例如Gecko）Chrome / 72.0.3626.109 Safari / 537.36 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Jinja2还实现了一个沙盒，它限制了执行任意代码的能力，但偶尔也会被绕过。Orange在他的报告中只报告了执行代码的能力，但他本可以进一步研究这个漏洞。在他的报告中，他认为nVisium的博客文章提供了找到漏洞所需的信息。但是这些帖子也包含了关于Jinja2漏洞的范围的附加信息。</p>
+<p>让我们稍微绕道看看这些附加信息是如何应用到Orange的漏洞上的，请看nVisium的博客文章<a target="_blank" rel="noopener" href="https://nvisium.com/blog/2016/03/09/exploring-ssti-inflask-jinja2.html%E3%80%82%E5%9C%A8%E8%BF%99%E7%AF%87%E5%8D%9A%E6%96%87%E4%B8%AD%EF%BC%8CnVisium%E9%80%9A%E8%BF%87%E4%BD%BF%E7%94%A8%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%BC%96%E7%A8%8B%E6%A6%82%E5%BF%B5introspection%E6%9D%A5%E4%BB%8B%E7%BB%8D%E5%AF%B9Jinja2%E7%9A%84%E5%BC%80%E5%8F%91%E3%80%82Introspection">https://nvisium.com/blog/2016/03/09/exploring-ssti-inflask-jinja2.html。在这篇博文中，nVisium通过使用面向对象的编程概念introspection来介绍对Jinja2的开发。Introspection</a>  涉及到在运行时检查对象的属性，以查看对其可用的数据。面向对象的Introspection  如何工作的细节超出了本书的范围。在这个bug的上下文中，Introspection  允许Orange执行代码并确定在注入发生时模板对象可用的属性。一旦攻击者知道这些信息，他们就可以找到可以用来实现远程代码执行的潜在可利用属性。</p>
+<p>当Orange发现此漏洞时，他只是报告了执行Introspection  所需代码的能力，而不是试图进一步分析该漏洞。最好采用Orange的方法，因为它可以确保您不会执行任何意外的操作；而且，公司可以评估该漏洞的潜在影响。如果您有兴趣探究问题的全部严重性，请在报告中询问公司是否可以继续测试。</p>
+<p><strong>重点</strong></p>
+<p>请注意网站使用的技术；通常，这些技术可以帮助您深入了解如何利用该网站。一定要考虑这些技术是如何相互作用的。在这个例子，Flask和Jinja2是很好的攻击载体，尽管它们没有直接用于易受攻击的站点。与XSS漏洞一样，请检查所有可能使用输入的地方，因为漏洞可能不会立即显现出来。在本例中，恶意payload在用户的配置文件页面上呈现为明文，但在发送电子邮件时执行代码。</p>
+<h2 id="Rails-动态渲染"><a href="#Rails-动态渲染" class="headerlink" title="Rails 动态渲染"></a>Rails 动态渲染</h2><p>难度：中等</p>
+<p>网址：不适用</p>
+<p>资料来源：<a target="_blank" rel="noopener" href="https://nvisium.com/blog/2016/01/26/railsdynamic-render-to-rce-cve-2016-0752/">https://nvisium.com/blog/2016/01/26/railsdynamic-render-to-rce-cve-2016-0752/</a></p>
+<p>报告日期：2015年2月1日</p>
+<p>悬赏金：无</p>
+<p>2016年初，Ruby on Rails团队在处理呈现模板的方式中披露了一个潜在的远程代码执行漏洞。nVisium团队的一名成员发现了该漏洞，并提供了一份关于该问题的有价值的报告，即CVE-2016-0752。rubyonrails使用模型、视图、控制器架构（MVC）设计。在这个设计中，数据库逻辑（模型）与表示逻辑（视图）和应用程序逻辑（控制器）分离。MVC是编程中一种常见的设计模式，可以提高代码的可维护性。</p>
+<p>在报告中，nVisium团队解释了Rails控制器（负责应用程序逻辑）如何根据用户控制的参数推断出要渲染的模板文件。根据站点的开发方式，这些用户控制的参数可以直接传递给负责将数据传递到表示逻辑的<code>render</code>方法。开发人员将输入传递到<code>render</code>函数时可能会出现此漏洞，例如调用<code>render</code>方法和<code>params[：template]</code>，其中<code>params[：template]</code>值是dashboard。在Rails中，来自HTTP请求的所有参数都可以通过<code>params</code>数组提供给应用程序控制器逻辑。</p>
+<p>在这种情况下，在HTTP请求中提交一个参数template并传递给render函数。这种行为值得注意，因为render方法没有为Rails提供特定的上下文；换句话说，它没有提供指向特定文件的路径或链接，并自动确定哪个文件应向用户返回内容。之所以能够做到这一点，是因为Rails实现了约定优先于配置：传递给render函数的任何模板参数值都将用于搜索文件名并渲染。根据这个发现，Rails首先递归地搜索应用程序根目录/app/views。这是用于为用户渲染内容的所有文件的通用默认文件夹。如果Rails找不到使用给定名称的文件，它会扫描应用程序根目录。如果仍然找不到文件，Rails会扫描服务器根目录。</p>
+<p>在CVE-2016-0752提交之前，恶意用户可以传递<code>template=%2fect%2passwd</code>，Rails会在views目录中查找/etc/passwd，然后是应用程序目录，最后是服务器根目录。假设您使用的是Linux机器并且该文件是可读的，那么Rails将打印您的/etc/passwd文件。</p>
+<p>根据nVisium的文章，当用户提交模板注入时，Rails使用的搜索序列也可以用于执行任意代码，比如<code>&lt;%25%3d</code>ls<code>%25&gt;</code>。如果站点使用默认的Rails模板语言ERB，这个编码的输入将被解释为<code>&lt;%=</code>ls<code>%&gt;</code>，即使用Linux命令列出当前目录中的所有文件。而Rails团队已经修复了此漏洞，在开发人员将用户控制的输入传递给<code>render inline:</code>时，您仍然可以测试SSTI，因为<code>inline:</code>用于将ERB直接提供给render函数。</p>
+<p><strong>重点</strong></p>
+<p>了解您正在测试的软件如何工作将帮助您发现漏洞。在这个例子，如果Rails站点向render函数传递用户控制的输入，那么它都是易受攻击的。理解Rails使用的设计模式无疑有助于发现这个漏洞。与本例中的template参数一样，注意在控制可能与内容渲染方式直接相关的输入时出现的机会。</p>
+<h3 id="UNIKRN-SMARTY模板注入"><a href="#UNIKRN-SMARTY模板注入" class="headerlink" title="UNIKRN SMARTY模板注入"></a>UNIKRN SMARTY模板注入</h3><p>难度：中等</p>
+<p>网址：不适用</p>
+<p>资料来源：<a target="_blank" rel="noopener" href="https://hackerone.com/reports/164224/">https://hackerone.com/reports/164224/</a></p>
+<p>报告日期：2016年8月29日</p>
+<p>悬赏金：400美元</p>
+<p>2016年8月29日，作者受邀参加了电子竞技博彩网站Unikrn的私人漏洞奖励计划。在最初的站点勘测中，作者使用的Wappalyzer工具证实了该站点使用的是AngularJS。这一发现给我带来了危险，因为作者已经成功地找到了AngularJS注入漏洞。通过提交<code>{{7*7}}</code>并从profile开始查找渲染的数字49，开始查找CSTI漏洞。虽然我在profile页面上没有成功，但我注意到你可以邀请朋友来这个网站，所以我也测试了这个功能。在向自己提交邀请后，我收到了一封奇怪的电子邮件，如图8-3所示。</p>
+<p><img src="/part8-mo-ban-zhu-ru/images%5Cwh101_803.png"></p>
+<center>图8-3：从Unikrn收到的带有Smarty错误的电子邮件</center>
 
-<p><em>代码list 1-1：发送一个HTTP请求</em></p>
-<p>浏览器向/路径➊（该网站的根目录）发出GET请求。网站的内容是通过路径组织的，就像计算机上的文件夹和文件一样。当你想访问文件夹的下一级，您可以在文件夹的名称后跟一个/即可表示该文件的路径。当您访问网站的第一页时，您将访问根路径，即/。浏览器还表示它正在使用HTTP 1.1版协议。 GET请求仅检索信息。我们稍后将详细了解它。</p>
-<p>Host头➋保存着额外的信息，它作为请求的一部分被发送。 HTTP 1.1需要它来识别给定IP地址的服务器应将请求发送到哪里，因为IP地址可以托管多个域名。Connection header➌表示保持与服务器的连接保持打开状态的请求，以避免不断打开和关闭连接的开销。</p>
-<p>您可以在➍看到预期的响应格式。在这个例子，我们期望得到application / html格式。但正如通配符（* / *）所示，我们可以接受任何格式。内容类型虽然有数百种，但在这本书里，您会经常看到的是application / html，application / json，application / octet-stream和text / plain。最后，用户代理➎表示负责发送请求的软件。</p>
-<p><strong><em>步骤5：服务器响应</em></strong></p>
-<p>为了响应我们的请求，服务器会使用类似List 1-2进行响应：</p>
-<pre class="line-numbers language-html" data-language="html"><code class="language-html">➊ HTTP/1.1 200 OK 
+<p>电子邮件的开头包含一个堆栈跟踪，其中有一个Smarty错误，显示7<em>7无法识别。看起来{7</em>7}}被注入到模板中，Smarty试图执行代码，但没有识别出7*7。</p>
+<p>立即查阅了james kettle关于模板注入的必不可少的文章(<a target="_blank" rel="noopener" href="http://blog.portswigger.net/2015/08/server-side-templateinjection.html)%E4%B8%BA%E4%BA%86%E6%B5%8B%E8%AF%95%E4%BB%96%E5%BC%95%E7%94%A8%E7%9A%84Smarty">http://blog.portswigger.net/2015/08/server-side-templateinjection.html)为了测试他引用的Smarty</a> payload。    <code>{self:：getStreamVariable（“file:///proc/self/loginuuid”）}</code>，它调用<code>getStreamVariable</code>方法来读取文件<code>/proc/self/loginuuid</code>。尝试了他共享payload，但没有收到任何输出。</p>
+<p>将profile名称改为{$smarty.version}并重新邀请我自己到网站。结果是一封邀请邮件，我的名字是2.6.18，这是安装在网站上的Smarty版本。当继续阅读文档时，了解到可以使用标记<code>{php}{/php}</code>来执行任意php代码（Kettle在他的文章中特别提到了这些标记）。因此，尝试将payload:<code>{php}print“Hello”{/php}</code>作为我的名字，并再次提交了邀请。已经确认了我的网站已经邀请我打印的电子邮件功能。</p>
+<p>为了证明这个程序的漏洞，我想把它作为最终的测试。尽管/etc/passwd文件并不重要，但访问它通常用作一个标志来演示远程代码执行。所以我用了以下payload：</p>
+<pre class="line-numbers language-none"><code class="language-none">{php}$s=file_get_contents('/etc/passwd');var_dump($s);{/php}<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-➋ Content-Type: text/html   
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span>    
+<p>这段PHP代码打开<code>/etc/passwd</code>文件，使用<code>file_get_contents</code>读取其内容，并将内容分配给<code>$s</code>变量。一旦设置了<code>$s</code>，我就使用<code>var_dump</code>转储该变量的内容，希望收到的电子邮件将包含<code>/etc/passwd</code>的内容，作为邀请我访问Unikrn站点的人的姓名。但奇怪的是，我收到的邮件只有一个空名字。</p>
+<p>我想知道Unikrn是否限制了名字的长度。这一次，我在PHP文档中搜索了<code>file_get_content</code>，其中详细说明了如何限制一次读取的数据量。我把我的payload改为：</p>
+<pre class="line-numbers language-none"><code class="language-none">{php}$s=file_get_contents('/etc/passwd',NULL,NULL,0,100);var_dump($s);
+{/php}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-​	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>     
+<p>这个payload中的关键参数是    <code>'/etc/passwd'</code>，0和100。路径指的是要读取的文件，0指示PHP从文件中从哪里开始（在本例中是在文件的开头），100表示要读取的数据的长度。我用这个payload重新邀请自己加入Unikrn，它产生了如图8-4所示的电子邮件。</p>
+<p><img src="/part8-mo-ban-zhu-ru/images%5Cwh101_804.png"></p>
+<center>图8-4:Unikrn邀请电子邮件显示/etc/passwd文件的内容</center>
 
-​		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>Google.com<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
-
- 		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>  
-
- 		 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>  
-
-​			 ➌ --**snip**--    
-
-​			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>   
-
-​	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p><em>List 1-2：服务器响应</em></p>
-<p>在这里，我们收到了HTTP响应，其状态码为200➊，并已附加到HTTP / 1.1。状态码很重要，因为它指示服务器如何响应。这些代码也由RFC定义，通常具有以2、3、4或5开头的三位数字。尽管没有严格要求服务器使用特定代码，但是2xx代码通常表示请求成功。</p>
-<p>因为没有严格执行服务器如何实现其HTTP代码使用的强制措施，所以即使HTTP消息正文说明存在应用程序错误，您也可能会看到某些应用程序以200响应。 HTTP消息主体是与请求或响应关联的内容。在这种情况下，由于Google的响应主体很大，因此我们删除了内容，并以–snip-替换。网页的响应内容通常是HTML，但对于应用程序编程接口的响应，则可以是JSON，对于文件下载，则可以是文件内容，等等。</p>
-<p>Content-Type头➋告知浏览器主体的媒体类型。媒体类型确定浏览器如何呈现正文内容。但是浏览器并不总是使用应用程序返回的值。取而代之的是，浏览器执行MIME嗅探，读取正文内容的第一位以确定自己的媒体类型。应用程序可以通过包含X-Content-Type-Options：nosniff来禁用此浏览器行为，该标头未包含在前面的示例中。</p>
-<p>其他以3开头的响应代码表示重定向，该重定向指示您的浏览器提出额外的请求。例如，如果Google从理论上讲需要将您从一个URL永久重定向到另一个URL，则可以使用301响应。而302是临时重定向。</p>
-<p>收到3xx响应时，浏览器应向Location标头中定义的URL发出新的HTTP请求，如下所示：</p>
-<p><code>HTTP/1.1 301 Found Location: https://www.google.com/</code></p>
-<p>以4开头的响应通常表示用户错误，例如，尽管请求提供了有效的HTTP请求，但请求中并未包含用于授权访问内容的适当标识，则响应403。以5开头的响应标识某种类型的服务器错误，例如503，指示服务器无法处理发送的请求。</p>
-<p><strong><em>步骤6：呈现响应</em></strong></p>
-<p>由于服务器发送的响应内容的类型为text / html，状态码为200，因此我们的浏览器将开始呈现收到的内容。响应的主体告诉浏览器应向用户显示的内容。</p>
-<p>对于我们的示例，这将包括用于页面结构的HTML；级联样式表（CSS），用于样式和布局；和JavaScript以添加其他动态功能和媒体，例如图像或视频。服务器有可能返回其他内容，例如XML。第11章将更详细地讨论XML。</p>
-<p>由于网页可以引用外部文件（例如CSS，JavaScript和媒体），因此浏览器可能会针对网页的所有必需文件提出其他HTTP请求。当浏览器请求这些其他文件时，它将继续解析响应并将主体显示为网页。在这个例子，它将呈现Google的主页<code>www.google.com</code>。</p>
-<p>请注意，JavaScript是每种主流浏览器都支持的脚本语言。 JavaScript使网页具有动态功能，包括能够在不重新加载网页的情况下更新网页上的内容，检查密码（在某些网站上）是否足够牢固等。与其他编程语言一样，JavaScript具有内置函数，可以将值存储在变量中，并响应网页上的事件运行代码。它还可以访问各种浏览器应用程序编程接口（API）。这些API使JavaScript能够与其他系统进行交互，其中最重要的可能是文档对象模型（DOM）。</p>
-<p>DOM使JavaScript可以访问和操纵网页的HTML和CSS。这很重要，因为如果攻击者可以在网站上执行自己的JavaScript，他们将有权访问DOM并可以代表目标用户在网站上执行操作。第7章将进一步探讨该概念。</p>
-<h2 id="HTTP请求"><a href="#HTTP请求" class="headerlink" title="HTTP请求"></a>HTTP请求</h2><p>客户端和服务器之间关于如何处理HTTP消息的协议包括定义请求方法。请求方法指示客户端请求的目的以及客户端期望成功的结果。例如，List 1-1中，我们向<code>http://www.google.com/</code>发送了一个GET请求，这意味着我们期望仅返回<code>http://www.google.com/</code>的内容，而不会执行其他任何操作。由于Internet被设计为远程计算机之间的接口，因此开发并实现了请求方法以区分所调用的动作。</p>
-<p>HTTP标准定义了以下请求方法：GET，HEAD，POST，PUT，DELETE，TRACE，CONNECT和OPTIONS（PATCH也被提出了，但在HTTP RFC中未实现）。在撰写本文时，浏览器仅使用HTML发送GET和POST请求。任何PUT，PATCH或DELETE请求都是JavaScript调用HTTP请求的结果。下一节简要概述了您在本书中可以找到的请求方法。</p>
-<h3 id="请求方法"><a href="#请求方法" class="headerlink" title="请求方法"></a>请求方法</h3><p>GET方法可以查找由请求统一资源标识符（URI）标识的任何信息。术语URI通常与统一资源定位符（URL）同义使用。从技术上讲，URL是URI的一种，它定义了一种资源，并包括一种通过其网络位置来定位该资源的方法。例如，<code>http://www.google.com/&lt;example&gt;/file.txt</code>和<code>/&lt;example&gt;/file.txt</code>是有效的URI。但是只有<code>http://www.google.com/&lt;example&gt;/file.txt</code>是有效的URL，因为它标识了如何通过域名<code>http://www.google.com</code>查找资源。尽管有细微差别，但在引用任何资源标识符时，我们都会在整本书中使用URL。</p>
-<p>虽然无法强制执行此要求，但GET请求不应更改数据；他们应该只是从服务器检索数据并在HTTP消息主体中返回数据。例如，在社交媒体网站上，GET请求应返回您的个人资料名称，但不更新您的个人资料。对于第4章中讨论的跨站点请求伪造（CSRF）漏洞，GET至关重要。访问任何URL或网站链接（除非由JavaScript调用）都会导致您的浏览器将GET请求发送到目标服务器。此行为对于第2章中讨论的开放重定向漏洞至关重要。</p>
-<p>HEAD方法与GET方法相同，除了前者服务器在响应中不会返回消息主体。</p>
-<p>POST方法在接收服务器上调用由服务器确定的某些功能。换</p>
-<p>句话说，通常将执行某种类型的后端操作，例如创建评论，注册用户，删除帐户等等。服务器为响应POST而执行的操作可能有所不同。有时，服务器可能根本不采取任何措施。例如，POST请求可能会导致在处理请求时发生错误，并且记录不会保存在服务器上。</p>
-<p>PUT方法调用某些函数，该函数引用远程网站或应用程序上已经存在的记录。例如，当更新已经存在的帐户，博客帖子等时，可以使用它。同样，执行的操作可能会有所不同，并且可能导致服务器完全不执行任何操作。</p>
-<p>DELETE方法请求远程服务器删除用URI标识的远程资源。</p>
-<p>TRACE方法是另一种不常用的方法。它用于将请求消息反射回请求者。它允许请求者查看服务器正在接收的内容，并将该信息用于测试和收集诊断信息。</p>
-<p>CONNECT方法保留给代理使用，代理是将请求转发到其他服务器的服务器。此方法使用请求的资源启动双向通信。例如，CONNECT方法可以通过代理访问使用HTTPS的网站。</p>
-<p>OPTIONS方法从服务器请求有关可用通信选项的信息。例如，通过调用OPTIONS，可以查明服务器是否接受GET，POST，PUT，DELETE和OPTIONS调用。此方法不会指示服务器是否接受HEAD或TRACE调用。浏览器会针对特定内容类型（例如application / json）自动发送此类请求。这种方法称为preflight OPTIONS调用，将在第4章中进行更深入的讨论，因为它用作CSRF漏洞保护。</p>
-<h3 id="HTTP是无状态的"><a href="#HTTP是无状态的" class="headerlink" title="HTTP是无状态的"></a>HTTP是无状态的</h3><p>HTTP请求是无状态的，这意味着发送到服务器的每个请求都被视为全新请求。收到请求时，服务器对其先前与浏览器的通信一无所知。这对于大多数站点都是有问题的，因为这些站点想记住您是谁。否则，您必须为每个发送的HTTP请求重新输入用户名和密码。这也意味着，必须将客户端发送给服务器的每个请求中的所有数据重新加载，以处理HTTP请求。为避免每次HTTP请求都必须重新发送用户名和密码，网站使用Cookie或基本身份验证。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>您现在应该对互联网的工作原理有基本的了解。 具体来说，您学习了在浏览器的地址栏中输入网站时发生的情况：浏览器如何将其转换为域，域如何映射到IP地址以及HTTP请求如何发送到服务器。</p>
-<p>您还学习了浏览器如何构造请求和呈现响应以及HTTP请求方法如何允许客户端与服务器进行通信。 此外，您还了解到，漏洞是由某人执行意外操作或获得对原本不可用的信息的访问所导致的，而漏洞赏金是从道德上发现漏洞并向网站所有者报告漏洞的奖励。</p>
+<p>成功地执行了任意代码，并作为ROC，一次提取了<code>/etc/passwd</code>文件100个字符。</p>
+<p><strong>重点</strong></p>
+<p>处理这个漏洞非常有趣。最初的堆栈跟踪是一个错误的信号，正如俗话所说，“哪里有烟，哪里就有火”。如果你发现了潜在的SSTI，一定要阅读文档以确定如何有效地继续。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>当您搜索漏洞时，最好尝试确认底层技术（无论是web框架、前端渲染引擎或其他东西）以识别可能的攻击向量和要测试的思想。模板引擎的多样性使得很难确定在所有情况下都有效，但知道使用的是哪种技术将帮助您克服这一挑战。在渲染您控制的文字时，请留意出现的机会。此外，请记住，漏洞可能不会立即显现，但仍可能存在于其他功能中，例如电子邮件中。</p>
 
             </div>
             <hr/>
@@ -545,7 +549,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://forwork1010.github.io/part1-lou-dong-wa-jue-ji-chu-zhi-shi/">https://forwork1010.github.io/part1-lou-dong-wa-jue-ji-chu-zhi-shi/</a>
+                    <a href="https://forwork1010.github.io/part8-mo-ban-zhu-ru/">https://forwork1010.github.io/part8-mo-ban-zhu-ru/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -591,6 +595,10 @@
                                     <span class="chip bg-color">web安全</span>
                                 </a>
                             
+                                <a href="/tags/SSTI/">
+                                    <span class="chip bg-color">SSTI</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -630,85 +638,29 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/part2-kai-fang-shi-chong-ding-xiang/">
+                <a href="/part8-mo-ban-zhu-ru/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Part2 开放式重定向">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Part8 模板注入">
                         
-                        <span class="card-title">Part2 开放式重定向</span>
+                        <span class="card-title">Part8 模板注入</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            您将以三个漏洞报告为例，学习如何利用开放式重定向以及如何确定关键参数。
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-10-14
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/WebHacking101/" class="post-category">
-                                    WebHacking101
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/">
-                        <span class="chip bg-color">漏洞挖掘</span>
-                    </a>
-                    
-                    <a href="/tags/web%E5%AE%89%E5%85%A8/">
-                        <span class="chip bg-color">web安全</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%BC%80%E6%94%BE%E9%87%8D%E5%AE%9A%E5%90%91/">
-                        <span class="chip bg-color">开放重定向</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/part1-lou-dong-wa-jue-ji-chu-zhi-shi/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Part1 漏洞挖掘基础知识">
-                        
-                        <span class="card-title">Part1 漏洞挖掘基础知识</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            学习在浏览器的地址栏中输入网站后发生的情况：浏览器如何将其转换为域，域如何映射到IP地址以及HTTP请求如何发送到服务器。学习浏览器如何构造请求和呈现响应以及HTTP请求方法如何允许客户端与服务器进行通信。
+                            当您搜索漏洞时，最好尝试确认底层技术（无论是web框架、前端渲染引擎或其他东西）以识别可能的攻击向量和要测试的思想。
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-13
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-19
                             </span>
                         <span class="publish-author">
                             
@@ -732,6 +684,67 @@
                     
                     <a href="/tags/web%E5%AE%89%E5%85%A8/">
                         <span class="chip bg-color">web安全</span>
+                    </a>
+                    
+                    <a href="/tags/SSTI/">
+                        <span class="chip bg-color">SSTI</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/part7-xss/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Part7 XSS">
+                        
+                        <span class="card-title">Part7 XSS</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            对于站点开发人员来说，XSS漏洞是真正的风险，并且仍然在网站上普遍存在。
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-17
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/WebHacking101/" class="post-category">
+                                    WebHacking101
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/">
+                        <span class="chip bg-color">漏洞挖掘</span>
+                    </a>
+                    
+                    <a href="/tags/web%E5%AE%89%E5%85%A8/">
+                        <span class="chip bg-color">web安全</span>
+                    </a>
+                    
+                    <a href="/tags/XSS/">
+                        <span class="chip bg-color">XSS</span>
                     </a>
                     
                 </div>
