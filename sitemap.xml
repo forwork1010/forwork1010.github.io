@@ -116,13 +116,6 @@
   </url>
   
   <url>
-    <loc>https://forwork1010.github.io/tags/CRLF/</loc>
-    <lastmod>2020-10-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://forwork1010.github.io/tags/HTML%E6%B3%A8%E5%85%A5/</loc>
     <lastmod>2020-10-19</lastmod>
     <changefreq>daily</changefreq>
@@ -130,7 +123,7 @@
   </url>
   
   <url>
-    <loc>https://forwork1010.github.io/tags/HPP/</loc>
+    <loc>https://forwork1010.github.io/tags/CRLF/</loc>
     <lastmod>2020-10-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -138,6 +131,13 @@
   
   <url>
     <loc>https://forwork1010.github.io/tags/CSRF/</loc>
+    <lastmod>2020-10-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://forwork1010.github.io/tags/HPP/</loc>
     <lastmod>2020-10-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

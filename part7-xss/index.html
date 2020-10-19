@@ -451,7 +451,7 @@ A closing angle bracket (&gt;) as &gt; or &amp;#62;<span aria-hidden="true" clas
 <p> 例如，不在敏感cookie上使用httponly标志的站点上的XSS漏洞与在敏感cookie上使用httponly标志的站点上的XSS漏洞不同。当站点没有httponly标志时，XSS可以读取cookie值；如果这些值包括标识cookie的会话，则可以窃取目标的会话并访问其帐户。您可以向document.cookie弹出警报框，以确认您可以读取敏感cookie（知道站点认为哪些cookie是敏感的需要在每个站点上试错）。即使无法访问敏感的cookie，也可以向document.domain发出警报，以确认是否可以从DOM访问敏感的用户信息并代表目标执行操作。 </p>
 <p>但是，如果不警告正确的域名，XSS可能不是站点的漏洞。例如，如果从沙盒<code>iFrame</code>向<code>document.domain</code>发出警报，则JavaScript可能是无害的，因为它无法访问cookies、对用户帐户执行操作或从DOM访问敏感的用户信息。 JavaScript是无害的，因为浏览器实现了作为安全机制的同源策略（SOP）。SOP限制文档（DOM中的D）如何与从另一个源加载的资源交互。SOP保护无辜的网站免受试图通过用户利用网站的恶意网站的攻击。例如，如果您访问了<code>www.&lt;malitive&gt;.com</code>并在浏览器中调用了对<code>www.&lt;example&gt;.com/profile</code>的GET请求，则SOP将阻止<code>www.&lt;malitive&gt;.com</code>读取<code>www.&lt;example&gt;.com/profile</code>响应。<code>www.&lt;example&gt;.com</code>网站可能允许来自不同源的网站与其交互，但通常这些交互仅限于特定受信任网站<code>www.&lt;example&gt;.com</code>。        </p>
 <p> 网站的协议（如HTTP或HTTPs）、主机（如<code>www.&lt;example&gt;.com</code>）和端口决定了网站的来源。Internet Explorer是此规则的例外。它不认为port是源的一部分。表7-1显示了源的示例，以及它们是否与<code>http://www.&lt;example&gt;.com/</code>相同。   </p>
-<p><img src="images%5Csop.png"></p>
+<p><img src="/part7-xss/images%5Csop.png"></p>
 <center>*表7-1:SOP示例*</center>
 
 <p>某些情况下，URL与源不匹配。例如，about:blank和javascript:schemes继承打开它们的文档的源。about:blank上下文从浏览器访问信息或与浏览器交互，而javascript:执行 javascript。URL不提供关于其源的信息，因此浏览器处理这两个上下文的方式不同。当您发现XSS漏洞时，在ROC中使用alert（document.domain）会很有帮助：它可以确认XSS执行的来源，特别是当浏览器中显示的URL与XSS执行的源不同时。这正是网站打开javascript:URL时发生的情况。如果<code>www.&lt;example&gt;.com</code>打开了<code>javascript:alert（document.domain）</code>的URL，浏览器地址将显示<code>javascript:alert（document.domain）</code>。但alert框将显示<code>www.&lt;example&gt;.com</code>，因为<code>alert</code>继承了上一个document的源。        </p>
@@ -496,7 +496,7 @@ A closing angle bracket (&gt;) as &gt; or &amp;#62;<span aria-hidden="true" clas
 <p>XSS payload不必很复杂，但您确实需要根据它们出现的位置以及它们是否包含在HTML或JavaScript标记中对其进行调整。2015年12月，Shopify的批发网站是一个简单的网页，顶部有一个明显的搜索框。此页面上的XSS漏洞很简单，但很容易被忽略：在搜索框中的输入将会出现在JavaScript标记中。        </p>
 <p>人们忽略了这个bug，因为XSS payload没有利用未被清洗的HTML。当XSS利用HTML的显示方式时，攻击者可以看到payload的效果，因为HTML定义了站点的外观。相反，JavaScript代码可以改变站点的外观或执行另一个操作，但它并不定义站点的外观。        </p>
 <p>在本例中，输入<code>“&gt;&lt;script&gt;alert（'XSS'）&lt;/script&gt;</code>不会执行XSS payload <code>alert('XSS')</code>，因为Shopify编码HTML标记<code>&lt;&gt;</code>。这些字符将被无害地呈现为<code>&amp;lt;</code>和<code>&amp;gt;</code>。一名黑客意识到，在网页上的<code>&lt;script&gt;&lt;/script&gt;</code>标记中，输入是未被清理的。很可能，黑客是通过查看页面的源代码（包含页面的HTML和JavaScript）得出这个结论的。通过在浏览器地址栏中输入<code>view-source:URL</code>，可以查看任何网页的源。例如，图7-2显示了<code>https://nostarch.com/</code>站点的部分页面源代码。        在意识到输入未被处理后，黑客将<code>test'；alert（'XSS'）；'</code>输入Shopify的搜索框中，创建一个JavaScript警报框。尽管报告中还不清楚，但Shopify很可能是在一个JavaScript语句中呈现搜索到的术语，比如<code>var search_term='&lt;INJECTION&gt;'</code>。注入的第一部分<code>test'；</code>，将闭合该标记并插入<code>alert('XSS')；</code>作为单独的语句。最后的<code>'</code>将确保JavaScript语法是正确的。结果可能看起来像<code>var search_term='test'；alert（'xss'）；''；</code>。</p>
-<p><img src="D:\blog\source\images\notarch.png"></p>
+<p><img src="/part7-xss/blog\source\images\notarch.png"></p>
 <center>图7-2:`https://nostarch.com`的页面源  </center> 
 
 <p><strong>重点</strong>       </p>
@@ -508,7 +508,7 @@ A closing angle bracket (&gt;) as &gt; or &amp;#62;<span aria-hidden="true" clas
 <p>赏金：1000美元        </p>
 <p>XSS payload并不总是立即执行。因此，黑客应该确保payload在所有可能呈现的地方都得到了适当的清理。在本例中，Shopify的存储设置允许用户更改货币格式。2015年12月，在设置社交媒体页面时，这些输入框中的值没有经过适当处理。恶意用户可以设置存储并在存储的货币设置字段中注入XSS payload，如图7-3所示。payload在商店的社交媒体销售频道显示。恶意用户可以将存储配置为在另一个存储管理员访问销售渠道时执行payload。       </p>
 <p> Shopify使用Liquid模板引擎动态呈现商店页面上的内容。例如，<code>${{}}</code>是Liquid的语法；要呈现的变量是在内部大括号集中输入的。在图7-3中，<code>${{amount}</code>是一个合法值，但当输入值是<code>“&gt;&lt;img src=x onerror=alert（document.domain）&gt;</code>，它是XSS payload。<code>"&gt;</code>闭合HTML标记。当HTML标记闭合后，浏览器将显示图像标记并查找src属性中指示的图像<code>x</code>。因为这个值不太可能存在于SuutType的网站上，浏览器遇到错误，并调用JavaScript事件处理函数<code>OnError</code>。事件处理程序执行处理函数中定义的JavaScript。在本例中，它是函数<code>alert（document.domain）</code>。</p>
-<p><img src="D:\blog\source\images\currency.png"></p>
+<p><img src="/part7-xss/blog\source\images\currency.png"></p>
 <center>图7-3:Shopify在报告时的货币设置页面 </center>       
 
 <p>当用户访问currency页面时，JavaScript不会执行，但payload出现在Shopify商店的社交媒体销售频道中。当其他商店管理员单击易受攻击的销售频道选项卡时，恶意的XSS将被执行。        </p>

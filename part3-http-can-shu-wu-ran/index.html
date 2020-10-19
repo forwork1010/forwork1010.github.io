@@ -505,7 +505,7 @@ end <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
 <p>报告日期：2015年11月</p>
 <p>赏金支付：未公开</p>
 <p>在某些情况下，HPP漏洞可能表示存在其他问题，并且可能导致发现其他错误。这就是Twitter Web Intents功能中发生的事情。该功能提供弹出流，用于在非Twitter网站的上下文中处理Twitter用户的推文，回复，转发推文，点赞和关注。 Twitter Web Intents使用户可以与Twitter内容进行交互，而无需离开页面或只为交互进行授权新应用程序。图3-1显示了这些弹出窗口之一的示例。</p>
-<p><img src="images%5C6-3-1.jpg"></p>
+<p><img src="/part3-http-can-shu-wu-ran/images%5C6-3-1.jpg"></p>
 <p>图3-1：Twitter Web Intents功能的早期版本，该功能使用户无需离开页面即可与Twitter内容进行交互。在此示例中，用户可以点赞杰克的推文。</p>
 <p>通过测试此功能，黑客埃里克·拉法洛夫（Eric Rafaloff）发现，四种Intent类型（关注用户，点赞，转发和发推）都容易受到HPP的攻击。 Twitter将通过具有URL参数的GET请求创建每个Intent，如下所示：</p>
 <p><code>https://twitter.com/intent/intentType?parameter_name=parameterValue</code></p>
