@@ -379,6 +379,10 @@
                                 <span class="chip bg-color">web安全</span>
                             </a>
                         
+                            <a href="/tags/CSRF/">
+                                <span class="chip bg-color">CSRF</span>
+                            </a>
+                        
                     </div>
                     
                 </div>
@@ -387,8 +391,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Web-Hacking-101/" class="post-category">
-                                Web Hacking 101
+                            <a href="/categories/WebHacking101/" class="post-category">
+                                WebHacking101
                             </a>
                         
                     </div>
@@ -431,11 +435,11 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Part4-跨站请求伪造"><a href="#Part4-跨站请求伪造" class="headerlink" title="Part4 跨站请求伪造"></a><center>Part4 跨站请求伪造</center></h1><p> <font color="#A52A2A" size="4"><em>本文部分翻译自Peter Yaworski的《Web Hacking 101》，仅供参考学习，切勿二传。</em></font></p>
+                <h1 id="Part4-跨站请求伪造"><a href="#Part4-跨站请求伪造" class="headerlink" title="Part4 跨站请求伪造"></a><center>Part4 跨站请求伪造</center></h1><p> <font color="#A52A2A" size="4"><em>本文部分翻译自《Web Hacking 101》，仅供参考学习，切勿二传。</em></font></p>
 <p>当攻击者可以使目标的浏览器将HTTP请求发送到另一个网站时，就会发生跨站点请求伪造（CSRF）攻击。该网站执行操作，就好像请求是由目标发送的。这种攻击通常依赖于目标，该目标先前已在易受攻击的网站上进行了身份验证，在该网站上提交了该操作，并且在目标不知情的情况下发生了该攻击。 CSRF攻击成功后，攻击者便能够修改服务器端信息，甚至可能接管用户的帐户。以下是其一个例子：</p>
 <pre class="line-numbers language-none"><code class="language-none">Bob登录他的银行网站以检查他的余额。然后，Bob在另一个网站上查看他的电子邮件。
 
-这时，Bob收到一封电子邮件，其中包含指向不熟悉的网站的链接，他单击该链接以查看其链接。
+这时，Bob收到一封电子邮件，其中包含指向陌生的网站的链接，他单击该链接以查看其链接。
 
 加载后，陌生的网站会指示Bob的浏览器向Bob的银行网站发出HTTP请求，以请求从他的帐户向攻击者的帐户转移资金。
 
@@ -448,9 +452,9 @@ Bob的银行网站接收到来自陌生（恶意）网站的HTTP请求。但是�
 <p>当HTTP请求包括如下标头时，您可以标识使用基本授权的站点：Authorization  ：Basic QWxhZGRpbjpPcGVuU2VzYW1l。看起来像随机的字符串实际上是用base64编码的用户名和密码，中间用冒号分隔。QWxhZGRpbjpPcGVuU2VzYW11l解码为Aladdin：OpenSesame。</p>
 <p>Cookies是网站创建并存储在用户浏览器中的小文件。网站使用Cookie的目的多种多样，例如用于存储诸如用户偏好设置或用户访问网站的历史记录之类的信息。 Cookies具有某些属性，它们是标准化的信息。这些详细信息向浏览器介绍了cookie以及如何处理它们。一些Cookie属性可以包括domain，expires，max-age，secure onlyHTTP。除了属性外，Cookie还可以包含一个名称/值（name/value）对，它由一个标识符和一个相关值组成。</p>
 <p>浏览器定义站点可以设置的cookie数量。但通常，单个站点在普通浏览器中可以设置50至150个cookie，据报道某些站点最多支持600个cookie。浏览器通常允许站点为每个cookie最多使用4KB。 Cookie名称或值没有标准：网站可以自由选择自己的名称/值对和用途。例如，网站可以使用名为sessionId的cookie来记住用户是谁，这样就无需让用户为他们访问的每个页面或执行的操作输入用户名和密码。 （回想一下，HTTP请求是无状态的，如第1章所述。无状态是指对于每个HTTP请求，网站都不知道用户是谁，因此它必须为每个请求重新验证该用户的身份。）</p>
-<p>例如，cookie中的名称/值对可以是sessionId = 9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08，并且cookie可以具有<code>.site.com</code>域。因此，sessionId cookie将被发送到用户访问的每个<code>.&lt;site&gt; .com</code>网站，例如<code>foo.&lt;site&gt; .com</code>，<code>bar.&lt;site&gt; .com</code>，<code>www.&lt;site&gt; .com</code>等。 。</p>
+<p>例如，cookie中的名称/值对可以是<code>sessionId = 9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08</code>，并且cookie可以具有<code>.site.com</code>域。因此，sessionId cookie将被发送到用户访问的每个<code>.&lt;site&gt; .com</code>网站，例如<code>foo.&lt;site&gt; .com</code>，<code>bar.&lt;site&gt; .com</code>，<code>www.&lt;site&gt; .com</code>等。 。</p>
 <p>secure和httponly属性告诉浏览器何时以及如何发送和读取cookie。这些属性不包含值。当cookie包含secure属性时，浏览器将仅在访问HTTPS站点时发送该cookie。例如，如果您使用secure的cookie访问<code>http：// www.&lt;site&gt; .com /</code>（HTTP站点），您的浏览器不会将cookie发送到该站点。原因是为了保护您的隐私，因为HTTPS连接是加密的，而HTTP连接不是加密的。httponly属性很重要，它告诉浏览器仅通过HTTP和HTTPS请求读取cookie。因此，浏览器将不允许任何脚本语言（例如JavaScript）读取该cookie的值。如果未在cookie中设置secure和httponly属性，则可以合法发送这些cookie，但会恶意读取。这将导致没有secure属性的cookie发送到非HTTPS站点，JavaScript可以读取未设置httponly的cookie。</p>
-<p>expires和max-age属性指示cookie何时到期，何时浏览器应销毁它。 expires属性只是告诉浏览器在特定日期销毁cookie。例如，Cookie可以将属性设置为expires = Wed，18 Dec 2019 12:00:00 UTC。而max-age是指cookie过期之前的秒数，其格式为整数（max-age= 300）。</p>
+<p>expires和max-age属性指示cookie何时到期，何时浏览器应销毁它。 expires属性只是告诉浏览器在特定日期销毁cookie。例如，Cookie可以将属性设置为<code>expires = Wed，18 Dec 2019 12:00:00 UTC</code>。而max-age是指cookie过期之前的秒数，其格式为整数（<code>max-age= 300</code>）。</p>
 <p>总而言之，如果Bob访问的银行网站使用Cookie，则该网站将通过以下过程存储其身份验证。Bob访问该网站并登录后，银行将使用HTTP响应来响应其HTTP请求，该HTTP响应包括一个标识Bob的cookie。鲍勃的浏览器将自动将该Cookie和所有其他HTTP请求一起发送到银行网站。</p>
 <p>完成银行业务后，Bob离开银行网站时没有注销。请注意这个重要的细节，因为当您注销站点时，该站点通常会以HTTP响应来响应，该响应会使cookie过期。因此，当您重新访问该网站时，您将不得不再次登录。</p>
 <p>当Bob查看电子邮件并单击链接访问未知网站时，表示他无意中访问了恶意网站。该网站旨在通过指示Bob的浏览器向其银行网站发出请求来进行CSRF攻击。该请求还会从他的浏览器发送cookie。</p>
@@ -500,14 +504,14 @@ hello<span aria-hidden="true" class="line-numbers-rows"><span></span><span></spa
 <p> 在此示例中，网站可以从Cookie，网站上的嵌入式脚本或从网站传递的内容的一部分中获取CSRF令牌。无论采用哪种方法，只有目标服务器的网络浏览器才知道并能够读取该值。由于攻击者无法提交令牌，因此他们将无法成功提交POST请求，也无法进行CSRF攻击。但是，仅网站使用CSRF令牌并不意味着它在搜索要利用的漏洞时是死路一条。可以尝试删除令牌，更改其值等。</p>
 <p>网站保护自己的另一种方式是使用CORS。但是，这并不是万无一失的，因为它依赖于浏览器的安全性并确保正确的CORS配置来确定第三方网站何时可以访问响应。由于服务器端配置错误，攻击者有时可以通过将<code>content-type</code>从<code>application / json</code>更改为<code>application / x-www-form-urlencoded</code>来绕过CORS，或者通过使用GET请求而不是POST请求来绕过CORS。顺利绕过的原因是，当内容类型为<code>application / json</code>时，浏览器将自动发送OPTIONS HTTP请求，但如果是GET请求或内容类型为<code>application / x-www-form</code>，则不会自动发送OPTIONS HTTP请求。</p>
 <p>最后，还有另外两种不太常见的CSRF缓解策略。首先，站点可以检查与HTTP请求一起提交的<code>Origin</code>或<code>Referer</code> header的值，并确保它包含预期值。例如，在某些情况下，Twitter将检查<code>Origin</code>，如果不包含<code>Origin</code>，则检查<code>Referer</code>。之所以可行，是因为浏览器控制这些头，并且攻击者无法远程设置或更改它们（显然，这排除了利用浏览器或浏览器插件中的漏洞可能允许攻击者控制header）。其次，浏览器现在开始实现对名为<code>samesite</code>的新cookie属性的支持。可以将此属性设置为<code>strict</code>或<code>lax</code>。设置为“strict”后，浏览器将不会使用任何不是来自网站的HTTP请求发送Cookie。这甚至包括简单的HTTP GET请求。例如，如果您登录到Amazon并且使用了<code>strict</code>的<code>samesite</code> cookie，那么如果您跟踪来自另一个站点的链接，浏览器将不会提交您的cookie。此外，在您访问另一个Amazon网页并提交cookie之前，Amazon不会将您识别为已登录。相反，将<code>samesite</code>属性设置为lax则指示浏览器发送带有初始GET请求的cookie。这支持GET请求永远不要更改服务器端数据的设计原则。在这种情况下，如果您登录到Amazon并且使用了的<code>lax</code>samesite cookie，则浏览器将提交您的cookie，并且如果您已从另一个站点重定向到该站点，Amazon将识别您已登录。</p>
-<h2 id="漏洞实例"><a href="#漏洞实例" class="headerlink" title="漏洞实例"></a>漏洞实例</h2><h3 id="Shopify-Twitter断开关联"><a href="#Shopify-Twitter断开关联" class="headerlink" title="Shopify Twitter断开关联"></a>Shopify Twitter断开关联</h3><p>难度：低</p>
+<h2 id="漏洞实例"><a href="#漏洞实例" class="headerlink" title="漏洞实例"></a>漏洞实例</h2><h3 id="Shopify-断开Twitter关联账户"><a href="#Shopify-断开Twitter关联账户" class="headerlink" title="Shopify 断开Twitter关联账户"></a>Shopify 断开Twitter关联账户</h3><p>难度：低</p>
 <p>网址：<code>https：//twitter-commerce.shopifyapps.com/auth/twitter/disconnect/</code></p>
 <p>资料来源：<a target="_blank" rel="noopener" href="https://www.hackerone.com/reports/111216/">https://www.hackerone.com/reports/111216/</a></p>
 <p>报告日期：2016年1月17日</p>
 <p>赏金支付：$ 500</p>
 <p>当您寻找潜在的CSRF漏洞时，请注意用于修改服务器端数据的GET请求。例如，某黑客在Shopify功能中发现了一个漏洞，该漏洞将Twitter集成到网站中，从而使店主可以发布有关其产品的推文。该功能还允许用户从关联的商店断开Twitter帐户关联。断开Twitter帐户的URL为：</p>
 <p><code>https://twitter-commerce.shopifyapps.com/auth/twitter/disconnect/</code></p>
-<p>事实证明，访问此URL将发送GET请求以断开帐户，如下所示：</p>
+<p>事实证明，访问此URL将发送GET请求以断开帐户关联，如下所示：</p>
 <pre class="line-numbers language-none"><code class="language-none">GET /auth/twitter/disconnect HTTP/1.1
 Host: twitter-commerce.shopifyapps.com
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:43.0) Gecko/20100101 Firefox/43.0
@@ -518,7 +522,7 @@ Cookie: _twitter-commerce_session=REDACTED
 Connection: keep-alive<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p> 此外，当链接最初实现时，Shopify并没有验证发送给它的GET请求的合法性，从而使URL容易受到CSRF的攻击。</p>
-<p>提交报告的黑客提供了以下概念验证HTML文档：</p>
+<p>提交报告的黑客提供了以下ROC 的HTML文档：</p>
 <pre class="line-numbers language-none"><code class="language-none">&lt;html&gt; 
 &lt;body&gt;  
 ➊ &lt;img src="https://twitter-commerce.shopifyapps.com/auth/twitter/disconnect"&gt;  
@@ -554,10 +558,10 @@ Connection: keep-alive<span aria-hidden="true" class="line-numbers-rows"><span><
 <p>报告日期：2016年4月1日</p>
 <p>赏金支付：852美元</p>
 <p>尽管开发人员经常使用CSRF令牌来防御CSRF漏洞，但在某些情况下，攻击者可以窃取令牌，如您在此漏洞中所看到的。如果您浏览社交网站<code>https://www.badoo.com/</code>，将会看到它使用CSRF令牌。更具体地说，它使用每个用户唯一的URL参数<code>rt</code>。当Badoo的Bug赏金计划在HackerOne上发布时，我找不到利用它的方法。但是，黑客Mahmoud Jamal确实做到了。</p>
-<p>Jamal认识到<code>rt</code>参数及其意义。他还注意到几乎所有JSON响应都返回了该参数。不幸的是，这无济于事，因为CORS可以保护Badoo免受攻击者读取这些响应的攻击，因为它们被编码为<code>application / json</code>内容类型。但是Jamal坚持挖掘。</p>
+<p>Jamal认识到<code>rt</code>参数及其意义。他还注意到几乎所有JSON响应都返回了该参数。不幸的是，这无济于事，因为CORS可以保护Badoo免受攻击者读取这些响应的攻击，因为它们被编码为<code>application/json</code>内容类型。但是Jamal坚持挖掘。</p>
 <p>Jamal最终找到了JavaScript文件<code>https://eu1.badoo.com/worker-scope/chrome-service-worker.js</code>，该文件包含一个名为<code>url_stats</code>的变量，并设置为以下值：</p>
 <p><code>var url_stats ='https://eu1.badoo.com/chrome-push-stats?ws=1&amp;rt= &lt;➊rt_param_value&gt;';</code></p>
-<p>当用户的浏览器访问JavaScript文件➊时，<code>url_stats</code>变量存放一个URL，该URL包含用户的唯一<code>rt</code>值作为参数。为了获得用户的<code>rt</code>值，攻击者只需要受害者访问包含JavaScript文件的恶意网页。 CORS不会阻止此操作，因为它允许浏览器从外部源读取和嵌入远程JavaScript文件。然后，攻击者可以使用<code>rt</code>值将任何社交媒体帐户与用户的Badoo帐户相关联。结果，攻击者可以调用HTTP POST请求来修改目标帐户。这是Jamal用于完成此攻击的HTML：</p>
+<p>当用户的浏览器访问JavaScript文件➊时，<code>url_stats</code>变量存放一个URL，该URL包含用户的唯一<code>rt</code>值作为参数。为了获得用户的<code>rt</code>值，攻击者只需要受害者访问包含JavaScript文件的恶意网页。 CORS不会阻止此操作，因为它允许浏览器从外部源读取和嵌入远程JavaScript文件。然后，攻击者可以使用<code>rt</code>值将任何社交媒体帐户与用户的Badoo帐户相关联。攻击者可以调用HTTP POST请求来修改目标帐户。这是Jamal用于完成此攻击的HTML：</p>
 <pre class="line-numbers language-none"><code class="language-none">&lt;html&gt;  
 &lt;head&gt;   
 &lt;title&gt;Badoo account take over&lt;/title&gt;  
@@ -656,6 +660,10 @@ Connection: keep-alive<span aria-hidden="true" class="line-numbers-rows"><span><
                                     <span class="chip bg-color">web安全</span>
                                 </a>
                             
+                                <a href="/tags/CSRF/">
+                                    <span class="chip bg-color">CSRF</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -722,8 +730,8 @@ Connection: keep-alive<span aria-hidden="true" class="line-numbers-rows"><span><
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Web-Hacking-101/" class="post-category">
-                                    Web Hacking 101
+                            <a href="/categories/WebHacking101/" class="post-category">
+                                    WebHacking101
                                 </a>
                             
                             
@@ -739,6 +747,10 @@ Connection: keep-alive<span aria-hidden="true" class="line-numbers-rows"><span><
                     
                     <a href="/tags/web%E5%AE%89%E5%85%A8/">
                         <span class="chip bg-color">web安全</span>
+                    </a>
+                    
+                    <a href="/tags/HTML%E6%B3%A8%E5%85%A5/">
+                        <span class="chip bg-color">HTML注入</span>
                     </a>
                     
                 </div>
@@ -775,8 +787,8 @@ Connection: keep-alive<span aria-hidden="true" class="line-numbers-rows"><span><
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Web-Hacking-101/" class="post-category">
-                                    Web Hacking 101
+                            <a href="/categories/WebHacking101/" class="post-category">
+                                    WebHacking101
                                 </a>
                             
                             
@@ -792,6 +804,10 @@ Connection: keep-alive<span aria-hidden="true" class="line-numbers-rows"><span><
                     
                     <a href="/tags/web%E5%AE%89%E5%85%A8/">
                         <span class="chip bg-color">web安全</span>
+                    </a>
+                    
+                    <a href="/tags/HPP/">
+                        <span class="chip bg-color">HPP</span>
                     </a>
                     
                 </div>

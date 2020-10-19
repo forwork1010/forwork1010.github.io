@@ -379,6 +379,10 @@
                                 <span class="chip bg-color">web安全</span>
                             </a>
                         
+                            <a href="/tags/XSS/">
+                                <span class="chip bg-color">XSS</span>
+                            </a>
+                        
                     </div>
                     
                 </div>
@@ -387,8 +391,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Web-Hacking-101/" class="post-category">
-                                Web Hacking 101
+                            <a href="/categories/WebHacking101/" class="post-category">
+                                WebHacking101
                             </a>
                         
                     </div>
@@ -431,7 +435,8 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Part7-XSS"><a href="#Part7-XSS" class="headerlink" title=" Part7 XSS "></a><center> Part7 XSS </center></h1><p>跨站点脚本（XSS）漏洞最著名的例子之一是Samy Kamkar创建的Myspace Samy蠕虫。2005年10月，Kamkar利用Myspace上的一个漏洞，允许他在个人资料中存储JavaScript payload。每当登录的用户访问他的Myspace配置文件时，payload代码就会执行，使得查看过的人都默认在Myspace上加Kamkar为好友，并更新查看者的配置文件，使其显示“but most of all, samy is my hero”这段文字。然后代码会将自身复制到查看者的配置文件，并继续感染其他Myspace用户页面。       </p>
+                <h1 id="Part7-XSS"><a href="#Part7-XSS" class="headerlink" title=" Part7 XSS "></a><center> Part7 XSS </center></h1><p><font color="#A52A2A" size="4"><em>本文是《Web Hacking 101》的翻译笔记，仅供参考学习，禁止二传。</em></font></p>
+<p>跨站点脚本（XSS）漏洞最著名的例子之一是Samy Kamkar创建的Myspace Samy蠕虫。2005年10月，Kamkar利用Myspace上的一个漏洞，允许他在个人资料中存储JavaScript payload。每当登录的用户访问他的Myspace profile时，payload代码就会执行，使得查看过的人都默认在Myspace上加Kamkar为好友，并更新查看者的配置文件，使其显示“but most of all, samy is my hero”这段文字。然后代码会将自身复制到查看者的profile，并继续感染其他Myspace用户页面。       </p>
 <p>Kamkar的蠕虫就是一个极端的例子，但是他的漏洞显示了XSS漏洞可能对网站产生的深远影响。与我到目前为止所讨论的其他漏洞类似，当网站呈现某些未定义的字符时，会发生XSS，导致浏览器执行恶意JavaScript。允许出现XSS漏洞的字符包括双引号（“）、单引号（’）和尖括号（&lt;&gt;）。        如果站点正确地清理字符，则字符将呈现为HTML实体。例如，网页的页源将显示以下字符：        </p>
 <pre class="line-numbers language-none"><code class="language-none">A double quote (") as " or &amp;#34;
 A single quote (') as &amp;apos; or '
@@ -446,7 +451,7 @@ A closing angle bracket (&gt;) as &gt; or &amp;#62;<span aria-hidden="true" clas
 <p> 例如，不在敏感cookie上使用httponly标志的站点上的XSS漏洞与在敏感cookie上使用httponly标志的站点上的XSS漏洞不同。当站点没有httponly标志时，XSS可以读取cookie值；如果这些值包括标识cookie的会话，则可以窃取目标的会话并访问其帐户。您可以向document.cookie弹出警报框，以确认您可以读取敏感cookie（知道站点认为哪些cookie是敏感的需要在每个站点上试错）。即使无法访问敏感的cookie，也可以向document.domain发出警报，以确认是否可以从DOM访问敏感的用户信息并代表目标执行操作。 </p>
 <p>但是，如果不警告正确的域名，XSS可能不是站点的漏洞。例如，如果从沙盒<code>iFrame</code>向<code>document.domain</code>发出警报，则JavaScript可能是无害的，因为它无法访问cookies、对用户帐户执行操作或从DOM访问敏感的用户信息。 JavaScript是无害的，因为浏览器实现了作为安全机制的同源策略（SOP）。SOP限制文档（DOM中的D）如何与从另一个源加载的资源交互。SOP保护无辜的网站免受试图通过用户利用网站的恶意网站的攻击。例如，如果您访问了<code>www.&lt;malitive&gt;.com</code>并在浏览器中调用了对<code>www.&lt;example&gt;.com/profile</code>的GET请求，则SOP将阻止<code>www.&lt;malitive&gt;.com</code>读取<code>www.&lt;example&gt;.com/profile</code>响应。<code>www.&lt;example&gt;.com</code>网站可能允许来自不同源的网站与其交互，但通常这些交互仅限于特定受信任网站<code>www.&lt;example&gt;.com</code>。        </p>
 <p> 网站的协议（如HTTP或HTTPs）、主机（如<code>www.&lt;example&gt;.com</code>）和端口决定了网站的来源。Internet Explorer是此规则的例外。它不认为port是源的一部分。表7-1显示了源的示例，以及它们是否与<code>http://www.&lt;example&gt;.com/</code>相同。   </p>
-<p><img src="D:\blog\source\images\sop.png"></p>
+<p><img src="images%5Csop.png"></p>
 <center>*表7-1:SOP示例*</center>
 
 <p>某些情况下，URL与源不匹配。例如，about:blank和javascript:schemes继承打开它们的文档的源。about:blank上下文从浏览器访问信息或与浏览器交互，而javascript:执行 javascript。URL不提供关于其源的信息，因此浏览器处理这两个上下文的方式不同。当您发现XSS漏洞时，在ROC中使用alert（document.domain）会很有帮助：它可以确认XSS执行的来源，特别是当浏览器中显示的URL与XSS执行的源不同时。这正是网站打开javascript:URL时发生的情况。如果<code>www.&lt;example&gt;.com</code>打开了<code>javascript:alert（document.domain）</code>的URL，浏览器地址将显示<code>javascript:alert（document.domain）</code>。但alert框将显示<code>www.&lt;example&gt;.com</code>，因为<code>alert</code>继承了上一个document的源。        </p>
@@ -683,6 +688,10 @@ XSSObject.proxy(String, 'fromCharCode',
                                     <span class="chip bg-color">web安全</span>
                                 </a>
                             
+                                <a href="/tags/XSS/">
+                                    <span class="chip bg-color">XSS</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -739,7 +748,7 @@ XSSObject.proxy(String, 'fromCharCode',
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            对于站点开发人员来说，XSS漏洞是真正的风险，并且仍然在站点上普遍存在，通常是显而易见的。
+                            对于站点开发人员来说，XSS漏洞是真正的风险，并且仍然在网站上普遍存在。
                         
                     </div>
                     <div class="publish-info">
@@ -750,8 +759,8 @@ XSSObject.proxy(String, 'fromCharCode',
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Web-Hacking-101/" class="post-category">
-                                    Web Hacking 101
+                            <a href="/categories/WebHacking101/" class="post-category">
+                                    WebHacking101
                                 </a>
                             
                             
@@ -768,6 +777,10 @@ XSSObject.proxy(String, 'fromCharCode',
                     
                     <a href="/tags/web%E5%AE%89%E5%85%A8/">
                         <span class="chip bg-color">web安全</span>
+                    </a>
+                    
+                    <a href="/tags/XSS/">
+                        <span class="chip bg-color">XSS</span>
                     </a>
                     
                 </div>
@@ -804,8 +817,8 @@ XSSObject.proxy(String, 'fromCharCode',
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Web-Hacking-101/" class="post-category">
-                                    Web Hacking 101
+                            <a href="/categories/WebHacking101/" class="post-category">
+                                    WebHacking101
                                 </a>
                             
                             
@@ -821,6 +834,10 @@ XSSObject.proxy(String, 'fromCharCode',
                     
                     <a href="/tags/web%E5%AE%89%E5%85%A8/">
                         <span class="chip bg-color">web安全</span>
+                    </a>
+                    
+                    <a href="/tags/CRLF/">
+                        <span class="chip bg-color">CRLF</span>
                     </a>
                     
                 </div>

@@ -379,6 +379,10 @@
                                 <span class="chip bg-color">web安全</span>
                             </a>
                         
+                            <a href="/tags/HTML%E6%B3%A8%E5%85%A5/">
+                                <span class="chip bg-color">HTML注入</span>
+                            </a>
+                        
                     </div>
                     
                 </div>
@@ -387,8 +391,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Web-Hacking-101/" class="post-category">
-                                Web Hacking 101
+                            <a href="/categories/WebHacking101/" class="post-category">
+                                WebHacking101
                             </a>
                         
                     </div>
@@ -431,7 +435,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Part5-HTML注入和内容欺骗"><a href="#Part5-HTML注入和内容欺骗" class="headerlink" title="Part5 HTML注入和内容欺骗"></a><center>Part5 HTML注入和内容欺骗</center></h1><p> <font color="#A52A2A" size="4"><em>本文部分翻译自Peter Yaworski的《Web Hacking 101》，仅供参考学习，切勿二传。</em></font></p>
+                <h1 id="Part5-HTML注入和内容欺骗"><a href="#Part5-HTML注入和内容欺骗" class="headerlink" title="Part5 HTML注入和内容欺骗"></a><center>Part5 HTML注入和内容欺骗</center></h1><p> <font color="#A52A2A" size="4"><em>本文部分翻译自《Web Hacking 101》，仅供参考学习，切勿二传。</em></font></p>
 <p>超文本标记语言（HTML）注入和内容欺骗是允许恶意用户将内容注入网站网页的攻击。攻击者可以注入自己设计的HTML元素，通常将其作为模仿合法登录屏幕的<code>&lt;form&gt;</code>标记，以诱使目标向敏感站点提交敏感信息。由于这些类型的攻击依赖于欺骗目标（这种做法有时称为社会工程学），因此漏洞赏金计划将内容欺骗和HTML注入视为没有本书中涵盖的其他漏洞那么严重。</p>
 <p>当网站允许攻击者通常通过某些表单输入或URL参数提交HTML标签，然后直接将其显示在Web页上时，就会发生HTML注入漏洞。这类似于跨站点脚本攻击，不同之处在于这些注入允许执行恶意JavaScript。</p>
 <p>HTML注入有时称为虚拟污损（virtual defacement）。这是因为开发人员使用HTML语言来定义网页的结构。因此，如果攻击者可以注入HTML并由网站渲染它，则攻击者可以更改页面的外观。这种诱使用户通过伪造形式提交敏感信息的技术称为网络钓鱼。</p>
@@ -487,7 +491,7 @@ Password:&lt;br&gt;
 <p>在测试网站时，请检查其如何处理不同类型的输入，包括纯文本和编码文本。请注意那些接受URI编码值（如％2F）并呈现其解码值（在这种情况下为/）的网站。</p>
 <p>您可以在<code>https://gchq.github.io/CyberChef/</code>上找到一把很棒的瑞士军刀，其中包括编码工具。</p>
 <p>检查一下，然后尝试支持的不同类型的编码。</p>
-<h3 id="HackerOne-Markdown配置错误"><a href="#HackerOne-Markdown配置错误" class="headerlink" title="HackerOne Markdown配置错误"></a>HackerOne Markdown配置错误</h3><p>难度：中等</p>
+<h3 id="HackerOne-html包含"><a href="#HackerOne-html包含" class="headerlink" title="HackerOne html包含"></a>HackerOne html包含</h3><p>难度：中等</p>
 <p>网址：<code>https://hackerone.com/reports/&lt;report_id&gt;/</code></p>
 <p>资料来源：<a target="_blank" rel="noopener" href="https://hackerone.com/reports/110578/">https://hackerone.com/reports/110578/</a></p>
 <p>报告日期：2016年1月13日</p>
@@ -538,7 +542,7 @@ Password:&lt;br&gt;
 <p>资料来源：<a target="_blank" rel="noopener" href="https://hackerone.com/reports/111094/">https://hackerone.com/reports/111094/</a></p>
 <p>报告日期：2016年1月16日</p>
 <p>赏金支付：$ 250</p>
-<p>建立在WordPress上的一个旨在共享安全新闻的网站，在<code>security.com/wp-login.php</code>页面上包含了标准的WordPress登录路径。黑客注意到，在登录过程中，如果发生错误，则会显示一个“access_denied”错误消息，该消息对应于URL中的error参数：</p>
+<p>withinsecurity建立在WordPress上的一个旨在共享安全新闻的网站，在<code>security.com/wp-login.php</code>页面上包含了标准的WordPress登录路径。黑客注意到，在登录过程中，如果发生错误，则会显示一个“access_denied”错误消息，该消息对应于URL中的error参数：</p>
 <p><code>https://withinsecurity.com/wp-login.php?error=access_denied</code></p>
 <p>注意到此行为，黑客尝试修改error参数。结果，站点显示了传递给参数的值，作为向用户显示的错误消息的一部分，甚至对URI编码的字符进行了解码。这是黑客使用的修改后的URL：</p>
 <pre class="line-numbers language-none"><code class="language-none">https://withinsecurity.com/wp-login.php?error=Your%20account%20has%20been%20 hacked%2C%20Please%20call%20us%20this%20number%20919876543210%20OR%20Drop%20mail%20at%20attacker%40mail.com&amp;state=cb04a91ac5%257Chttps%253A%252F%252Fwithi nsecurity.com%252Fwp-admin%252F#<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -621,6 +625,10 @@ Password:&lt;br&gt;
                                     <span class="chip bg-color">web安全</span>
                                 </a>
                             
+                                <a href="/tags/HTML%E6%B3%A8%E5%85%A5/">
+                                    <span class="chip bg-color">HTML注入</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -687,8 +695,8 @@ Password:&lt;br&gt;
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Web-Hacking-101/" class="post-category">
-                                    Web Hacking 101
+                            <a href="/categories/WebHacking101/" class="post-category">
+                                    WebHacking101
                                 </a>
                             
                             
@@ -704,6 +712,10 @@ Password:&lt;br&gt;
                     
                     <a href="/tags/web%E5%AE%89%E5%85%A8/">
                         <span class="chip bg-color">web安全</span>
+                    </a>
+                    
+                    <a href="/tags/CRLF/">
+                        <span class="chip bg-color">CRLF</span>
                     </a>
                     
                 </div>
@@ -740,8 +752,8 @@ Password:&lt;br&gt;
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Web-Hacking-101/" class="post-category">
-                                    Web Hacking 101
+                            <a href="/categories/WebHacking101/" class="post-category">
+                                    WebHacking101
                                 </a>
                             
                             
@@ -757,6 +769,10 @@ Password:&lt;br&gt;
                     
                     <a href="/tags/web%E5%AE%89%E5%85%A8/">
                         <span class="chip bg-color">web安全</span>
+                    </a>
+                    
+                    <a href="/tags/CSRF/">
+                        <span class="chip bg-color">CSRF</span>
                     </a>
                     
                 </div>

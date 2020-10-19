@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://forwork1010.github.io/part7-xss/</loc>
+    <loc>https://forwork1010.github.io/part1-lou-dong-wa-jue-ji-chu-zhi-shi/</loc>
     
     <lastmod>2020-10-19</lastmod>
     
@@ -11,14 +11,42 @@
   <url>
     <loc>https://forwork1010.github.io/part6-crlf-zhu-ru/</loc>
     
-    <lastmod>2020-10-17</lastmod>
+    <lastmod>2020-10-19</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://forwork1010.github.io/part7-xss/</loc>
+    
+    <lastmod>2020-10-19</lastmod>
     
   </url>
   
   <url>
     <loc>https://forwork1010.github.io/part5-html-zhu-ru-he-nei-rong-tian-chong/</loc>
     
-    <lastmod>2020-10-17</lastmod>
+    <lastmod>2020-10-19</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://forwork1010.github.io/part4-kua-zhan-qing-qiu-wei-zao/</loc>
+    
+    <lastmod>2020-10-19</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://forwork1010.github.io/part3-http-can-shu-wu-ran/</loc>
+    
+    <lastmod>2020-10-19</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://forwork1010.github.io/part2-kai-fang-shi-chong-ding-xiang/</loc>
+    
+    <lastmod>2020-10-19</lastmod>
     
   </url>
   
@@ -26,34 +54,6 @@
     <loc>https://forwork1010.github.io/baidu_verify_code-Bha5xn27NV.html</loc>
     
     <lastmod>2020-10-17</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://forwork1010.github.io/part4-kua-zhan-qing-qiu-wei-zao/</loc>
-    
-    <lastmod>2020-10-15</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://forwork1010.github.io/part1-lou-dong-wa-jue-ji-chu-zhi-shi/</loc>
-    
-    <lastmod>2020-10-15</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://forwork1010.github.io/part3-http-can-shu-wu-ran/</loc>
-    
-    <lastmod>2020-10-15</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://forwork1010.github.io/part2-kai-fang-shi-chong-ding-xiang/</loc>
-    
-    <lastmod>2020-10-15</lastmod>
     
   </url>
   
@@ -108,10 +108,52 @@
     <priority>0.6</priority>
   </url>
   
+  <url>
+    <loc>https://forwork1010.github.io/tags/%E5%BC%80%E6%94%BE%E9%87%8D%E5%AE%9A%E5%90%91/</loc>
+    <lastmod>2020-10-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://forwork1010.github.io/tags/CRLF/</loc>
+    <lastmod>2020-10-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://forwork1010.github.io/tags/HTML%E6%B3%A8%E5%85%A5/</loc>
+    <lastmod>2020-10-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://forwork1010.github.io/tags/HPP/</loc>
+    <lastmod>2020-10-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://forwork1010.github.io/tags/CSRF/</loc>
+    <lastmod>2020-10-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://forwork1010.github.io/tags/XSS/</loc>
+    <lastmod>2020-10-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
 
   
   <url>
-    <loc>https://forwork1010.github.io/categories/Web-Hacking-101/</loc>
+    <loc>https://forwork1010.github.io/categories/WebHacking101/</loc>
     <lastmod>2020-10-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

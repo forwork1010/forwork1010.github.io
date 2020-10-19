@@ -379,6 +379,10 @@
                                 <span class="chip bg-color">web安全</span>
                             </a>
                         
+                            <a href="/tags/%E5%BC%80%E6%94%BE%E9%87%8D%E5%AE%9A%E5%90%91/">
+                                <span class="chip bg-color">开放重定向</span>
+                            </a>
+                        
                     </div>
                     
                 </div>
@@ -387,8 +391,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Web-Hacking-101/" class="post-category">
-                                Web Hacking 101
+                            <a href="/categories/WebHacking101/" class="post-category">
+                                WebHacking101
                             </a>
                         
                     </div>
@@ -432,7 +436,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="Part2-开放式重定向"><a href="#Part2-开放式重定向" class="headerlink" title="Part2 开放式重定向 "></a><center>Part2 开放式重定向 </center></h1><p><font color="#A52A2A" size="4"><em>本文是Peter Yaworski的《Web Hacking 101》的翻译笔记，仅供参考学习，禁止二传。</em></font></p>
-<p>开放重定向利用对给定域名的信任来将目标引诱到恶意网站。网络钓鱼攻击伴随重定向，以欺骗用户，使用户认为他们的信息被发送到受信任的站点时，事实上他们正在将信息提交给恶意站点。</p>
+<p>开放重定向（Open Direct)利用对给定域名的信任来将目标引诱到恶意网站。网络钓鱼攻击伴随重定向，以欺骗用户，使用户认为他们的信息被发送到受信任的站点时，事实上他们正在将信息提交给恶意站点。</p>
 <p>由于开放式重定向只会重定向用户，因此有时他们被认为影响不大不应受到赏金。OWASP是一个专注于应用程序安全性的社区，它整理了Web应用程序中最关键的安全漏洞列表，并从其2017年十大漏洞列表中删除了开放重定向。</p>
 <p>尽管开放重定向是影响较小的漏洞，但它们对于学习浏览器通常如何处理重定向非常有用。</p>
 <h2 id="开放式重定向的工作方式"><a href="#开放式重定向的工作方式" class="headerlink" title="开放式重定向的工作方式"></a>开放式重定向的工作方式</h2><p>当开发人员不信任攻击者控制的输入以将其重定向到另一个站点时，通常会通过URL参数，HTML <code>&lt;meta&gt;</code>刷新标签或DOM窗口位置属性来进行开放重定向。</p>
@@ -450,8 +454,8 @@
 
 <p>content属性定义浏览器如何通过两个步骤发出HTTP请求。首先，content属性定义浏览器在对URL发出HTTP请求之前要等待多长时间。在这个例子，为0秒。其次，content属性指定浏览器向其发出GET请求的网站中的URL参数；在这个例子里是<code>https://www.google.com</code>。攻击者可以在能够控制<code>&lt;meta&gt;</code>标记的content属性或通过其他漏洞注入自己的标记的情况下使用此重定向行为。 </p>
 <p>攻击者还可以使用JavaScript通过文档对象模型（DOM）修改Window.location属性来重定向用户。 DOM是用于HTML和XML文档的API，允许开发人员修改网页的结构，样式和内容。由于location属性表示应将请求重定向到的位置，因此浏览器将立即解释此JavaScript并重定向到指定的URL。攻击者可以使用以下任何JavaScript来修改Window.location属性：</p>
-<pre class="line-numbers language-none"><code class="language-none">window.location = https://www.google.com/
-window.location.href = https://www.google.com window.location.replace(https://www.google.com)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">window<span class="token punctuation">.</span>location <span class="token operator">=</span> https<span class="token operator">:</span><span class="token operator">/</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">www.google.com</span><span class="token regex-delimiter">/</span></span>
+window<span class="token punctuation">.</span>location<span class="token punctuation">.</span>href <span class="token operator">=</span> https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>www<span class="token punctuation">.</span>google<span class="token punctuation">.</span>com window<span class="token punctuation">.</span>location<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span>https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>www<span class="token punctuation">.</span>google<span class="token punctuation">.</span>com<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>通常，只有在攻击者可以通过跨站点脚本漏洞执行JavaScript或网站故意允许用户定义要重定向的URL的情况下，才设置window.location值的机会才会出现，如稍后将看到的HackerOne插页式重定向漏洞。</p>
 <h2 id="漏洞示例"><a href="#漏洞示例" class="headerlink" title="漏洞示例"></a>漏洞示例</h2><h3 id="Shopify主题安装开放重定向"><a href="#Shopify主题安装开放重定向" class="headerlink" title="Shopify主题安装开放重定向"></a>Shopify主题安装开放重定向</h3><p>难度：低</p>
@@ -461,7 +465,7 @@ window.location.href = https://www.google.com window.location.replace(https://ww
 <p>赏金支付：$ 500</p>
 <p>第一个开放式重定向示例是在Shopify上找到的，Shopify是一个商务平台，用户可以创建商店来销售商品。 Shopify允许管理员通过更改主题来自定义商店的外观。作为该功能的一部分，Shopify提供了通过将商店所有者重定向到URL来提供主题预览的功能。重定向URL的格式如下：</p>
 <p><code>https://app.shopify.com/services/google/themes/preview/supply--blue?domain_name=attacker.com</code></p>
-<p>URL末尾的domain_name参数重定向到用户的商店域，并将/ admin添加到URL末尾。 Shopify认为domain_name始终是用户的商店，并且未验证其值是否属于Shopify域的一部分。结果，攻击者可以利用该参数将目标重定向到<code>http：// &lt;attacker&gt; .com / admin /</code>，在此恶意攻击者可以进行其他攻击。 </p>
+<p>URL末尾的domain_name参数重定向到用户的商店域，并将/ admin添加到URL末尾。 Shopify认为domain_name始终是用户的商店，并且未验证其值是否属于Shopify域的一部分。结果，攻击者可以利用该参数将目标重定向到<code>http://&lt;attacker&gt;.com/admin/</code>。 </p>
 <p><strong>重点</strong></p>
 <p>并非所有漏洞都很复杂。对于此开放式重定向，只需将domain_name参数更改为外部站点即可将用户从Shopify重定向到其他位置。</p>
 <h3 id="Shopify登录开放重定向"><a href="#Shopify登录开放重定向" class="headerlink" title="Shopify登录开放重定向"></a>Shopify登录开放重定向</h3><p>难度：低</p>
@@ -470,29 +474,29 @@ window.location.href = https://www.google.com window.location.replace(https://ww
 <p>报告日期：2015年12月6日</p>
 <p>赏金支付：$ 500</p>
 <p>开放重定向的第二个示例与第一个Shopify示例相似，不同的是，在这个例子，Shopify的参数不是将用户重定向到URL参数指定的域。而是开放式重定向会将参数的值添加到Shopify子域的末尾。通常，此功能将用于将用户重定向到给定商店的特定页面。但是，攻击者仍然可以通过添加字符来更改URL的含义，从而操纵这些URL将浏览器从Shopify的子域重定向到攻击者的网站。</p>
-<p>在此漏洞中，用户登录Shopify后，Shopify使用参数checkout_url重定向。例如，假设某个目标访问了此URL：</p>
+<p>在此漏洞中，用户登录Shopify后，Shopify使用参数<code>checkout_url</code>重定向。例如，假设某个目标访问了此URL：</p>
 <p><code>http://mystore.myshopify.com/account/login?checkout_url=.attacker.com</code></p>
-<p>它们将被重定向到不是Shopify域的URL<code> http://mystore.myshopify.com.&lt;attacker&gt;.com</code>。</p>
-<p>因为URL以<code>.&lt;attacker&gt; .com</code>结尾，并且DNS查找使用最右边的域标签，所以重定向将转到<code>&lt;attacker&gt; .com</code>域。因此，当提交<code>http://mystore.myshopify.com.&lt;attacker&gt; .com /</code>进行DNS查找时，它将与Shopify不拥有<code>&lt;attacker&gt; .com</code>匹配，而不是Shopify拥有的<code>myshopify.com</code>。尽管攻击者无法任意地将目标发送到任意地方，但他们可以通过在可以操纵的值上添加特殊字符（例如”.”）来将用户发送到另一个域名。</p>
+<p>它们将被重定向到非Shopify域的URL<code> http://mystore.myshopify.com.&lt;attacker&gt;.com</code>。</p>
+<p>因为URL以<code>.&lt;attacker&gt;.com</code>结尾，并且DNS查找使用最右边的域标签，所以重定向将转到<code>&lt;attacker&gt;.com</code>域。因此，当提交<code>http://mystore.myshopify.com.&lt;attacker&gt;.com/</code>进行DNS查找时，它将与<code>&lt;attacker&gt; .com</code>匹配，而不是Shopify拥有的<code>myshopify.com</code>。尽管攻击者无法任意地将目标发送到任意地方，但他们可以通过在可以操纵的值上添加特殊字符（例如”.”）来将用户发送到另一个域名。</p>
 <p><strong>重点</strong></p>
-<p>如果您只能控制站点使用的最终URL的一部分，则添加特殊的URL字符可能会更改URL的含义并将用户重定向到另一个域。假设您只能控制checkout_url参数值，并且您还注意到该参数与网站后端的硬编码URL（例如商店URL<code> http://mystore.myshopify.com/</code>）组合在一起。尝试添加特殊的URL字符（例如，”.”或”@”），以测试是否可以控制重定向的位置。</p>
+<p>如果您只能控制站点使用的URL的最后那部分，则添加特殊的URL字符可能会更改URL的含义并将用户重定向到另一个域。假设您只能控制<code>checkout_url</code>参数值，并且您还注意到该参数与网站后端的硬编码URL（例如商店URL<code> http://mystore.myshopify.com/</code>）组合在一起。尝试添加特殊的URL字符（例如，”.”或”@”），以测试是否可以控制重定向的位置。</p>
 <h3 id="HackerOne插页式重定向"><a href="#HackerOne插页式重定向" class="headerlink" title="HackerOne插页式重定向"></a>HackerOne插页式重定向</h3><p>难度：低</p>
 <p>网址：N / A</p>
 <p>资料来源：<a target="_blank" rel="noopener" href="https://www.hackerone.com/reports/111968/">https://www.hackerone.com/reports/111968/</a></p>
 <p>报告日期：2016年1月20日</p>
 <p>赏金支付：$ 500</p>
 <p>一些网站试图通过实施插页式网页来防止打开的重定向漏洞，插页式网页在预期内容之前显示。每当您将用户重定向到URL时，您都可以显示一个插页式网页，并显示一条消息，向用户说明他们正在离开其所在的域。因此，如果重定向页面显示伪造的登录名或试图假装为可信域，则用户将知道他们正在被重定向。这是HackerOne在其网站上跟踪大多数URL时采用的方法。</p>
-<p>尽管您可以使用插页式网页来避免重定向漏洞，但网站彼此交互方式的复杂性可能导致链接受损。 HackerOne将Zendesk（客户服务支持票务系统）用于其<code>https://support.hackerone.com/</code>子域。当您在hackerone.com上使用/ zendesk_session时，浏览器从HackerOne的平台重定向到没有插页页面的HackerOne的Zendesk平台，因为包含hackerone.com域的URL是受信任的链接。但是，任何人都可以创建自定义的Zendesk帐户和将它们传递给/ redirect_to_account？state =参数。然后，自定义的Zendesk帐户可以重定向到非Zendesk或HackerOne拥有的另一个网站。因为Zendesk允许在没有插页式页面的帐户之间进行重定向，所以可以将用户带到不受信任的站点而不会发出警告。作为解决方案，HackerOne将包含zendesk_session的链接识别为外部链接，从而在单击时显示了一个插页式警告页面。</p>
+<p>尽管您可以使用插页式网页来避免重定向漏洞，但网站彼此交互方式的复杂性可能导致漏洞的出现。 HackerOne将Zendesk（客户服务支持票务系统）用于其<code>https://support.hackerone.com/</code>子域。当您在hackerone.com上使用<code>/zendesk_session</code>时，浏览器从HackerOne的平台重定向到没有插页页面的HackerOne的Zendesk平台，因为包含hackerone.com域的URL是受信任的链接。但是，任何人都可以创建自定义的Zendesk帐户和将它们传递给<code>/redirect_to_account?state =</code>参数。然后，自定义的Zendesk帐户可以重定向到非Zendesk或HackerOne拥有的另一个网站。因为Zendesk允许在没有插页式页面的帐户之间进行重定向，所以可以将用户带到不受信任的站点而不会发出警告。作为解决方案，HackerOne将包含<code>zendesk_session</code>的链接识别为外部链接，从而在单击时显示了一个插页式警告页面。</p>
 <p>为了确认此漏洞，黑客Mahmoud Jamal在Zendesk上创建了一个子域为<code>http://compayn.zendesk.com</code>的帐户。然后，他使用Zendesk主题编辑器将以下JavaScript代码添加到了头文件中，该文件允许管理员自定义Zendesk网站的外观：</p>
-<p><code>&lt;script&gt;document.location.href = «http://evil.com»;&lt;/script&gt;</code></p>
-<p>Jamal使用此JavaScript指示浏览器访问<code>http://evil.com</code>。 <code>&lt;script&gt;</code>标记表示HTML中的代码，document指的是Zendesk返回的整个HTML文档，这是网页的信息。Document后的点和名称是其属性。属性包含描述对象或可以操纵以更改对象的信息和值。因此，您可以使用location属性来控制浏览器显示的网页，并使用href子属性（这是location的属性）将浏览器重定向到定义的网站。访问以下链接会将目标重定向到Jamal的Zendesk子域，这使目标的浏览器运行Jamal的脚本并将其重定向到<code>http://evil.com：</code></p>
+<p><code>&lt;script&gt;document.location.href = "http://evil.com";&lt;/script&gt;</code></p>
+<p>Jamal使用此JavaScript指示浏览器访问<code>http://evil.com</code>。 <code>&lt;script&gt;</code>标记表示HTML中的代码，document指的是Zendesk返回的整个HTML文档，这是网页的信息。Document后的点和名称是其属性。属性包含描述对象或可以操纵以更改对象的信息和值。因此，您可以使用<code>location</code>属性来控制浏览器显示的网页，并使用<code>href</code>子属性（这是location的属性）将浏览器重定向到定义的网站。访问以下链接会将目标重定向到Jamal的Zendesk子域，这使目标的浏览器运行Jamal的脚本并将其重定向到<code>http://evil.com：</code></p>
 <pre class="line-numbers language-none"><code class="language-none">https://hackerone.com/zendesk_session?locale_id=1&amp;return_to=https://support.hackerone.com/
 ping/redirect_to_account?state = compayn:/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>由于该链接包含域hackerone.com，因此插页式网页不会显示，并且用户不会知道所访问的网页是不安全的。有趣的是，Jamal最初将缺失的插页式页面重定向问题报告给了Zendesk，但它被忽略且未标记为漏洞。他不断挖掘以寻找如何利用缺失的插页式广告。最终，他发现了JavaScript重定向攻击，使HackerOne付了赏金。</p>
 <p><strong>重点</strong></p>
 <p>搜索漏洞时，请注意站点使用的服务，因为每个服务都代表新的攻击媒介。通过结合HackerOne对Zendesk的使用和已知的HackerOne允许的重定向，可以使此HackerOne漏洞成为可能。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>开放重定向允许恶意攻击者在不知不觉中将用户重定向到恶意网站。从示例漏洞报告中了解到，找到它们通常需要敏锐的观察。如示例中所述，当重定向参数具有诸如redirect_to =，domain_name =或checkout_url =之类的名称时，有时很容易发现。其他时候，它们的名称可能不太明显，例如r =，u =等。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>开放重定向允许恶意攻击者在不知不觉中将用户重定向到恶意网站。从示例漏洞报告中了解到，找到它们通常需要敏锐的观察。如示例中所述，当重定向参数具有诸如<code>redirect_to =，domain_name =</code>或<code>checkout_url =</code>之类的名称时，有时很容易发现。其他时候，它们的名称可能不太明显，例如<code>r =，u =</code>等。</p>
 <p>开放重定向漏洞依赖于滥用信任，即诱使目标用户以为攻击者正在访问他们认识的网站，同时诱使他们访问攻击者的网站。当发现可能的易受攻击的参数时，如果URL的某些部分经过硬编码，请确保对其进行彻底测试并添加特殊字符。</p>
 <p>HackerOne插页式重定向显示了在寻找漏洞时识别网站使用的工具和服务的重要性。请记住，有时您需要保持执着，并清楚地表明一个说服公司接受您的发现并支付赏金的漏洞。</p>
 
@@ -566,6 +570,10 @@ ping/redirect_to_account?state = compayn:/<span aria-hidden="true" class="line-n
                                     <span class="chip bg-color">web安全</span>
                                 </a>
                             
+                                <a href="/tags/%E5%BC%80%E6%94%BE%E9%87%8D%E5%AE%9A%E5%90%91/">
+                                    <span class="chip bg-color">开放重定向</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -632,8 +640,8 @@ ping/redirect_to_account?state = compayn:/<span aria-hidden="true" class="line-n
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Web-Hacking-101/" class="post-category">
-                                    Web Hacking 101
+                            <a href="/categories/WebHacking101/" class="post-category">
+                                    WebHacking101
                                 </a>
                             
                             
@@ -649,6 +657,10 @@ ping/redirect_to_account?state = compayn:/<span aria-hidden="true" class="line-n
                     
                     <a href="/tags/web%E5%AE%89%E5%85%A8/">
                         <span class="chip bg-color">web安全</span>
+                    </a>
+                    
+                    <a href="/tags/HPP/">
+                        <span class="chip bg-color">HPP</span>
                     </a>
                     
                 </div>
@@ -685,8 +697,8 @@ ping/redirect_to_account?state = compayn:/<span aria-hidden="true" class="line-n
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Web-Hacking-101/" class="post-category">
-                                    Web Hacking 101
+                            <a href="/categories/WebHacking101/" class="post-category">
+                                    WebHacking101
                                 </a>
                             
                             

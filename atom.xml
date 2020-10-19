@@ -6,7 +6,7 @@
   <link href="https://forwork1010.github.io/atom.xml" rel="self"/>
   
   <link href="https://forwork1010.github.io/"/>
-  <updated>2020-10-19T04:27:51.364Z</updated>
+  <updated>2020-10-19T12:29:52.074Z</updated>
   <id>https://forwork1010.github.io/</id>
   
   <author>
@@ -21,25 +21,27 @@
     <link href="https://forwork1010.github.io/part7-xss/"/>
     <id>https://forwork1010.github.io/part7-xss/</id>
     <published>2020-10-17T12:43:40.000Z</published>
-    <updated>2020-10-19T04:27:51.364Z</updated>
+    <updated>2020-10-19T12:29:52.074Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;Part7-XSS&quot;&gt;&lt;a href=&quot;#Part7-XSS&quot; class=&quot;headerlink&quot; title=&quot; Part7 XSS &quot;&gt;&lt;/a&gt;&lt;center&gt; Part7 XSS</summary>
+    <summary type="html">&lt;h1 id=&quot;Part7-XSS&quot;&gt;&lt;a href=&quot;#Part7-XSS&quot; class=&quot;headerlink&quot; title=&quot; Part7 XSS &quot;&gt;&lt;/a&gt;&lt;center&gt; Part7 XSS &lt;/center&gt;&lt;/h1&gt;&lt;p&gt;&lt;font</summary>
         
       
     
     
     
-    <category term="Web Hacking 101" scheme="https://forwork1010.github.io/categories/Web-Hacking-101/"/>
+    <category term="WebHacking101" scheme="https://forwork1010.github.io/categories/WebHacking101/"/>
     
     
     <category term="漏洞挖掘" scheme="https://forwork1010.github.io/tags/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/"/>
     
     <category term="web安全" scheme="https://forwork1010.github.io/tags/web%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="XSS" scheme="https://forwork1010.github.io/tags/XSS/"/>
     
   </entry>
   
@@ -48,7 +50,7 @@
     <link href="https://forwork1010.github.io/part6-crlf-zhu-ru/"/>
     <id>https://forwork1010.github.io/part6-crlf-zhu-ru/</id>
     <published>2020-10-17T08:23:18.000Z</published>
-    <updated>2020-10-17T12:41:33.372Z</updated>
+    <updated>2020-10-19T12:32:24.755Z</updated>
     
     
       
@@ -61,12 +63,14 @@
     
     
     
-    <category term="Web Hacking 101" scheme="https://forwork1010.github.io/categories/Web-Hacking-101/"/>
+    <category term="WebHacking101" scheme="https://forwork1010.github.io/categories/WebHacking101/"/>
     
     
     <category term="漏洞挖掘" scheme="https://forwork1010.github.io/tags/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/"/>
     
     <category term="web安全" scheme="https://forwork1010.github.io/tags/web%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="CRLF" scheme="https://forwork1010.github.io/tags/CRLF/"/>
     
   </entry>
   
@@ -75,7 +79,7 @@
     <link href="https://forwork1010.github.io/part5-html-zhu-ru-he-nei-rong-tian-chong/"/>
     <id>https://forwork1010.github.io/part5-html-zhu-ru-he-nei-rong-tian-chong/</id>
     <published>2020-10-15T17:16:42.000Z</published>
-    <updated>2020-10-17T08:25:10.961Z</updated>
+    <updated>2020-10-19T12:28:59.069Z</updated>
     
     
       
@@ -88,12 +92,14 @@
     
     
     
-    <category term="Web Hacking 101" scheme="https://forwork1010.github.io/categories/Web-Hacking-101/"/>
+    <category term="WebHacking101" scheme="https://forwork1010.github.io/categories/WebHacking101/"/>
     
     
     <category term="漏洞挖掘" scheme="https://forwork1010.github.io/tags/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/"/>
     
     <category term="web安全" scheme="https://forwork1010.github.io/tags/web%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="HTML注入" scheme="https://forwork1010.github.io/tags/HTML%E6%B3%A8%E5%85%A5/"/>
     
   </entry>
   
@@ -102,7 +108,7 @@
     <link href="https://forwork1010.github.io/part4-kua-zhan-qing-qiu-wei-zao/"/>
     <id>https://forwork1010.github.io/part4-kua-zhan-qing-qiu-wei-zao/</id>
     <published>2020-10-14T16:27:55.000Z</published>
-    <updated>2020-10-15T17:32:09.385Z</updated>
+    <updated>2020-10-19T12:22:44.893Z</updated>
     
     
       
@@ -115,12 +121,14 @@
     
     
     
-    <category term="Web Hacking 101" scheme="https://forwork1010.github.io/categories/Web-Hacking-101/"/>
+    <category term="WebHacking101" scheme="https://forwork1010.github.io/categories/WebHacking101/"/>
     
     
     <category term="漏洞挖掘" scheme="https://forwork1010.github.io/tags/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/"/>
     
     <category term="web安全" scheme="https://forwork1010.github.io/tags/web%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="CSRF" scheme="https://forwork1010.github.io/tags/CSRF/"/>
     
   </entry>
   
@@ -129,7 +137,7 @@
     <link href="https://forwork1010.github.io/part3-http-can-shu-wu-ran/"/>
     <id>https://forwork1010.github.io/part3-http-can-shu-wu-ran/</id>
     <published>2020-10-14T06:30:49.000Z</published>
-    <updated>2020-10-15T05:34:27.616Z</updated>
+    <updated>2020-10-19T11:59:25.217Z</updated>
     
     
       
@@ -142,12 +150,14 @@
     
     
     
-    <category term="Web Hacking 101" scheme="https://forwork1010.github.io/categories/Web-Hacking-101/"/>
+    <category term="WebHacking101" scheme="https://forwork1010.github.io/categories/WebHacking101/"/>
     
     
     <category term="漏洞挖掘" scheme="https://forwork1010.github.io/tags/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/"/>
     
     <category term="web安全" scheme="https://forwork1010.github.io/tags/web%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="HPP" scheme="https://forwork1010.github.io/tags/HPP/"/>
     
   </entry>
   
@@ -156,7 +166,7 @@
     <link href="https://forwork1010.github.io/part2-kai-fang-shi-chong-ding-xiang/"/>
     <id>https://forwork1010.github.io/part2-kai-fang-shi-chong-ding-xiang/</id>
     <published>2020-10-14T04:35:16.000Z</published>
-    <updated>2020-10-15T05:34:13.133Z</updated>
+    <updated>2020-10-19T11:28:10.117Z</updated>
     
     
       
@@ -169,12 +179,14 @@
     
     
     
-    <category term="Web Hacking 101" scheme="https://forwork1010.github.io/categories/Web-Hacking-101/"/>
+    <category term="WebHacking101" scheme="https://forwork1010.github.io/categories/WebHacking101/"/>
     
     
     <category term="漏洞挖掘" scheme="https://forwork1010.github.io/tags/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/"/>
     
     <category term="web安全" scheme="https://forwork1010.github.io/tags/web%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="开放重定向" scheme="https://forwork1010.github.io/tags/%E5%BC%80%E6%94%BE%E9%87%8D%E5%AE%9A%E5%90%91/"/>
     
   </entry>
   
@@ -183,7 +195,7 @@
     <link href="https://forwork1010.github.io/part1-lou-dong-wa-jue-ji-chu-zhi-shi/"/>
     <id>https://forwork1010.github.io/part1-lou-dong-wa-jue-ji-chu-zhi-shi/</id>
     <published>2020-10-13T11:01:05.000Z</published>
-    <updated>2020-10-15T05:34:37.559Z</updated>
+    <updated>2020-10-19T12:34:11.625Z</updated>
     
     
       
@@ -196,7 +208,7 @@
     
     
     
-    <category term="Web Hacking 101" scheme="https://forwork1010.github.io/categories/Web-Hacking-101/"/>
+    <category term="WebHacking101" scheme="https://forwork1010.github.io/categories/WebHacking101/"/>
     
     
     <category term="漏洞挖掘" scheme="https://forwork1010.github.io/tags/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/"/>

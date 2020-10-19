@@ -379,6 +379,10 @@
                                 <span class="chip bg-color">web安全</span>
                             </a>
                         
+                            <a href="/tags/HPP/">
+                                <span class="chip bg-color">HPP</span>
+                            </a>
+                        
                     </div>
                     
                 </div>
@@ -387,8 +391,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Web-Hacking-101/" class="post-category">
-                                Web Hacking 101
+                            <a href="/categories/WebHacking101/" class="post-category">
+                                WebHacking101
                             </a>
                         
                     </div>
@@ -431,7 +435,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Part3-HTTP参数污染"><a href="#Part3-HTTP参数污染" class="headerlink" title="Part3 HTTP参数污染"></a><center>Part3 HTTP参数污染</center></h1><p> <font color="#A52A2A" size="4"><em>本文部分翻译自Peter Yaworski的《Web Hacking 101》，仅供参考学习，切勿二传。</em></font></p>
+                <h1 id="Part3-HTTP参数污染"><a href="#Part3-HTTP参数污染" class="headerlink" title="Part3 HTTP参数污染"></a><center>Part3 HTTP参数污染</center></h1><p> <font color="#A52A2A" size="4"><em>本文部分翻译自《Web Hacking 101》，仅供参考学习，切勿二传。</em></font></p>
 <p>HTTP参数污染（HPP）是操纵网站如何处理其在HTTP请求期间收到的参数的过程。当攻击者向请求中注入额外的参数并且目标网站信任它们时，就会发生此漏洞，从而导致意外行为。 HPP漏洞可能发生在服务器端或客户端。在客户端（通常是您的浏览器）上，您可以看到测试的效果。在许多情况下，HPP漏洞取决于服务器端代码如何使用作为参数传递的值，这些值由攻击者控制。因此，与其他类型的错误相比，发现这些漏洞可能需要更多的试验。</p>
 <h2 id="服务器端HPP"><a href="#服务器端HPP" class="headerlink" title="服务器端HPP"></a>服务器端HPP</h2><p>在服务器端HPP中，您向服务器发送了意外的信息，以使服务器端的代码返回意外的结果。如part1所述，当您向网站发出请求时，站点的服务器将处理该请求并返回响应。在某些情况下，服务器不仅会返回网页，还会根据收到的信息运行一些代码。该代码仅在服务器上运行，因此基本上对您不可见：您可以看到发送的信息和返回的结果，但是中间的代码不可见。因此，您只能推断正在发生的事情。由于看不到服务器代码的功能，因此服务器端HPP取决于您确定潜在的易受攻击参数并进行试验。</p>
 <p>让我们看一个例子：如果您的银行通过接受其服务器上处理的URL参数通过其网站启动转帐，则服务器端HPP可能会发生。想象一下，您可以通过在三个URL参数from，to和amount中输入值来转移资金。每个参数按顺序指定要从其转帐的帐号，要转帐的帐号和转帐金额。具有以下参数的URL会将$ 5,000从帐号12345转移到帐号67890，如下所示：</p>
@@ -476,11 +480,11 @@ end <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
 <p>漏洞报告中使用的示例包含访问URL<code> https://hackerone.com/blog/introducing-signal</code>，然后在其末尾添加<code>＆u = https：//vk.com/durov</code>。在博客页面上，当HackerOne显示一个要在Facebook上共享的链接时，该链接将变为以下内容：</p>
 <p><code>https://www.facebook.com/sharer.php?u=https://hackerone.com/blog/introducing-signal？＆u = https：//vk.com/durov</code></p>
 <p>如果HackerOne访问者在尝试共享内容时单击了此恶意链接，则最后一个u参数将优先于第一个u参数。随后，Facebook帖子将使用最后的u参数。然后，单击链接的Facebook用户将被定向到<code>https://vk.com/durov</code>而不是HackerOne。</p>
-<p>此外，在发布到Twitter时，HackerOne会包含用于推广该帖子的默认tweet文本。攻击者还可以通过在URL中包含＆text =来操纵此文本，如下所示：</p>
-<p><code>https://hackerone.com/blog/introducing-signal?&amp;u=https://vk.com/durov＆text = another_site：https：//vk.com/durov</code></p>
+<p>此外，在发布到Twitter时，HackerOne会包含用于推广该帖子的默认tweet文本。攻击者还可以通过在URL中包含<code>＆text =</code>来操纵tweet文本内容，如下所示：</p>
+<p><code>https://hackerone.com/blog/introducing-signal?&amp;u=https://vk.com/durov＆text = another_site：https://vk.com/durov</code></p>
 <p>当用户单击此链接时，他们将看到一个包含文本 <code>another_site：https://vk.com/durov</code>的推文弹出窗口，而不是宣传HackerOne博客的文本。</p>
 <p><strong>重点</strong></p>
-<p>当网站与另一个Web服务（例如社交媒体网站）关联并依靠当前URL生成要发布的内容时，请寻找漏洞的机会。在这种情况下，提交的内容可能未经适当的安全检查就被传递，这可能导致参数污染漏洞。</p>
+<p>当网站与另一个Web服务（例如社交媒体网站）关联并依靠当前URL生成要发布的内容时，请寻找漏洞的机会。在这个例子，提交的内容可能未经适当的安全检查就被传递，这可能导致参数污染漏洞。</p>
 <h3 id="Twitter取消订阅通知"><a href="#Twitter取消订阅通知" class="headerlink" title="Twitter取消订阅通知"></a>Twitter取消订阅通知</h3><p>难度：低</p>
 <p>网址：<code>https：//www.twitter.com/</code></p>
 <p>资料来源：<a target="_blank" rel="noopener" href="https://blog.mert.ninja/twitter-hpp-vulnerability/">https://blog.mert.ninja/twitter-hpp-vulnerability/</a></p>
@@ -501,8 +505,9 @@ end <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
 <p>报告日期：2015年11月</p>
 <p>赏金支付：未公开</p>
 <p>在某些情况下，HPP漏洞可能表示存在其他问题，并且可能导致发现其他错误。这就是Twitter Web Intents功能中发生的事情。该功能提供弹出流，用于在非Twitter网站的上下文中处理Twitter用户的推文，回复，转发推文，点赞和关注。 Twitter Web Intents使用户可以与Twitter内容进行交互，而无需离开页面或只为交互进行授权新应用程序。图3-1显示了这些弹出窗口之一的示例。</p>
-<p>图3-1：Twitter Web Intents功能的早期版本，该功能使用户无需离开页面即可与Twitter内容进行交互。在此示例中，用户可以喜欢杰克的推文。</p>
-<p>通过测试此功能，黑客埃里克·拉法洛夫（Eric Rafaloff）发现，四种Intent类型（关注用户，点赞推文，转发和发推）都容易受到HPP的攻击。 Twitter将通过具有URL参数的GET请求创建每个Intent，如下所示：</p>
+<p><img src="images%5C6-3-1.jpg"></p>
+<p>图3-1：Twitter Web Intents功能的早期版本，该功能使用户无需离开页面即可与Twitter内容进行交互。在此示例中，用户可以点赞杰克的推文。</p>
+<p>通过测试此功能，黑客埃里克·拉法洛夫（Eric Rafaloff）发现，四种Intent类型（关注用户，点赞，转发和发推）都容易受到HPP的攻击。 Twitter将通过具有URL参数的GET请求创建每个Intent，如下所示：</p>
 <p><code>https://twitter.com/intent/intentType?parameter_name=parameterValue</code></p>
 <p>该URL将包括intentType和一个或多个参数名称/值对——例如，Twitter用户名和Tweet ID。 Twitter将使用这些参数来创建pop-up Intent，以显示要关注的用户或点赞的内容。 Rafaloff在创建以下带有两个screen_name参数的URL时发现了一个问题：</p>
 <p><code>https://twitter.com/intent/follow?screen_name=twitter&amp;screen_name=ericrtest3</code></p>
@@ -522,8 +527,6 @@ end <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
    &lt;/ button&gt;
 
   &lt;/ form&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
 
 <p>Twitter将使用来自第一个screen_name参数的信息，该参数与官方Twitter帐户相关联。</p>
 <p>结果，目标用户将看到他们想要关注的用户的正确个人资料，因为URL的第一个screen_name参数用于在➋和➌处填充代码。但是，单击按钮后，目标将关注ericrtest3而不是twitter，因为form标记中的操作将改为使用传递给原始URL的第二个screen_name参数的值➊。</p>
@@ -606,6 +609,10 @@ end <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
                                     <span class="chip bg-color">web安全</span>
                                 </a>
                             
+                                <a href="/tags/HPP/">
+                                    <span class="chip bg-color">HPP</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -672,8 +679,8 @@ end <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Web-Hacking-101/" class="post-category">
-                                    Web Hacking 101
+                            <a href="/categories/WebHacking101/" class="post-category">
+                                    WebHacking101
                                 </a>
                             
                             
@@ -689,6 +696,10 @@ end <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
                     
                     <a href="/tags/web%E5%AE%89%E5%85%A8/">
                         <span class="chip bg-color">web安全</span>
+                    </a>
+                    
+                    <a href="/tags/CSRF/">
+                        <span class="chip bg-color">CSRF</span>
                     </a>
                     
                 </div>
@@ -725,8 +736,8 @@ end <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Web-Hacking-101/" class="post-category">
-                                    Web Hacking 101
+                            <a href="/categories/WebHacking101/" class="post-category">
+                                    WebHacking101
                                 </a>
                             
                             
@@ -742,6 +753,10 @@ end <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
                     
                     <a href="/tags/web%E5%AE%89%E5%85%A8/">
                         <span class="chip bg-color">web安全</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%BC%80%E6%94%BE%E9%87%8D%E5%AE%9A%E5%90%91/">
+                        <span class="chip bg-color">开放重定向</span>
                     </a>
                     
                 </div>

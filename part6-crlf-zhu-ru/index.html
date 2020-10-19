@@ -379,6 +379,10 @@
                                 <span class="chip bg-color">web安全</span>
                             </a>
                         
+                            <a href="/tags/CRLF/">
+                                <span class="chip bg-color">CRLF</span>
+                            </a>
+                        
                     </div>
                     
                 </div>
@@ -387,8 +391,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Web-Hacking-101/" class="post-category">
-                                Web Hacking 101
+                            <a href="/categories/WebHacking101/" class="post-category">
+                                WebHacking101
                             </a>
                         
                     </div>
@@ -431,7 +435,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Part6-CRLF注入"><a href="#Part6-CRLF注入" class="headerlink" title="Part6 CRLF注入"></a><center>Part6 CRLF注入</center></h1><p> <font color="#A52A2A" size="4"><em>本文部分翻译自Peter Yaworski的《Web Hacking 101》，仅供参考学习，切勿二传。</em></font></p>
+                <h1 id="Part6-CRLF注入"><a href="#Part6-CRLF注入" class="headerlink" title="Part6 CRLF注入"></a><center>Part6 CRLF注入</center></h1><p> <font color="#A52A2A" size="4"><em>本文部分翻译自《Web Hacking 101》，仅供参考学习，切勿二传。</em></font></p>
 <p>某些漏洞使用户可以输入在HTML和HTTP响应中具有特殊含义的编码字符。通常，应用程序会在将这些字符包含在用户输入中时对它们进行清理，以防止攻击者恶意操纵HTTP消息，但在某些情况下，应用程序会忘记对输入进行清理或无法正确进行清理。发生这种情况时，服务器，代理和浏览器可能会将特殊字符解释为代码，并更改原来的HTTP消息，从而使攻击者能够操纵应用程序的行为。</p>
 <p>编码字符的两个示例为％0D和％0A，它们分别表示\ n（回车）和\ r（换行）。这些编码的字符通常称为回车换行符（CRLF）。服务器和浏览器依靠CRLF字符来标识HTTP消息的各个部分，例如头。</p>
 <p>当应用程序没有清理用户输入或不正确地清理用户输入时，就会出现回车换行注入（CRLF注入）漏洞。如果攻击者可以将CRLF字符注入HTTP消息，则他们可以实现我们将在本章中讨论的两种类型的攻击：HTTP请求走私和HTTP响应拆分攻击。此外，您通常可以将CRLF注入与另一个漏洞链接在一起，以在Bug报告中显示更大的影响，这将在本章的后面进行演示。</p>
@@ -553,6 +557,10 @@ location: &lt;svg/onload=alert(innerHTML)&gt; <span aria-hidden="true" class="li
                                     <span class="chip bg-color">web安全</span>
                                 </a>
                             
+                                <a href="/tags/CRLF/">
+                                    <span class="chip bg-color">CRLF</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -608,7 +616,7 @@ location: &lt;svg/onload=alert(innerHTML)&gt; <span aria-hidden="true" class="li
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            对于站点开发人员来说，XSS漏洞是真正的风险，并且仍然在站点上普遍存在，通常是显而易见的。
+                            对于站点开发人员来说，XSS漏洞是真正的风险，并且仍然在网站上普遍存在。
                         
                     </div>
                     <div class="publish-info">
@@ -619,8 +627,8 @@ location: &lt;svg/onload=alert(innerHTML)&gt; <span aria-hidden="true" class="li
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Web-Hacking-101/" class="post-category">
-                                    Web Hacking 101
+                            <a href="/categories/WebHacking101/" class="post-category">
+                                    WebHacking101
                                 </a>
                             
                             
@@ -636,6 +644,10 @@ location: &lt;svg/onload=alert(innerHTML)&gt; <span aria-hidden="true" class="li
                     
                     <a href="/tags/web%E5%AE%89%E5%85%A8/">
                         <span class="chip bg-color">web安全</span>
+                    </a>
+                    
+                    <a href="/tags/XSS/">
+                        <span class="chip bg-color">XSS</span>
                     </a>
                     
                 </div>
@@ -672,8 +684,8 @@ location: &lt;svg/onload=alert(innerHTML)&gt; <span aria-hidden="true" class="li
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Web-Hacking-101/" class="post-category">
-                                    Web Hacking 101
+                            <a href="/categories/WebHacking101/" class="post-category">
+                                    WebHacking101
                                 </a>
                             
                             
@@ -689,6 +701,10 @@ location: &lt;svg/onload=alert(innerHTML)&gt; <span aria-hidden="true" class="li
                     
                     <a href="/tags/web%E5%AE%89%E5%85%A8/">
                         <span class="chip bg-color">web安全</span>
+                    </a>
+                    
+                    <a href="/tags/HTML%E6%B3%A8%E5%85%A5/">
+                        <span class="chip bg-color">HTML注入</span>
                     </a>
                     
                 </div>
