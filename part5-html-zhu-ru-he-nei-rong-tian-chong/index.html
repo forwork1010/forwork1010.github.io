@@ -547,7 +547,7 @@ Password:<span class="token tag"><span class="token tag"><span class="token punc
 <p>注意到此行为，黑客尝试修改error参数。结果，站点显示了传递给参数的值，作为向用户显示的错误消息的一部分，甚至对URI编码的字符进行了解码。这是黑客使用的修改后的URL：</p>
 <pre class="line-numbers language-none"><code class="language-none">https://withinsecurity.com/wp-login.php?error=Your%20account%20has%20been%20 hacked%2C%20Please%20call%20us%20this%20number%20919876543210%20OR%20Drop%20mail%20at%20attacker%40mail.com&amp;state=cb04a91ac5%257Chttps%253A%252F%252Fwithi nsecurity.com%252Fwp-admin%252F#<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="/part5-html-zhu-ru-he-nei-rong-tian-chong/Part5-HTML%E6%B3%A8%E5%85%A5%E5%92%8C%E5%86%85%E5%AE%B9%E5%A1%AB%E5%85%85%5Cinjection.png"></p>
+<p><img src="/part5-html-zhu-ru-he-nei-rong-tian-chong/images%5Cinjection.png"></p>
 <p><em>图5-1：攻击者能够将此“警告”注入WordPress管理页面</em></p>
 <p>在WordPress登录字段上显示的实际上是错误信息（error）的参数。该信息指示用户联系攻击者的电话号码和电子邮件。这里的关键是注意到URL中的参数在页面上显示。只需测试是否可以更改access_denied参数，就可以发现此漏洞。</p>
 <p><strong>重点</strong></p>

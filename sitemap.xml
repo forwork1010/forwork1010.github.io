@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://forwork1010.github.io/part5-html-zhu-ru-he-nei-rong-tian-chong/</loc>
+    
+    <lastmod>2020-10-20</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://forwork1010.github.io/part3-http-can-shu-wu-ran/</loc>
     
     <lastmod>2020-10-20</lastmod>
@@ -10,13 +17,6 @@
   
   <url>
     <loc>https://forwork1010.github.io/part4-kua-zhan-qing-qiu-wei-zao/</loc>
-    
-    <lastmod>2020-10-20</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://forwork1010.github.io/part5-html-zhu-ru-he-nei-rong-tian-chong/</loc>
     
     <lastmod>2020-10-20</lastmod>
     
@@ -130,14 +130,14 @@
   </url>
   
   <url>
-    <loc>https://forwork1010.github.io/tags/CRLF/</loc>
+    <loc>https://forwork1010.github.io/tags/HTML%E6%B3%A8%E5%85%A5/</loc>
     <lastmod>2020-10-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://forwork1010.github.io/tags/HTML%E6%B3%A8%E5%85%A5/</loc>
+    <loc>https://forwork1010.github.io/tags/CRLF/</loc>
     <lastmod>2020-10-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
