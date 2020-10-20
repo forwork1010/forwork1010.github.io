@@ -456,9 +456,9 @@
 <p>如果在访问链接后查看呈现的页面源代码，您会发现字符串wrtz49，表明模板计算了表达式7*7。事实证明，developer.uber.com使用AngularJS呈现其网页。您可以通过使用wappayzer或BuiltWith之类的工具或者通过查看页面源代码并查找ng-HTML属性来确认这一点。如前所述，</p>
 <p>早期版本的AngularJS实现了一个沙盒，但是Uber使用的版本容易受到沙盒越狱的攻击。所以在本例中，CSTI漏洞意味着您可以执行XSS。</p>
 <p>在Uber URL中使用以下JavaScript，Kettle逃离了AngularJS沙盒并执行了alert函数：</p>
-<pre class="line-numbers language-none"><code class="language-none">https://developer.uber.com/docs/deep-linking?q=wrtz{{(_="".sub).call.call({}
-[$="constructor"].getOwnPropertyDescriptor(_.__proto__,$).value,0,"alert(1)")
-()}}zzzz<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>developer<span class="token punctuation">.</span>uber<span class="token punctuation">.</span>com<span class="token operator">/</span>docs<span class="token operator">/</span>deep<span class="token operator">-</span>linking<span class="token operator">?</span>q<span class="token operator">=</span>wrtz<span class="token punctuation">{</span><span class="token punctuation">{</span><span class="token punctuation">(</span>_<span class="token operator">=</span><span class="token string">""</span><span class="token punctuation">.</span>sub<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">[</span>$<span class="token operator">=</span><span class="token string">"constructor"</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">getOwnPropertyDescriptor</span><span class="token punctuation">(</span>_<span class="token punctuation">.</span>__proto__<span class="token punctuation">,</span>$<span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token string">"alert(1)"</span><span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">}</span>zzzz<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>考虑到大量AngularJS沙盒逃逸的发布和版本1.6中沙盒的移除，解构这个payload超出了本书的范围。但是<code>alert(1)</code>的最终结果是JavaScript弹出窗口。这个ROC向Uber证明，攻击者可以利用这个CSTI来实现XSS，从而导致开发人员帐户和相关应用程序受损。</p>
 <p><strong>重点</strong></p>
@@ -472,11 +472,11 @@
 <p>（修订后的地图于2017年8月在<code>https://medium.com/uber-security-privacy/uber-bug-bountygurey-map-17192af85c1a/</code>). 这张地图确定了Uber运营的一些敏感资产，包括每一处使用的软件。</p>
 <p>优步在地图中披露了这一点<code>riders.uber.com</code>是用Node.js, Express 和 Backbone.js  ，其中没有一个会立即显示出能有潜在的SSTI攻击可能。但是网站<code>vault.uber.com</code>以及<code>partners.uber.com</code>用FLASK和Jinja2进行开发。Jinja2是一个服务器端模板引擎，如果实现不正确，可以允许远程代码执行。尽管<code>riders.uber.com</code>没有使用Jinja2，如果站点向vault或partners子域提供输入，并且这些站点信任输入而不进行清理，则攻击者可能能够利用SSTI漏洞进行攻击。</p>
 <p>发现此漏洞的黑客Orange Tsai输入<code>{{1+1}}</code>作为他的名字，开始测试SSTI漏洞。他寻找子域之间是否发生了相互作用。在他的报告中，Orange解释说，对<code>riders.uber.com</code>的profile进行修改，会导致给帐户所有者发送一封电子邮件，通知他们profile发生更改（这是一种常见的安全方法）。通过在站点上更改他的名字为<code>{1+1}}</code>，他收到了一封名为2的电子邮件，如图8-1所示。</p>
-<p><img src="/part8-mo-ban-zhu-ru/images%5Cwh101_801.png"></p>
+<p><img src="/part8-mo-ban-zhu-ru/Part8-%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5%5Cwh101_801.png"></p>
 <center> 图8-1：Orange收到的电子邮件，执行他注入自己名字的代码 </center>
 
 <p>这一行为立即引起了一个危险信号，因为Uber执行了他的表达式，并将其替换为方程式的结果。Orange然后尝试提交Python代码<code>{% for c in [1,2,3]%} {{c,c,c}} {% endfor %}</code>   ，以确认可以实现更复杂的操作。这段代码在数组[1,2,3]上迭代，并将每个数字打印三次。图8-2中的电子邮件显示Orange的名字显示为9个数字，这是for循环执行的结果，这证实了他的发现。</p>
-<p><img src="/part8-mo-ban-zhu-ru/images%5Cwh101_802.png"></p>
+<p><img src="/part8-mo-ban-zhu-ru/Part8-%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5%5Cwh101_802.png"></p>
 <center>图8-2：Orange注入更复杂代码的电子邮件</center>
 
 <p>Jinja2还实现了一个沙盒，它限制了执行任意代码的能力，但偶尔也会被绕过。Orange在他的报告中只报告了执行代码的能力，但他本可以进一步研究这个漏洞。在他的报告中，他认为nVisium的博客文章提供了找到漏洞所需的信息。但是这些帖子也包含了关于Jinja2漏洞的范围的附加信息。</p>
@@ -502,22 +502,22 @@
 <p>报告日期：2016年8月29日</p>
 <p>悬赏金：400美元</p>
 <p>2016年8月29日，作者受邀参加了电子竞技博彩网站Unikrn的私人漏洞奖励计划。在最初的站点勘测中，作者使用的Wappalyzer工具证实了该站点使用的是AngularJS。这一发现给我带来了危险，因为作者已经成功地找到了AngularJS注入漏洞。通过提交<code>{{7*7}}</code>并从profile开始查找渲染的数字49，开始查找CSTI漏洞。虽然我在profile页面上没有成功，但我注意到你可以邀请朋友来这个网站，所以我也测试了这个功能。在向自己提交邀请后，我收到了一封奇怪的电子邮件，如图8-3所示。</p>
-<p><img src="/part8-mo-ban-zhu-ru/images%5Cwh101_803.png"></p>
+<p><img src="/part8-mo-ban-zhu-ru/Part8-%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5%5Cwh101_803.png"></p>
 <center>图8-3：从Unikrn收到的带有Smarty错误的电子邮件</center>
 
 <p>电子邮件的开头包含一个堆栈跟踪，其中有一个Smarty错误，显示7<em>7无法识别。看起来{7</em>7}}被注入到模板中，Smarty试图执行代码，但没有识别出7*7。</p>
 <p>立即查阅了james kettle关于模板注入的必不可少的文章(<a target="_blank" rel="noopener" href="http://blog.portswigger.net/2015/08/server-side-templateinjection.html)%E4%B8%BA%E4%BA%86%E6%B5%8B%E8%AF%95%E4%BB%96%E5%BC%95%E7%94%A8%E7%9A%84Smarty">http://blog.portswigger.net/2015/08/server-side-templateinjection.html)为了测试他引用的Smarty</a> payload。    <code>{self:：getStreamVariable（“file:///proc/self/loginuuid”）}</code>，它调用<code>getStreamVariable</code>方法来读取文件<code>/proc/self/loginuuid</code>。尝试了他共享payload，但没有收到任何输出。</p>
 <p>将profile名称改为{$smarty.version}并重新邀请我自己到网站。结果是一封邀请邮件，我的名字是2.6.18，这是安装在网站上的Smarty版本。当继续阅读文档时，了解到可以使用标记<code>{php}{/php}</code>来执行任意php代码（Kettle在他的文章中特别提到了这些标记）。因此，尝试将payload:<code>{php}print“Hello”{/php}</code>作为我的名字，并再次提交了邀请。已经确认了我的网站已经邀请我打印的电子邮件功能。</p>
 <p>为了证明这个程序的漏洞，我想把它作为最终的测试。尽管/etc/passwd文件并不重要，但访问它通常用作一个标志来演示远程代码执行。所以我用了以下payload：</p>
-<pre class="line-numbers language-none"><code class="language-none">{php}$s=file_get_contents('/etc/passwd');var_dump($s);{/php}<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">{php}$s=file_get_contents('/etc/passwd');var_dump($s);{/php}<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>这段PHP代码打开<code>/etc/passwd</code>文件，使用<code>file_get_contents</code>读取其内容，并将内容分配给<code>$s</code>变量。一旦设置了<code>$s</code>，我就使用<code>var_dump</code>转储该变量的内容，希望收到的电子邮件将包含<code>/etc/passwd</code>的内容，作为邀请我访问Unikrn站点的人的姓名。但奇怪的是，我收到的邮件只有一个空名字。</p>
 <p>我想知道Unikrn是否限制了名字的长度。这一次，我在PHP文档中搜索了<code>file_get_content</code>，其中详细说明了如何限制一次读取的数据量。我把我的payload改为：</p>
-<pre class="line-numbers language-none"><code class="language-none">{php}$s=file_get_contents('/etc/passwd',NULL,NULL,0,100);var_dump($s);
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">{php}$s=file_get_contents('/etc/passwd',NULL,NULL,0,100);var_dump($s);
 {/php}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>这个payload中的关键参数是    <code>'/etc/passwd'</code>，0和100。路径指的是要读取的文件，0指示PHP从文件中从哪里开始（在本例中是在文件的开头），100表示要读取的数据的长度。我用这个payload重新邀请自己加入Unikrn，它产生了如图8-4所示的电子邮件。</p>
-<p><img src="/part8-mo-ban-zhu-ru/images%5Cwh101_804.png"></p>
+<p><img src="/part8-mo-ban-zhu-ru/Part8-%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5%5Cwh101_804.png"></p>
 <center>图8-4:Unikrn邀请电子邮件显示/etc/passwd文件的内容</center>
 
 <p>成功地执行了任意代码，并作为ROC，一次提取了<code>/etc/passwd</code>文件100个字符。</p>
@@ -638,30 +638,29 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/part8-mo-ban-zhu-ru/">
+                <a href="/part9-sql-zhu-ru/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Part8 模板注入">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Part9 SQL注入">
                         
-                        <span class="card-title">Part8 模板注入</span>
+                        <span class="card-title">Part9 SQL注入</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            当您搜索漏洞时，最好尝试确认底层技术（无论是web框架、前端渲染引擎或其他东西）以识别可能的攻击向量和要测试的思想。
+                            SQLi对于一个站点来说是一个严重的漏洞和危险。如果攻击者发现SQLi，他们可能获得对站点的完全权限。
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-19
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-10-19
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -674,7 +673,6 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -686,8 +684,8 @@
                         <span class="chip bg-color">web安全</span>
                     </a>
                     
-                    <a href="/tags/SSTI/">
-                        <span class="chip bg-color">SSTI</span>
+                    <a href="/tags/SQL%E6%B3%A8%E5%85%A5/">
+                        <span class="chip bg-color">SQL注入</span>
                     </a>
                     
                 </div>
@@ -895,7 +893,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">38.9k</span>&nbsp;字
+                class="white-color">44.9k</span>&nbsp;字
             
             
             

@@ -447,7 +447,7 @@
 <p>银行示例使用了显而易见的参数。但是有时HPP漏洞是由于无法直接看到的代码隐藏的服务器端行为而发生的。例如，假设您的银行决定修改其处理转帐的方式，并更改其后端代码以在URL中不包含from参数。这次，银行将使用两个参数，一个参数用于转帐的目标账号，另一个参数用于转帐金额。要转移的帐户将由服务器设置，您看不到该帐户。一个示例链接如下所示：</p>
 <p><code>https://www.bank.com/transfer?to=67890&amp;amount=5000</code></p>
 <p>通常，服务器端代码对我们来说是一个谜，但是对于本示例而言，我们知道银行的（非常糟糕和冗余的）服务器端Ruby代码如下所示：</p>
-<pre class="line-numbers language-none"><code class="language-none">user.account = 12345 
+<pre class="line-numbers language-ruby" data-language="ruby"><code class="language-ruby">user.account = 12345 
 def prepare_transfer(➊params)  
 	➋ params &lt;&lt; user.account  
 	➌ transfer_money(params) #params[2] =user.account (12345)
@@ -466,8 +466,8 @@ end <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
 <p>在这种情况下，from参数也包含在传递给prepare_transfer函数的params数组中；因此，数组的值将为[67890,5000，ABCDEF]，将用户帐户添加为in将得到[67890,5000，ABCDEF，12345]。结果，在prepare_transfer中调用的transfer_money函数中，from变量将采用第三个参数，但它不是期望的user.account值（12345），而是攻击者传入的账号ABCDEF➍。</p>
 <h2 id="客户端HPP"><a href="#客户端HPP" class="headerlink" title="客户端HPP"></a>客户端HPP</h2><p>客户端HPP漏洞使攻击者可以向URL中注入额外的参数，从而在影响用户端（客户端是指通常通过浏览器而非站点服务器） 。</p>
 <p>Luca Carettoni和Stefano di Paola在其演示文稿中使用根据理论构造的URL <code>http：//host/page.php？par = 123％26action = edit</code>和以下服务器端代码，演示了此类操作的示例：</p>
-<pre class="line-numbers language-none"><code class="language-none">➊ &lt;? $val=htmlspecialchars($_GET['par'],ENT_QUOTES); ?&gt; 
-➋ &lt;a href="/page.php?action=view&amp;par='.&lt;?=$val?&gt;.'"&gt;View Me!&lt;/a&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">➊ <span class="token operator">&lt;</span><span class="token operator">?</span> $val<span class="token operator">=</span><span class="token function">htmlspecialchars</span><span class="token punctuation">(</span>$_GET<span class="token punctuation">[</span><span class="token string">'par'</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token constant">ENT_QUOTES</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">?</span><span class="token operator">&gt;</span> 
+➋ <span class="token operator">&lt;</span>a href<span class="token operator">=</span><span class="token string">"/page.php?action=view&amp;par='.&lt;?=$val?&gt;.'"</span><span class="token operator">&gt;</span>View Me<span class="token operator">!</span><span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>这段代码根据par的值（用户输入的参数）生成一个新的URL。 在此示例中，攻击者将值123％26action = edit作为par的值传递来生成附加的参数。 接下来，par被传递给函数htmlspecialchars➊。htmlspecialchars函数将特殊字符（如%26）转换为它们的HTML编码值，即将%26转换为&amp;，其中该字符可能具有特殊含义。转换后的值存储在$val中。然后通过将$val附加到位于➋的href值生成新链接。所以生成的链接会变成<code>&lt;a href=“/page.php？action=view&amp;par=123&amp;action=edit“&gt;</code>。因此，攻击者成功将附加action=edit添加到href，这可能会导致漏洞，具体取决于应用程序如何处理action参数。</p>
 <h2 id="漏洞示例"><a href="#漏洞示例" class="headerlink" title="漏洞示例"></a>漏洞示例</h2><h3 id="HackerOne社交分享按钮"><a href="#HackerOne社交分享按钮" class="headerlink" title="HackerOne社交分享按钮"></a>HackerOne社交分享按钮</h3><p>难度：低</p>
@@ -505,7 +505,7 @@ end <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
 <p>报告日期：2015年11月</p>
 <p>赏金支付：未公开</p>
 <p>在某些情况下，HPP漏洞可能表示存在其他问题，并且可能导致发现其他错误。这就是Twitter Web Intents功能中发生的事情。该功能提供弹出流，用于在非Twitter网站的上下文中处理Twitter用户的推文，回复，转发推文，点赞和关注。 Twitter Web Intents使用户可以与Twitter内容进行交互，而无需离开页面或只为交互进行授权新应用程序。图3-1显示了这些弹出窗口之一的示例。</p>
-<p><img src="/part3-http-can-shu-wu-ran/images%5C6-3-1.jpg"></p>
+<p><img src="/part3-http-can-shu-wu-ran/Part3-HTTP%E5%8F%82%E6%95%B0%E6%B1%A1%E6%9F%93%5C6-3-1.jpg"></p>
 <p>图3-1：Twitter Web Intents功能的早期版本，该功能使用户无需离开页面即可与Twitter内容进行交互。在此示例中，用户可以点赞杰克的推文。</p>
 <p>通过测试此功能，黑客埃里克·拉法洛夫（Eric Rafaloff）发现，四种Intent类型（关注用户，点赞，转发和发推）都容易受到HPP的攻击。 Twitter将通过具有URL参数的GET请求创建每个Intent，如下所示：</p>
 <p><code>https://twitter.com/intent/intentType?parameter_name=parameterValue</code></p>
@@ -907,7 +907,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">38.9k</span>&nbsp;字
+                class="white-color">44.9k</span>&nbsp;字
             
             
             

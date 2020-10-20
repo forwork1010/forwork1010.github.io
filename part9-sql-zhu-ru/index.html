@@ -1,0 +1,1063 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Part9 SQL注入, forwork1010">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="baidu-site-verification" content="code-Bha5xn27NV" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Part9 SQL注入 | forwork1010</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="forwork1010" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">forwork1010</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">forwork1010</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Part9 SQL注入</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/">
+                                <span class="chip bg-color">漏洞挖掘</span>
+                            </a>
+                        
+                            <a href="/tags/web%E5%AE%89%E5%85%A8/">
+                                <span class="chip bg-color">web安全</span>
+                            </a>
+                        
+                            <a href="/tags/SQL%E6%B3%A8%E5%85%A5/">
+                                <span class="chip bg-color">SQL注入</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/WebHacking101/" class="post-category">
+                                WebHacking101
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-10-19
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    6k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    22 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="Part9-SQL注入"><a href="#Part9-SQL注入" class="headerlink" title="Part9 SQL注入"></a><center>Part9 SQL注入</center></h1><p><font color="#A52A2A" size="4"><em>本文部分翻译自《Web Hacking 101》，仅供参考学习，切勿二传。</em></font></p>
+<p>当数据库支持的站点上的漏洞允许攻击者使用<em>SQL</em>查询或攻击站点的数据库（结构化查询语言），称为 SQL注入（SQLi）。通常，SQLi攻击会得到很高的回报，因为它们可能是毁灭性的：攻击者可以操纵或提取信息甚至在数据库中创建管理员登录。</p>
+<h2 id="SQL数据库"><a href="#SQL数据库" class="headerlink" title="SQL数据库"></a>SQL数据库</h2><p>数据库将信息存储在包含在其中的记录和字段中表格的集合。表包含一个或多个列，并且表中的一行代表数据库中的一条记录。用户使用SQL在数据库中来创建，读取，更新和删除记录。用户发送SQL命令到数据库中，并且-命令被接受-数据库解释声明并执行一些操作。流行的SQL数据库包括MySQL，PostgreSQL，MSSQL等。在这个本章中，我们将使用MySQL，但一般概念适用于所有SQL数据库。</p>
+<p>下面是一个服务器的PHP代码在用户访问后生成MySQL命令的理论示例</p>
+<pre class="line-numbers language-none"><code class="language-none">https://www.&lt;example&gt;.com?name=peter: 
+$name = ➊$_GET['name'];
+$query = "SELECT * FROM users WHERE name = ➋'$name'";
+➌ mysql_query($query); <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>代码使用<code>$➊GET[]</code>从括号中指定的URL参数获取name值，并将该值存储在$name变量中。然后将参数在未清理的情况下直接传递给$query变量➋。$query变量表示要执行的查询，并从列<code>name</code>与URL参数<code>name </code>中的值匹配的users表中获取所有数据。通过将$query变量传递给PHP函数mysql_query➌来执行查询。</p>
+<p>站点要求名称包含常规文本。但如果用户在URL参数中输入恶意的<code>test'or 1='1</code>，例如<code>https://www.example.com?name=test'or 1='1</code>，执行的查询如下：<code>$query=“SELECT*FROM users WHERE name='test➊”or1='1➋'；</code>。</p>
+<p>SQL使用条件运算符AND和OR。在本例中，SQLi修改WHERE子句以搜索<code>name</code>列与test匹配OR公式<code>1='1'</code>返回true的记录。MySQL将<code>“1”</code>视为整数，因为1总是等于1，所以条件为true，查询将返回users表中的所有记录。但是当查询语句被清理，注入<code>test'or 1='1</code>将不起作用。例如，您可以使用这样的查询：</p>
+<pre class="line-numbers language-none"><code class="language-none">$name=$\u GET['name']；
+$password=➊mysql_real_escape_string（$GET['password']）；
+$query=“SELECT*FROM users WHERE name='$name'，password='$password'”；<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>在这种情况下，password参数也是由用户控制的，但经过了正确的清理。如果您使用相同的payload <code>test' or 1='1</code>，假设您的<code>password</code>是12345，则您的语句如下所示：</p>
+<pre class="line-numbers language-none"><code class="language-none">$query=“SELECT*FROM users WHERE name='test' or 1='1'AND password='12345'；<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p> 查询语句查找<code>name</code>为<code>test or 1='1'</code>且<code>password</code>为12345的所有记录（我们将忽略此数据库存储明文密码的事实，这是另一个漏洞）。因为<code>password</code>检查使用AND运算符，除非记录的<code>password</code>是12345，否则此查询不会返回数据。</p>
+<p>我们需要消除password参数，这可以通过添加<code>;--</code>，例如 <code>test' OR 1='1;--  </code>。这个注入完成了两个任务：分号（；）结束SQL语句，两个破折号（–）告诉数据库文本的其余部分是一个注释。此注入参数将查询更改为<code>SELECT*FROM users WHERE name='test'or 1='1'；</code>。语句中的<code>AND password='12345'</code>代码将成为注释，因此该命令将返回表中的所有记录。当你使用–作为注释，请记住，MySQL在破折号和剩余查询之后需要一个空格。否则，MySQL将在不执行命令的情况下返回错误。</p>
+<h2 id="针对SQLI的对策"><a href="#针对SQLI的对策" class="headerlink" title="针对SQLI的对策"></a>针对SQLI的对策</h2><p>防止SQLi的一个可用保护是使用预处理语句，这是执行重复查询的数据库功能。预处理语句的具体细节超出了本书的范围，但是它们可以防止SQLi，因为查询不再是动态执行的。数据库中查询使用类似于模板的占位符。因此，即使用户向查询未被清理的数据，注入也无法修改数据库的查询模板，从而阻止了SQLi。</p>
+<p>Web框架，比如rubyonrails、Django、Symphony等等，也提供了内置的保护来帮助防止SQLi。但它们并不完美，也无法阻止所有的漏洞。您刚才看到的两个简单的SQLi示例通常不会在使用框架构建的站点上出现，除非站点开发人员没有遵循最佳实践方案，或者没有意识到保护措施不是自动提供的。例如，网站<code>https://railssqli.org/</code>维护着一张由开发人员错误导致的常见SQLi模式的列表。在测试SQLi漏洞时，最好的办法是寻找看起来是定制的或使用不具备当前系统所有内置保护的web框架和内容管理系统的旧网站</p>
+<h2 id="漏洞实例"><a href="#漏洞实例" class="headerlink" title="漏洞实例"></a>漏洞实例</h2><h3 id="Yahoo！Sport的blind-SQLI"><a href="#Yahoo！Sport的blind-SQLI" class="headerlink" title="Yahoo！Sport的blind SQLI"></a>Yahoo！Sport的blind SQLI</h3><p>难点：中等</p>
+<p>URL:<a target="_blank" rel="noopener" href="https://sports.yahoo.com/">https://sports.yahoo.com</a></p>
+<p>来源：不适用报告日期：2014年2月16日</p>
+<p>悬赏金：3705美元</p>
+<p>如果可以将SQL语句注入查询，但无法获得查询的直接输出，则会出现Blind SQLi漏洞。利用blind注入的关键是通过比较未修改查询和修改查询的结果来推断信息。</p>
+<p>例如，2014年2月，Stefano Vettorazzi在测试Yahoo！Sport子域时发现了一个blind SQLi！。该页面通过其URL获取参数，查询数据库以获取信息，并根据这些参数返回NFL球员的列表。Vettorazzi 将返回2010年的NFZI的运动员的url从：<code>sports.yahoo.com/nfl/draft? year=2010&amp;type=20&amp;round=2  </code></p>
+<p>改成：</p>
+<p><code>sports.yahoo.com/nfl/draft?year=2010--&amp;type=20&amp;round=2  </code></p>
+<p>Vettorazzi在第二个URL的<code>year</code>参数中添加了两个破折号（–）。图9-1显示了在加上两个破折号之前的结果。图9-2显示了Vettorazzi添加破折号后的结果。图9-1中返回的运动员与图9-2的结果不同。我们看不到实际的查询，因为代码在网站的后端。但是原始查询很可能将每个URL参数传递给同一个SQL查询，该查询如下所示：<code>SELECT*FROM players WHERE year=2010 AND type=20 AND round=2</code>；通过在<code>year</code>参数中添加两个破折号，Vettorazzi将把查询改为：<code>SELECT*FROM players WHERE year=2010--type=20 AND round=2；</code></p>
+<p><img src="/part9-sql-zhu-ru/Part9-SQL%E6%B3%A8%E5%85%A5%5C9-1.png"></p>
+<center>图9-1：不修改参数时的搜索结果</center>
+
+<p><img src="/part9-sql-zhu-ru/Part9-SQL%E6%B3%A8%E5%85%A5%5C9-2.png"></p>
+<center>图9-2：修改参数后的搜索结果</center>
+
+<p>这个bug有点不寻常，因为在大多数数据库中，查询必须以分号结尾。因为Vettorazzi只注入了两个破折号并注释掉了查询的分号，所以这个查询应该失败，要么返回一个错误，要么没有记录。有些数据库可以允许没有分号的查询，所以Yahoo！应该是使用此功能或其代码以其他方式容纳了错误。不管怎样，在Vettorazzi识别出查询返回的不同结果后，他试图通过提交以下代码作为year参数来推断站点使用的数据库版本：<code>(2010)AND(if（mid（version（），1,1））='5'，true，false))--</code></p>
+<p><code>version</code>函数的作用是：返回正在使用的MySQL数据库的当前版本。<code>mid</code>函数根据第二个和第三个参数返回传递给第一个参数的字符串的一部分。第二个参数指定函数将返回的子字符串的起始位置，第三个参数指定子字符串的长度。通过调用<code>version()</code>检查站点是否使用MySQL。然后，他试图通过传递给mid函数1作为起始位置的第一个参数，并将1作为子字符串长度的第二个参数来获取版本号中的第一个数字。代码使用if语句检查MySQL版本的第一个数字。</p>
+<p>if语句有三个参数：逻辑检查、检查为真时要执行的操作以及检查为false时要执行的操作。在本例中，代码检查版本的第一个数字是否为5；如果是，则查询返回true。否则，查询返回false。</p>
+<p>然后，Vettorazzi使用and运算符将true/false输出与year参数连接起来，因此，如果MySQL数据库的主要版本是5，那么将返回2010年的运动员的名单。Vettorazzi执行了查询，没有收到任何记录，如图9-3所示，这意味着从version函数返回的值的第一位不是5。</p>
+<p><img src="/part9-sql-zhu-ru/Part9-SQL%E6%B3%A8%E5%85%A5%5C9-3.png"></p>
+<center>图9-3：运动员搜索结果为空</center>
+
+<p>这个bug是一个盲目的SQLi，因为注入的查询不能直接在页面上看到输出。但是Vettorazzi仍然可以找到关于这个网站的信息。通过插入布尔检查，例如版本检查if语句，Vettorazzi可以推断出他需要的信息。</p>
+<p><strong>重点</strong></p>
+<p>与其他注入漏洞一样，SQLi漏洞并不总是很难发现。找到SQLi漏洞的一种方法是测试URL参数并查找查询结果的细微变化。在本例中，添加双短划线更改了查询的结果，显示了SQLi。</p>
+<h3 id="Uber-blind-SQLI"><a href="#Uber-blind-SQLI" class="headerlink" title="Uber blind SQLI"></a>Uber blind SQLI</h3><p>难点：中等</p>
+<p>URL: <code>http://sctrack.email.uber.com.cn/track/unsubscribe.do/</code></p>
+<p>资料来源：<a target="_blank" rel="noopener" href="https://hackerone.com/reports/150156/">https://hackerone.com/reports/150156/</a></p>
+<p>报告日期：2016年7月8日</p>
+<p>赏金：4000美元</p>
+<p>除了网页，您还可以在其他地方发现blind SQLi漏洞，例如电子邮件链接。2016年7月，Orange Tsai收到优步的邮件广告。他注意到unsubscribe链接包含一个base64编码的字符串作为URL参数。链接如下所示：</p>
+<p><code>http://sctrack.email.uber.com.cn/track/unsubscribe.do?p=EYJ1C2Vyx2lkijogjju3ntuilcaicmvjzwl2zxiioiaib3jhbmdlqg15bwpbcj9</code></p>
+<p>解码p参数值</p>
+<p><code>EYJ1C2VYX2LKIJOGIJU3NTUILCMVJZWL2ZXIIOIAIB3JHBMDLQG15BWFPBCJ9</code></p>
+<p>使用base64返回JSON字符串{“user_id”：“5755”，“receiver”：”orange@myemail”}. 对于解码后的字符串，Orange将代码和<code>sleep（12）=1</code>添加到解码后URL参数p中。这个无害的添加使得数据库需要更长的时间来响应取消订阅操作<code>{“user_id”：“5755 and sleep（12）=1”，“receiver”：orange@myemail"}. </code>如果站点存在漏洞，则查询执行<code>sleep（12）</code>，并在将sleep命令的输出与1进行比较之前12秒内不执行任何操作。在MySQL中，sleep命令通常返回0，因此此比较将失败。但这并不重要，因为处理至少需要12秒。</p>
+<p>Orange重新编码payload并将其传递给URL参数，他访问了退订链接以确认HTTP反应至少花了12秒。意识到他需要更具体的SQLi证据才能发送给Uber，于是他使用暴力删除了用户名、主机名和数据库名。通过这样做，他证明了他可以在不访问机密数据的情况下从SQLi漏洞中提取信息。</p>
+<p>SQL函数以<code>&lt;user&gt;@&lt;host&gt;</code>的形式调用user返回数据库的用户名和主机名。因为Orange不能访问他注入的查询的输出，所以他不能调用user。但Orange修改了他的查询，在查询查找用户ID时添加了一个条件检查，使用<code>mid</code>函数一次比较数据库用户名和主机名字符串的一个字符。类似于雅虎！Sports blind SQLi漏洞在之前的bug报告中，Orange使用了一个比较语句和暴力来推断用户名和主机名字符串的每个字符。</p>
+<p>例如，Orange使用mid函数从用户函数返回值的第一个字符。他比较了这个字符是否等于“a”，然后是“b”，然后是“c”，依此类推。如果比较语句为true，服务器将执行取消订阅命令。这个结果表明，用户函数返回值的第一个字符等于它被比较的字符。如果语句为false，服务器将不会尝试取消订阅Orange。通过使用此方法检查用户函数返回值的每个字符，Orange最终可以推断出整个用户名和主机名。</p>
+<p>手动强制字符串需要时间，所以Orange创建了一个Python脚本生成并提交给Uber的有payload如下：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">import json
+import string
+import requests
+from urllib import quote
+from base64 import b64encode
+➋ base = string.digits + string.letters + '_-@.'
+➌ payload = {"user_id": 5755, "receiver": "blog.orange.tw"}
+➍ for l in range(0, 30):
+➎ for i in base:
+➏ payload['user_id'] = "5755 and mid(user(),%d,1)='%c'#"%(l+1, i)
+➐ new_payload = json.dumps(payload)
+new_payload = b64encode(new_payload)
+r = requests.get('http://sctrack.email.uber.com.cn/track/unsubscribe.
+do?p='+quote(new_payload))
+➑ if len(r.content)&gt;0:
+print i,
+break<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>Python脚本从五行import语句开始，这些语句检索Orange处理HTTP请求、JSON和字符串编码所需的库。数据库用户名和主机名可以由大写字母、小写字母、数字、连字符（-）、下划线（\）、at符号（@）或句点（.）组成。在➋处，Orange创建基变量来保存这些字符。➌处的代码创建一个变量来保存脚本发送到服务器的payload。➏处的代码行是注入，它使用for循环➎。</p>
+<p>让我们详细看看➏处的代码。Orange引用他的用户ID 5755，并使用在➌中定义的字符串user_ID来创建他的payload。他使用mid函数和字符串处理构造一个类似于本章前面的bug。payload中的<code>%d</code>和<code>%c</code>是字符串替换占位符。%d是表示数字的数据，%c是字符数据。</p>
+<p>payload字符串从第一对双引号（“）开始，在第三个百分号位于➏之前的第二对双引号结束。第三个百分比符号告诉Python将%d和%c占位符替换为括号中百分比符号后面的值。因此，代码用<code>l+1</code>（变量l加上数字1）替换<code>%d</code>，用变量<code>i</code>替换<code>%c</code>。哈希标记（#）是MySQL中注释的另一种方式，它在Orange注入注释之后呈现查询的任何部分。</p>
+<p><code>l</code>和<code>i</code>变量是位于➍和➎的循环迭代器。代码第一次在范围（0,30）内输入l时，<code>l</code>将为0。<code>l</code>的值是脚本试图强制执行的用户函数返回的用户名和主机名字符串中的位置。一旦脚本在所测试的用户名和主机名字符串中有了位置，代码就会进入一个嵌套循环，循环遍历基字符串中的每个字符。脚本第一次迭代这两个循环时，<code>l</code>为0，<code>i</code>为a。这些值被传递给位于➏的<code>mid</code>函数，以创建payload <code>“5755 and mid（user（），0,1）=‘a’#”</code>。</p>
+<p>在嵌套for循环的下一次迭代中，<code>l</code>的值仍然是0，<code>i</code>将是b，以创建payload <code>“5755 and mid（user（），0,1）=‘b’#”</code>。当循环遍历base中的每个字符以创建有效负载时，位置l将保持不变。</p>
+<p>每次创建新的payload时，以下代码将payload转换为JSON，使用base64encode函数重新编码字符串，并将HTTP请求发送到服务器。➑处的代码检查服务器是否响应消息。如果<code>i</code>中的字符与被测试位置的用户名子字符串匹配，脚本将停止测试该位置的字符，并移动到用户字符串中的下一个位置。嵌套循环中断并返回到位于➍处的循环，该循环以<code>l</code>为增量，测试用户名字符串的下一个位置。</p>
+<p>这个ROC允许Orange确认数据库用户名和主机名<code>sendcloud_@10.9.79.210</code>数据库名为<code>sendcloud</code>（要获得数据库名，请将user替换为位于➏的数据库）。在Uber对该报告的回应证实，其服务器上没有发生SQLi。注入发生在Uber使用的第三方服务器上，但是优步仍然支付报酬。不是所有的赏金计划都能做到。很可能是优步支付赏金是因为该漏洞将允许攻击者从sendcloud数据库转储Uber的所有客户电子邮件地址。尽管您可以像Orange那样编写自己的脚本来从易受攻击的网站转储数据库信息，但您也可以使用自动化工具。</p>
+<p><strong>重点</strong></p>
+<p>注意接受编码参数的HTTP请求。解码并将查询注入请求后，请确保对payload重新编码，以便所有内容仍与服务器期望的编码匹配。</p>
+<p>提取数据库名、用户名和主机名通常是无害的，但请确保它在您正在工作的悬赏程序允许的操作范围内。在某些情况下，sleep命令足以证明。</p>
+<h3 id="DRUPAL-SQLI"><a href="#DRUPAL-SQLI" class="headerlink" title="DRUPAL SQLI"></a>DRUPAL SQLI</h3><p>困难：难</p>
+<p>URL：任何使用7.32版或更早版本的Drupal站点源代码：</p>
+<p>来源：<a target="_blank" rel="noopener" href="https://hackerone.com/reports/31756/">https://hackerone.com/reports/31756/</a></p>
+<p>报告日期：2014年10月17日</p>
+<p>悬赏金额：3000美元</p>
+<p>Drupal是一个流行的开源内容管理系统，用于构建网站，类似于Joomla！还有WordPress。它是用PHP编写的，是模块化的，这意味着您可以在Drupal站点上以单元的形式安装新功能。每个Drupal安装都包含Drupal核心，它是一组运行平台的模块。这些核心模块需要连接到数据库，比如MySQL。</p>
+<p>2014年，Drupal向Drupal核心发布了一个紧急安全更新，因为Drupal站点易受SQLi漏洞的攻击，该漏洞很容易被匿名用户滥用。该漏洞的影响将允许攻击者接管任何未修补的Drupal站点。Stefan Horst发现Drupal核心的prepared statement功能中有一个bug，他发现了这个漏洞。</p>
+<p>Drupal的数据库应用程序编程接口（API）中存在Drupal漏洞。drupalapi使用PHP数据对象（PDO）扩展，这是在PHP中访问数据库的接口。接口是一种编程概念，它保证函数的输入和输出，而不定义函数的实现方式。换句话说，PDO隐藏了数据库之间的差异，因此程序员可以使用相同的函数来查询和获取数据，而不管数据库类型是什么。PDO包括对prepared statement的支持。</p>
+<p>Drupal创建了一个数据库API来使用PDO功能。API创建了一个Drupal数据库抽象层，这样开发人员就不必直接用自己的代码查询数据库了。但它们仍然可以使用prepared statement，并将它们的代码用于任何数据库类型。API的细节超出了本书的范围。但是您需要知道，API将生成SQL语句来查询数据库，并且有内置的安全检查来防止SQLi漏洞。</p>
+<p>回想一下，prepared statement可以防止SQLi漏洞，因为攻击者无法使用恶意输入修改查询结构，即使输入未初始化。但是，如果在创建模板时发生了注入，则prepared statement无法防止SQLi漏洞。如果攻击者可以在模板创建过程中注入恶意输入，则他们可以创建自己的恶意prepared statement。Horst发现的漏洞是因为SQL的IN子句查找值列表中存在的值。例如，代码<code>SELECT*FROM users WHERE name IN（'peter'，'paul'，'ringo'）；</code>从users表中选择数据，其中name列中的值是peter、paul或ringo。为了理解IN子句容易发生漏洞的原因，让我们看看Drupal的API背后的代码：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">$this-&gt;expandArguments($query, $args);
+$stmt = $this-&gt;prepareQuery($query);
+$stmt-&gt;execute($args, $options); <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>expandArguments在负责生成查询的函数中使用。expandArguments生成查询后，将查询传递给prepareQuery，后者生成execute函数执行的准备语句。为了理解此过程的重要性，我们还可以查看expandArguments的相关代码：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">--snip--
+➊ foreach(array_filter($args, `is_array`) as $key =&gt; $data) {
+➋ $new_keys = array();
+➌ foreach ($data as $i =&gt; $value) {
+--snip--
+➍ $new_keys[$key . '_' . $i] = $value;
+}
+--snip--
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这个PHP代码使用数组。PHP可以使用关联数组，它显式地按如下方式定义键：[‘red’=&gt;’apple’，’yellow’=&gt;’banana’]。此数组中的键是“red”和“yellow”，数组的值是箭头（=&gt;）右侧的水果。PHP可以使用结构化数组：[‘apple’, ‘banana’]  。结构化数组的键是隐式的，并且基于值在中的位置名单。例如，“apple”的键是0，“banana”的键是1。</p>
+<p>foreach PHP函数在数组上迭代，可以将数组键与其值分开。它还可以将每个键和每个值分配给自己的变量，并将它们传递给一个代码块进行处理。在➊处，foreach获取数组的每个元素，并通过调用<code>array_filter（$args，“is_array”）</code>验证传递给它的值是否为数组。在语句确认它有一个数组值之后，它为foreach循环的每次迭代将数组的每个键分配给<code>$key</code>，将每个值分配给<code>$data</code>。该代码将修改数组中的值以创建占位符，因此位于➋的代码初始化一个新的空数组，以便稍后保存占位符值。</p>
+<p>为了创建占位符，位于➌的代码通过将每个键分配给<code>$i</code>，将每个值分配给<code>$value</code>。然后在➍处，在 ➋处初始化的new _keys 数组保存第一个数组的键和在 ➌处的键连接。代码的预期结果是创建像 name _ 0，name _ 1这样的数据占位符。下面是使用Drupal的db_query函数查询数据库的典型查询：</p>
+<p><code>db query（“SELECT*FROM{users}WHERE name IN（：name）”，array（'：name'=&gt;array（'user1'，'user2'））；</code></p>
+<p>db_query函数接受两个参数：一个包含变量的命名占位符的查询和一个替换这些占位符的值数组。在本例中，占位符为<code>：name</code>，是一个值为<code>“user1”</code>和<code>“user2”</code>的数组。在结构化数组中，“user1”的键是0，“user2”的键是1。当Drupal执行db查询函数时，它调用expandArguments函数，该函数将键连接到每个值。结果查询使用name_0和name_1代替键，如下所示：</p>
+<p><code>SELECT*FROM users WHERE name in（：name_0，：name_1）</code>，</p>
+<p>但当您使用关联数组调用db_query时会出现问题，如以下代码所示：</p>
+<p><code>db_query（“SELECT*FROM{users}where name in（：name）”，array（'：name'=&gt;array（'test）；--'=&gt;'user1'，'test'=&gt;'user2'）；</code></p>
+<p>在本例中，<code>：name</code>是一个数组，其键是<code>'test）；--'和'test'</code>。expandArguments接收到：name数组并对其进行处理以创建查询时，它将生成以下命令：</p>
+<p><code>SELECT*FROM users WHERE name IN（：name_test）；--，：name_test）</code></p>
+<p>我们将注释注入prepared statement中。发生这种情况的原因是expandArguments迭代每个数组元素来构建占位符，但假设它传递的是结构化数组。在第一次迭代中，<code>$i</code>被分配为<code>'test）；--'</code>，<code>$value</code>被分配为<code>'user1'</code>。<code>$key</code>是<code>“：name”</code>，并将其与<code>$i</code>组合在一起会得到<code>name_test）；--</code>。在第二次迭代中，<code>$i</code>被赋值为<code>'test'</code>，<code>$value</code>为<code>'user2'</code>。将<code>$key</code>与<code>$i</code>组合会得到值<code>name_test</code>。</p>
+<p>这种行为允许恶意用户将SQL语句注入依赖于IN子句的Drupal查询中。该漏洞影响Drupal登录功能，使SQLi漏洞变得严重，因为任何站点用户，包括一个匿名用户，可以利用它。更糟糕的是，phpdo默认支持一次执行多个查询的能力。这意味着攻击者可以将其他查询附加到用户登录查询中，以便执行非in子句SQL命令。例如，攻击者可以使用INSERT语句（将记录插入数据库）创建管理用户，然后使用该用户登录网站。</p>
+<p><strong>重点</strong></p>
+<p>这个SQLi漏洞不仅仅是提交一个value和中断一个查询。它需要理解drupalcore的数据库API如何处理IN子句。此漏洞的好处是留心改变传递到站点的输入结构的机会。当URL将name作为参数时，请尝试将[]添加到参数中，以将其更改为数组，并测试网站如何处理它。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>SQLi对于一个站点来说是一个严重的漏洞和危险。如果攻击者发现SQLi，他们可能获得对站点的完全权限。在某些情况下，通过将数据插入到站点上启用管理权限，如Drupal示例中所示。当您查找SQLi漏洞时，请探索可以将未转义单引号或双引号传递到查询的位置。当您发现一个漏洞时，该漏洞存在的迹象可能很微妙，例如blind SQLI。您还应该寻找可以以意外方式将数据传递到站点的位置，例如可以在请求数据中替换数组参数的位置，如Uber blind SQLI中所示。</p>
+
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">大象跳舞</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://forwork1010.github.io/part9-sql-zhu-ru/">https://forwork1010.github.io/part9-sql-zhu-ru/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">大象跳舞</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/">
+                                    <span class="chip bg-color">漏洞挖掘</span>
+                                </a>
+                            
+                                <a href="/tags/web%E5%AE%89%E5%85%A8/">
+                                    <span class="chip bg-color">web安全</span>
+                                </a>
+                            
+                                <a href="/tags/SQL%E6%B3%A8%E5%85%A5/">
+                                    <span class="chip bg-color">SQL注入</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/part9-sql-zhu-ru/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Part9 SQL注入">
+                        
+                        <span class="card-title">Part9 SQL注入</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            SQLi对于一个站点来说是一个严重的漏洞和危险。如果攻击者发现SQLi，他们可能获得对站点的完全权限。
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-19
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/WebHacking101/" class="post-category">
+                                    WebHacking101
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/">
+                        <span class="chip bg-color">漏洞挖掘</span>
+                    </a>
+                    
+                    <a href="/tags/web%E5%AE%89%E5%85%A8/">
+                        <span class="chip bg-color">web安全</span>
+                    </a>
+                    
+                    <a href="/tags/SQL%E6%B3%A8%E5%85%A5/">
+                        <span class="chip bg-color">SQL注入</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/part8-mo-ban-zhu-ru/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Part8 模板注入">
+                        
+                        <span class="card-title">Part8 模板注入</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            当您搜索漏洞时，最好尝试确认底层技术（无论是web框架、前端渲染引擎或其他东西）以识别可能的攻击向量和要测试的思想。
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-19
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/WebHacking101/" class="post-category">
+                                    WebHacking101
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/">
+                        <span class="chip bg-color">漏洞挖掘</span>
+                    </a>
+                    
+                    <a href="/tags/web%E5%AE%89%E5%85%A8/">
+                        <span class="chip bg-color">web安全</span>
+                    </a>
+                    
+                    <a href="/tags/SSTI/">
+                        <span class="chip bg-color">SSTI</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2020</span>
+            |&nbsp;
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">44.9k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/search.xml", 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

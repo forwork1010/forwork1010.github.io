@@ -6,7 +6,7 @@
   <link href="https://forwork1010.github.io/atom.xml" rel="self"/>
   
   <link href="https://forwork1010.github.io/"/>
-  <updated>2020-10-19T14:42:56.358Z</updated>
+  <updated>2020-10-20T04:53:13.635Z</updated>
   <id>https://forwork1010.github.io/</id>
   
   <author>
@@ -17,11 +17,40 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Part9 SQL注入</title>
+    <link href="https://forwork1010.github.io/part9-sql-zhu-ru/"/>
+    <id>https://forwork1010.github.io/part9-sql-zhu-ru/</id>
+    <published>2020-10-19T14:44:51.000Z</published>
+    <updated>2020-10-20T04:53:13.635Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Part9-SQL注入&quot;&gt;&lt;a href=&quot;#Part9-SQL注入&quot; class=&quot;headerlink&quot; title=&quot;Part9 SQL注入&quot;&gt;&lt;/a&gt;&lt;center&gt;Part9 SQL注入&lt;/center&gt;&lt;/h1&gt;&lt;p&gt;&lt;font</summary>
+        
+      
+    
+    
+    
+    <category term="WebHacking101" scheme="https://forwork1010.github.io/categories/WebHacking101/"/>
+    
+    
+    <category term="漏洞挖掘" scheme="https://forwork1010.github.io/tags/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/"/>
+    
+    <category term="web安全" scheme="https://forwork1010.github.io/tags/web%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="SQL注入" scheme="https://forwork1010.github.io/tags/SQL%E6%B3%A8%E5%85%A5/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Part8 模板注入</title>
     <link href="https://forwork1010.github.io/part8-mo-ban-zhu-ru/"/>
     <id>https://forwork1010.github.io/part8-mo-ban-zhu-ru/</id>
     <published>2020-10-19T04:55:17.000Z</published>
-    <updated>2020-10-19T14:42:56.358Z</updated>
+    <updated>2020-10-20T04:55:53.622Z</updated>
     
     
       
@@ -50,7 +79,7 @@
     <link href="https://forwork1010.github.io/part7-xss/"/>
     <id>https://forwork1010.github.io/part7-xss/</id>
     <published>2020-10-17T12:43:40.000Z</published>
-    <updated>2020-10-19T14:24:34.004Z</updated>
+    <updated>2020-10-20T04:58:23.412Z</updated>
     
     
       
@@ -79,7 +108,7 @@
     <link href="https://forwork1010.github.io/part6-crlf-zhu-ru/"/>
     <id>https://forwork1010.github.io/part6-crlf-zhu-ru/</id>
     <published>2020-10-17T08:23:18.000Z</published>
-    <updated>2020-10-19T12:32:24.755Z</updated>
+    <updated>2020-10-20T04:58:53.957Z</updated>
     
     
       
@@ -108,7 +137,7 @@
     <link href="https://forwork1010.github.io/part5-html-zhu-ru-he-nei-rong-tian-chong/"/>
     <id>https://forwork1010.github.io/part5-html-zhu-ru-he-nei-rong-tian-chong/</id>
     <published>2020-10-15T17:16:42.000Z</published>
-    <updated>2020-10-19T12:28:59.069Z</updated>
+    <updated>2020-10-20T05:00:23.737Z</updated>
     
     
       
@@ -137,7 +166,7 @@
     <link href="https://forwork1010.github.io/part4-kua-zhan-qing-qiu-wei-zao/"/>
     <id>https://forwork1010.github.io/part4-kua-zhan-qing-qiu-wei-zao/</id>
     <published>2020-10-14T16:27:55.000Z</published>
-    <updated>2020-10-19T14:25:17.703Z</updated>
+    <updated>2020-10-20T05:01:15.392Z</updated>
     
     
       
@@ -166,7 +195,7 @@
     <link href="https://forwork1010.github.io/part3-http-can-shu-wu-ran/"/>
     <id>https://forwork1010.github.io/part3-http-can-shu-wu-ran/</id>
     <published>2020-10-14T06:30:49.000Z</published>
-    <updated>2020-10-19T11:59:25.217Z</updated>
+    <updated>2020-10-20T05:02:15.549Z</updated>
     
     
       

@@ -448,7 +448,7 @@
 <p>报告日期：2015年12月22日</p>
 <p>赏金支付：$ 500</p>
 <p>2015年12月，HackerOne用户krankopwnz报告说Shopify没有验证传递给网址<code>v.shopify.com/last_shop?&lt;YOURSITE&gt;.myshopify.com</code>的<code>last_shop</code>参数。 Shopify向此URL发送了GET请求，以便设置一个cookie，该cookie记录了用户登录的最后一个商店。攻击者可以在<code>last_shop</code>参数中将CRLF字符<code>％0d％0a</code>（大小写与编码无关）包含在URL中。提交这些字符后，Shopify将使用完整的<code>last_shop</code>参数在HTTP响应中生成新的标头。这是作为商店名称一部分注入的恶意代码，用于测试此漏洞是否有效：</p>
-<pre class="line-numbers language-none"><code class="language-none">%0d%0aContent-Length:%200%0d%0a%0d%0aHTTP/1.1%20200%20OK%0d%0aContent-Type:%20 text/html%0d%0aContent-Length:%2019%0d%0a%0d%0a&lt;html&gt;deface&lt;/html&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html">%0d%0aContent-Length:%200%0d%0a%0d%0aHTTP/1.1%20200%20OK%0d%0aContent-Type:%20 text/html%0d%0aContent-Length:%2019%0d%0a%0d%0a<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span>deface<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>由于Shopify使用未经清理的<code>last_shop</code>参数在HTTP响应中设置cookie，因此该响应包含浏览器解释为两个响应的内容。字符<code> ％20</code>表示已编码的空格，在接收到响应时将对它们进行解码。</p>
 <p>浏览器收到的响应被解码为：</p>
@@ -855,7 +855,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">38.9k</span>&nbsp;字
+                class="white-color">44.9k</span>&nbsp;字
             
             
             

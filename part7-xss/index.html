@@ -451,7 +451,7 @@ A closing angle bracket (&gt;) as &gt; or &amp;#62;<span aria-hidden="true" clas
 <p> 例如，不在敏感cookie上使用httponly标志的站点上的XSS漏洞与在敏感cookie上使用httponly标志的站点上的XSS漏洞不同。当站点没有httponly标志时，XSS可以读取cookie值；如果这些值包括标识cookie的会话，则可以窃取目标的会话并访问其帐户。您可以向document.cookie弹出警报框，以确认您可以读取敏感cookie（知道站点认为哪些cookie是敏感的需要在每个站点上试错）。即使无法访问敏感的cookie，也可以向document.domain发出警报，以确认是否可以从DOM访问敏感的用户信息并代表目标执行操作。 </p>
 <p>但是，如果不警告正确的域名，XSS可能不是站点的漏洞。例如，如果从沙盒<code>iFrame</code>向<code>document.domain</code>发出警报，则JavaScript可能是无害的，因为它无法访问cookies、对用户帐户执行操作或从DOM访问敏感的用户信息。 JavaScript是无害的，因为浏览器实现了作为安全机制的同源策略（SOP）。SOP限制文档（DOM中的D）如何与从另一个源加载的资源交互。SOP保护无辜的网站免受试图通过用户利用网站的恶意网站的攻击。例如，如果您访问了<code>www.&lt;malitive&gt;.com</code>并在浏览器中调用了对<code>www.&lt;example&gt;.com/profile</code>的GET请求，则SOP将阻止<code>www.&lt;malitive&gt;.com</code>读取<code>www.&lt;example&gt;.com/profile</code>响应。<code>www.&lt;example&gt;.com</code>网站可能允许来自不同源的网站与其交互，但通常这些交互仅限于特定受信任网站<code>www.&lt;example&gt;.com</code>。        </p>
 <p> 网站的协议（如HTTP或HTTPs）、主机（如<code>www.&lt;example&gt;.com</code>）和端口决定了网站的来源。Internet Explorer是此规则的例外。它不认为port是源的一部分。表7-1显示了源的示例，以及它们是否与<code>http://www.&lt;example&gt;.com/</code>相同。   </p>
-<p><img src="/part7-xss/images%5Csop.png"></p>
+<p><img src="/part7-xss/sop.png"></p>
 <center>*表7-1:SOP示例*</center>
 
 <p>某些情况下，URL与源不匹配。例如，about:blank和javascript:schemes继承打开它们的文档的源。about:blank上下文从浏览器访问信息或与浏览器交互，而javascript:执行 javascript。URL不提供关于其源的信息，因此浏览器处理这两个上下文的方式不同。当您发现XSS漏洞时，在ROC中使用alert（document.domain）会很有帮助：它可以确认XSS执行的来源，特别是当浏览器中显示的URL与XSS执行的源不同时。这正是网站打开javascript:URL时发生的情况。如果<code>www.&lt;example&gt;.com</code>打开了<code>javascript:alert（document.domain）</code>的URL，浏览器地址将显示<code>javascript:alert（document.domain）</code>。但alert框将显示<code>www.&lt;example&gt;.com</code>，因为<code>alert</code>继承了上一个document的源。        </p>
@@ -496,7 +496,7 @@ A closing angle bracket (&gt;) as &gt; or &amp;#62;<span aria-hidden="true" clas
 <p>XSS payload不必很复杂，但您确实需要根据它们出现的位置以及它们是否包含在HTML或JavaScript标记中对其进行调整。2015年12月，Shopify的批发网站是一个简单的网页，顶部有一个明显的搜索框。此页面上的XSS漏洞很简单，但很容易被忽略：在搜索框中的输入将会出现在JavaScript标记中。        </p>
 <p>人们忽略了这个bug，因为XSS payload没有利用未被清洗的HTML。当XSS利用HTML的显示方式时，攻击者可以看到payload的效果，因为HTML定义了站点的外观。相反，JavaScript代码可以改变站点的外观或执行另一个操作，但它并不定义站点的外观。        </p>
 <p>在本例中，输入<code>“&gt;&lt;script&gt;alert（'XSS'）&lt;/script&gt;</code>不会执行XSS payload <code>alert('XSS')</code>，因为Shopify编码HTML标记<code>&lt;&gt;</code>。这些字符将被无害地呈现为<code>&amp;lt;</code>和<code>&amp;gt;</code>。一名黑客意识到，在网页上的<code>&lt;script&gt;&lt;/script&gt;</code>标记中，输入是未被清理的。很可能，黑客是通过查看页面的源代码（包含页面的HTML和JavaScript）得出这个结论的。通过在浏览器地址栏中输入<code>view-source:URL</code>，可以查看任何网页的源。例如，图7-2显示了<code>https://nostarch.com/</code>站点的部分页面源代码。        在意识到输入未被处理后，黑客将<code>test'；alert（'XSS'）；'</code>输入Shopify的搜索框中，创建一个JavaScript警报框。尽管报告中还不清楚，但Shopify很可能是在一个JavaScript语句中呈现搜索到的术语，比如<code>var search_term='&lt;INJECTION&gt;'</code>。注入的第一部分<code>test'；</code>，将闭合该标记并插入<code>alert('XSS')；</code>作为单独的语句。最后的<code>'</code>将确保JavaScript语法是正确的。结果可能看起来像<code>var search_term='test'；alert（'xss'）；''；</code>。</p>
-<p><img src="/part7-xss/images%5Cnotarch.png"></p>
+<p><img src="/part7-xss/Part7-XSS%5Cnotarch.png"></p>
 <center>图7-2:`https://nostarch.com`的页面源  </center> 
 
 <p><strong>重点</strong>       </p>
@@ -508,7 +508,7 @@ A closing angle bracket (&gt;) as &gt; or &amp;#62;<span aria-hidden="true" clas
 <p>赏金：1000美元        </p>
 <p>XSS payload并不总是立即执行。因此，黑客应该确保payload在所有可能呈现的地方都得到了适当的清理。在本例中，Shopify的存储设置允许用户更改货币格式。2015年12月，在设置社交媒体页面时，这些输入框中的值没有经过适当处理。恶意用户可以设置存储并在存储的货币设置字段中注入XSS payload，如图7-3所示。payload在商店的社交媒体销售频道显示。恶意用户可以将存储配置为在另一个存储管理员访问销售渠道时执行payload。       </p>
 <p> Shopify使用Liquid模板引擎动态呈现商店页面上的内容。例如，<code>${{}}</code>是Liquid的语法；要呈现的变量是在内部大括号集中输入的。在图7-3中，<code>${{amount}</code>是一个合法值，但当输入值是<code>“&gt;&lt;img src=x onerror=alert（document.domain）&gt;</code>，它是XSS payload。<code>"&gt;</code>闭合HTML标记。当HTML标记闭合后，浏览器将显示图像标记并查找src属性中指示的图像<code>x</code>。因为这个值不太可能存在于SuutType的网站上，浏览器遇到错误，并调用JavaScript事件处理函数<code>OnError</code>。事件处理程序执行处理函数中定义的JavaScript。在本例中，它是函数<code>alert（document.domain）</code>。</p>
-<p><img src="/part7-xss/images%5Ccurrency.png"></p>
+<p><img src="/part7-xss/currency.png"></p>
 <center>图7-3:Shopify在报告时的货币设置页面 </center>       
 
 <p>当用户访问currency页面时，JavaScript不会执行，但payload出现在Shopify商店的社交媒体销售频道中。当其他商店管理员单击易受攻击的销售频道选项卡时，恶意的XSS将被执行。        </p>
@@ -521,15 +521,15 @@ A closing angle bracket (&gt;) as &gt; or &amp;#62;<span aria-hidden="true" clas
 <p>赏金：10000美元        </p>
 <p>通过修改输入的文本来清理用户输入有时会导致漏洞。在这个例子中，雅虎！邮件编辑器允许人们使用<code>&lt;img&gt;</code>标签，使用HTML在电子邮件中嵌入图像。编辑器通过删除任何JavaScript属性（如onload、onerror等）来清理数据，以避免XSS漏洞。但是，它未能避免用户故意提交格式错误的<code>&lt;img&gt;</code>标记时出现的漏洞。        </p>
 <p>大多数HTML标记有属性，这些属性是关于HTML标记的附加信息。例如 <code>&lt;img&gt;</code>标记需要一个指向要显示的图像地址的<code>src</code>属性。标记还使用width和height属性定义图像的大小。 一些HTML属性是布尔属性：当它们包含在HTML标记中时，它们被认为是真的，当它们被忽略时，它们被认为是假的。Jouko Pynnonen发现如果他用一个值向HTML标记添加布尔属性，Yahoo！邮件将删除该值，但保留属性的等号。下面是Pynnonen的一个例子：</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;INPUT TYPE="checkbox" CHECKED="hello" NAME="check box"&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>INPUT</span> <span class="token attr-name">TYPE</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>checkbox<span class="token punctuation">"</span></span> <span class="token attr-name">CHECKED</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>hello<span class="token punctuation">"</span></span> <span class="token attr-name">NAME</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>check box<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>在这里，HTML输入标记可能包含一个<code>CHECKED</code>属性，指示是否应将复选框呈现为CHECKED off。基于Yahoo的标签解析，该行将变成：       </p>
 <p> <code>&lt;INPUT TYPE=“checkbox”CHECKED=NAME=“checkbox”&gt; </code>       这看起来是无害的，但是HTML允许在未引用的属性值的等号周围有零个或多个空格字符。因此，浏览器将其读为<code>CHECKED</code>，值为<code>NAME=“check</code>，输入标记有第三个名为<code>box</code>的属性，但没有值。        </p>
 <p>为了利用此漏洞，Pynnonen提交了以下<code>&lt;img&gt;</code>标记：  </p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;img ismap='xxx' itemtype='yyy style=width:100%;height:100%;position:fixed;  left:0px;top:0px; onmouseover=alert(/XSS/)//'&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">ismap</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>xxx<span class="token punctuation">'</span></span> <span class="token attr-name">itemtype</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>yyy style=width:100%;height:100%;position:fixed;  left:0px;top:0px; onmouseover=alert(/XSS/)//<span class="token punctuation">'</span></span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>雅虎！邮件更改为以下内容：   </p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;img ismap= itemtype='yyy' style=width:100%;height:100%;position:fixed;left:  0px;top:0px; onmouseover=alert(/XSS/)//&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html">&lt;img ismap= itemtype='yyy' style=width:100%;height:100%;position:fixed;left:  0px;top:0px; onmouseover=alert(/XSS/)//&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>ismap值是一个布尔<code>&lt;img&gt;</code>标记属性，指示图像是否具有可单击区域。在这种情况下，雅虎！删除了<code>“xxx”</code>，并将字符串末尾的单引号移到<code>yyy</code>结尾。        </p>
 <p>有时，站点的后端将是一个黑盒，您将不知道如何处理代码，如本例所示。我们不知道为什么<code>“xxx”</code>被删除，或者为什么单引号被移到<code>yyy</code>结尾。        </p>
@@ -548,7 +548,7 @@ A closing angle bracket (&gt;) as &gt; or &amp;#62;<span aria-hidden="true" clas
 <p>网站的常见最佳做法是在在用户输入时对其进行清理，而不是在提交进行保存时候。原因是引入新的方法将数据提交到网站（例如文件上传），很容易忘记清理输入内容。但是，在某些情况下，公司不会采用这种做法：HackerOne的Patrik Fehrenbach于2014年10月在测试Google的XSS漏洞时发现了这一失误。</p>
 <p>Google跟踪代码管理器是一个SEO工具，营销人员可以轻松添加和更新网站代码。<br>为此，该工具具有许多与用户交互的Web表单。 Fehrenbach首先查找可用的表单字段并输入XSS payload，例如<code>＃“&gt; &lt;img src = /onerror = alert(3)&gt;</code>。如果payload被表单字段接受，则payload将闭合现有的HTML标记，然后尝试加载不存在的图像，因为找不到该图像，因此网站将执行 JavaScript“onerror”函数执行alert（3）。</p>
 <p>但Fehrenbach的payload无法正常工作。 Google正确地清理了他的输入。Fehrenbach注意到另一种提交payload的方法。除了表单字段外，Google还提供了上传带有多个标签的JSON文件的功能。因此，Fehrenbach将以下JSON文件上传到Google的服务中：</p>
-<pre class="line-numbers language-none"><code class="language-none">"data": {  
+<pre class="line-numbers language-json" data-language="json"><code class="language-json">"data": {  
 "name": "#"&gt;&lt;img src=/ onerror=alert(3)&gt;",  
 "type": "AUTO_EVENT_VAR",  
 "autoEventVarMacro": {  
@@ -562,54 +562,54 @@ A closing angle bracket (&gt;) as &gt; or &amp;#62;<span aria-hidden="true" clas
 <p>资料来源：<a target="_blank" rel="noopener" href="http://strukt93.blogspot.jp/2016/07/united-to-xss-[united.html](http://strukt93.blogspot.jp/2016/07/united-to-xss-united.html)">http://strukt93.blogspot.jp/2016/07/united-to-xss-[united.html](http://strukt93.blogspot.jp/2016/07/united-to-xss-united.html)</a></p>
 <p> 2016年7月，在搜寻廉价航班时，穆斯塔法·哈桑（Mustafa Hasan）开始在联合航空网站上寻找错误。 他发现访问子域<code>checkin.united.com</code>重定向到包含<code>SID</code>参数的URL。 他注意到传递给该参数的任何值都在页面HTML中呈现，因此他测试了<code>“&gt; &lt;svg onload = confirm（1）&gt;</code>。如果有漏洞，该标记将闭合现有的HTML标记并注入Hasan的<code>&lt;svg&gt;</code>标记，从而由<code>onload</code>事件的JavaScript弹出窗口。</p>
 <p>但是，当他提交HTTP请求时，没有任何反应，尽管他的payload没有经过清理，是按原样出现的。 Hasan并没有放弃，而是使用浏览器的开发工具打开了该网站的JavaScript文件。 他找到了以下代码，该代码覆盖了可能导致XSS的JavaScript属性，例如alert，confirm，prompt和write属性：</p>
-<pre class="line-numbers language-none"><code class="language-none">/*
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">/*
 XSS prevention via JavaScript
-*/
-var XSSObject = new Object();
-XSSObject.lockdown = function(obj,name) {
-if (!String.prototype.startsWith) {
-try {
-if (Object.defineProperty) {
-Object.defineProperty(obj, name, {
-configurable: false
-});
-} }
-catch (e) { };
-} } X
-SSObject.proxy = function (obj, name,
-report_function_name, ➊exec_original)
-{ v
-ar proxy = obj[name];
-obj[name] = function () {
-if (exec_original) {
-return proxy.apply(this, arguments);
-} }
-; X
-SSObject.lockdown(obj, name);
-};
-➋ XSSObject.proxy(window, 'alert', 'window.alert', false);
-XSSObject.proxy(window, 'confirm', 'window.confirm', false);
-XSSObject.proxy(window, 'prompt', 'window.prompt', false);
-XSSObject.proxy(window, 'unescape', 'unescape', false);
-XSSObject.proxy(document, 'write', 'document.write', false);
-XSSObject.proxy(String, 'fromCharCode',
-'String.fromCharCode', true);
-}]();<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+*/</span>
+<span class="token keyword">var</span> XSSObject <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+XSSObject<span class="token punctuation">.</span><span class="token function-variable function">lockdown</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">obj<span class="token punctuation">,</span>name</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>startsWith<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">try</span> <span class="token punctuation">{</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>Object<span class="token punctuation">.</span>defineProperty<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+Object<span class="token punctuation">.</span><span class="token function">defineProperty</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span> name<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+configurable<span class="token operator">:</span> <span class="token boolean">false</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token punctuation">}</span>
+<span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token punctuation">}</span> <span class="token constant">X</span>
+SSObject<span class="token punctuation">.</span><span class="token function-variable function">proxy</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">obj<span class="token punctuation">,</span> name<span class="token punctuation">,</span>
+report_function_name<span class="token punctuation">,</span> ➊exec_original</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span> v
+ar proxy <span class="token operator">=</span> obj<span class="token punctuation">[</span>name<span class="token punctuation">]</span><span class="token punctuation">;</span>
+obj<span class="token punctuation">[</span>name<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>exec_original<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">return</span> <span class="token function">proxy</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> arguments<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token punctuation">}</span>
+<span class="token punctuation">;</span> <span class="token constant">X</span>
+SSObject<span class="token punctuation">.</span><span class="token function">lockdown</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span> name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+➋ XSSObject<span class="token punctuation">.</span><span class="token function">proxy</span><span class="token punctuation">(</span>window<span class="token punctuation">,</span> <span class="token string">'alert'</span><span class="token punctuation">,</span> <span class="token string">'window.alert'</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+XSSObject<span class="token punctuation">.</span><span class="token function">proxy</span><span class="token punctuation">(</span>window<span class="token punctuation">,</span> <span class="token string">'confirm'</span><span class="token punctuation">,</span> <span class="token string">'window.confirm'</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+XSSObject<span class="token punctuation">.</span><span class="token function">proxy</span><span class="token punctuation">(</span>window<span class="token punctuation">,</span> <span class="token string">'prompt'</span><span class="token punctuation">,</span> <span class="token string">'window.prompt'</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+XSSObject<span class="token punctuation">.</span><span class="token function">proxy</span><span class="token punctuation">(</span>window<span class="token punctuation">,</span> <span class="token string">'unescape'</span><span class="token punctuation">,</span> <span class="token string">'unescape'</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+XSSObject<span class="token punctuation">.</span><span class="token function">proxy</span><span class="token punctuation">(</span>document<span class="token punctuation">,</span> <span class="token string">'write'</span><span class="token punctuation">,</span> <span class="token string">'document.write'</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+XSSObject<span class="token punctuation">.</span><span class="token function">proxy</span><span class="token punctuation">(</span>String<span class="token punctuation">,</span> <span class="token string">'fromCharCode'</span><span class="token punctuation">,</span>
+<span class="token string">'String.fromCharCode'</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>即使您不了解JavaScript，也可以通过使用某些单词来猜测发生了什么。例如，XSSObject proxy定义中的exec_original参数名称暗示了执行某函数。在参数的下面是函数的列表，以及传递的值false（最后一个实例除外）。我们可以假定该站点试图通过禁止执行传递给XSSObject proxy的JavaScript属性来保护自己。</p>
 <p>值得注意的是，JavaScript允许您覆盖现有函数。因此，Hasan首先尝试通过在SID中添加以下值来还原document.write函数：</p>
-<pre class="line-numbers language-none"><code class="language-none">javascript：document.write = HTMLDocument.prototype.write; document.write（'STRUKT'）;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">javascript：document<span class="token punctuation">.</span>write <span class="token operator">=</span> <span class="token class-name">HTMLDocument</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>write<span class="token punctuation">;</span> document<span class="token punctuation">.</span>write（<span class="token string">'STRUKT'</span>）<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>该值通过使用write函数的原型将文档的write设置为其原函数。因为JavaScript是面向对象的，所以所有对象都有原型。通过调用HTMLDocument，Hasan将当前文档的write函数设置回HTMLDocument的原始实现。然后，他调用document.write（’STRUKT’）将其纯文本名称添加到页面中。</p>
 <p>但是，当Hasan尝试利用此漏洞时，他再次陷入困境。他向Rodolfo Assis寻求帮助。他们一起工作，意识到联合航空网站的XSS过滤器缺少类似于write的函数：writeIn函数。这两个函数的区别在于，writeln在写入文本后添加了换行符，而write则没有。</p>
 <p>Assis相信他可以使用writeln函数将内容写入HTML文档。这样做可以让他绕过联合航空网站的XSS过滤器。他使用以下有payload执行此操作：</p>
-<pre class="line-numbers language-none"><code class="language-none">";}{document.writeln(decodeURI(location.hash))-"#&lt;img src=1 onerror=alert(1)&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token string">";}{document.writeln(decodeURI(location.hash))-"</span>#<span class="token operator">&lt;</span>img src<span class="token operator">=</span><span class="token number">1</span> onerror<span class="token operator">=</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>但是他的JavaScript仍然没有执行，因为XSS过滤器仍在加载和重写alert函数：Assis需要使用不同的方法。在我们研究最后的payload以及Assis如何绕过alert覆盖之前，让我们先分解他的初始payload。</p>
 <p>第一个部分，<code>“;}</code>，闭合原有的JavaScript。接下来，<code>{</code>开始JavaScript payload，document.writeln调用JavaScript document对象的writeln函数将内容写入DOM。传递给writeln的decodeURI函数解码URL中的编码实体（例如，<code>%22</code>将变为<code>“</code>）。传递给decodeURI的<code>location.hash</code>代码返回URL中<code>#</code>后面的所有参数。完成此初始设置后，<code>-“</code>将替换payload开头的引号，以确保正确的JavaScript语法。   </p>
 <p>最后,<code>#&lt;img src=1 onerror=alert（1）&gt;</code>，添加了一个从未发送到服务器的参数。最后一部分是URL的一个定义的可选部分，称为fragment，它是指document的一部分。但在本例中，Assis使用一个fragment来利用定义fragment开头的hash（#）。对<code>location.hash</code>的引用返回<code>#</code>之后的所有内容。但是返回的内容将是URL编码的，因此输入<code>&lt;img src=1 onerror=alert（1）&gt;</code>将作为<code>%3Cimg%20src%3D1%20onerror%3Dalert%281%29%3E%20</code>返回。为了解决编码问题，函数decodeURI将内容解码回<code>HTML&lt;img src=1 onerror=alert（1）&gt;</code>。这一点很重要，因为解码后的值被传递给writeln函数，该函数将HTML<code>&lt;img&gt;</code>标记写入DOM。当站点找不到标记的<code>sr</code>c属性中引用的图像<code>1</code>时，HTML标记执行XSS。如果payload成功，将弹出一个JavaScript alert框，其中包含数字1。但没有。       </p>
 <p> Assis和Hasan意识到他们需要一个联合航空网站上下文中的新HTML document：他们需要一个没有加载XSS过滤器JavaScript的页面，但是仍然可以访问联合航空网站网页信息、cookies等。所以他们使用了一个iFrame，它的payload如下</p>
-<pre class="line-numbers language-none"><code class="language-none">";}{document.writeln(decodeURI(location.hash))-"#&lt;iframe src=javascript:alert(document.domain)&gt;&lt;iframe&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token string">";}{document.writeln(decodeURI(location.hash))-"</span>#<span class="token operator">&lt;</span>iframe src<span class="token operator">=</span>javascript<span class="token operator">:</span><span class="token function">alert</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span>domain<span class="token punctuation">)</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>iframe<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>此有payload的行为与带有<code>&lt;img&gt;</code>标记的原始URL类似。但在这篇文章中，他们给DOM写了一个<code>&lt;iframe&gt;</code>，并更改了<code>src</code>属性，使用<code>javaScript:alert(document.domain）</code>。此payload类似于“Google图像搜索”中讨论的XSS漏洞，因为JavaScript方案继承父DOM的上下文。现在XSS可以访问联合航空网站的DOM，于是<code>document.domain</code>显示了<code>www.United.com</code>。当站点弹出alert时，已确认该漏洞存在。       </p>
 <p> iFrame可以使用source属性来拉入远程HTML。因此，Assis可以将源代码设置为JavaScript，JavaScript会立即document domain的<code>alert</code>函数。        </p>
@@ -986,7 +986,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">38.9k</span>&nbsp;字
+                class="white-color">44.9k</span>&nbsp;字
             
             
             

