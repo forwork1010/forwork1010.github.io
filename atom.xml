@@ -6,7 +6,7 @@
   <link href="https://forwork1010.github.io/atom.xml" rel="self"/>
   
   <link href="https://forwork1010.github.io/"/>
-  <updated>2020-10-20T04:53:13.635Z</updated>
+  <updated>2021-01-21T09:48:33.071Z</updated>
   <id>https://forwork1010.github.io/</id>
   
   <author>
@@ -17,261 +17,762 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Part9 SQL注入</title>
-    <link href="https://forwork1010.github.io/part9-sql-zhu-ru/"/>
-    <id>https://forwork1010.github.io/part9-sql-zhu-ru/</id>
-    <published>2020-10-19T14:44:51.000Z</published>
-    <updated>2020-10-20T04:53:13.635Z</updated>
+    <title>小猪佩奇中英文剧本及难点解析（第一季第11集）</title>
+    <link href="https://forwork1010.github.io/xiao-zhu-pei-qi-zhong-ying-wen-ju-ben-ji-nan-dian-jie-xi-di-yi-ji-di-11-ji/"/>
+    <id>https://forwork1010.github.io/xiao-zhu-pei-qi-zhong-ying-wen-ju-ben-ji-nan-dian-jie-xi-di-yi-ji-di-11-ji/</id>
+    <published>2021-01-21T06:57:00.000Z</published>
+    <updated>2021-01-21T09:48:33.071Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;Part9-SQL注入&quot;&gt;&lt;a href=&quot;#Part9-SQL注入&quot; class=&quot;headerlink&quot; title=&quot;Part9 SQL注入&quot;&gt;&lt;/a&gt;&lt;center&gt;Part9 SQL注入&lt;/center&gt;&lt;/h1&gt;&lt;p&gt;&lt;font</summary>
+    <summary type="html">&lt;center&gt;&lt;h1&gt;
+    小猪佩奇中英文剧本及难点解析（第一季第11集）&lt;/h1&gt;&lt;/center&gt;
+
+
+&lt;h2&gt;难点解析&lt;/h2&gt;
+
+&lt;p&gt;hiccups    [ˈhɪkʌps]&lt;br&gt;n.    嗝; 一连串的打嗝;&lt;br&gt;v.    打嗝;</summary>
         
       
     
     
     
-    <category term="WebHacking101" scheme="https://forwork1010.github.io/categories/WebHacking101/"/>
+    <category term="-看动漫学英语" scheme="https://forwork1010.github.io/categories/%E7%9C%8B%E5%8A%A8%E6%BC%AB%E5%AD%A6%E8%8B%B1%E8%AF%AD/"/>
     
     
-    <category term="漏洞挖掘" scheme="https://forwork1010.github.io/tags/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/"/>
+    <category term="小猪佩奇" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87/"/>
     
-    <category term="web安全" scheme="https://forwork1010.github.io/tags/web%E5%AE%89%E5%85%A8/"/>
+    <category term="看动漫学英语" scheme="https://forwork1010.github.io/tags/%E7%9C%8B%E5%8A%A8%E6%BC%AB%E5%AD%A6%E8%8B%B1%E8%AF%AD/"/>
     
-    <category term="SQL注入" scheme="https://forwork1010.github.io/tags/SQL%E6%B3%A8%E5%85%A5/"/>
+    <category term="小猪佩奇第一季" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87%E7%AC%AC%E4%B8%80%E5%AD%A3/"/>
+    
+    <category term="小猪佩奇台词" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87%E5%8F%B0%E8%AF%8D/"/>
     
   </entry>
   
   <entry>
-    <title>Part8 模板注入</title>
-    <link href="https://forwork1010.github.io/part8-mo-ban-zhu-ru/"/>
-    <id>https://forwork1010.github.io/part8-mo-ban-zhu-ru/</id>
-    <published>2020-10-19T04:55:17.000Z</published>
-    <updated>2020-10-20T04:55:53.622Z</updated>
+    <title>小猪佩奇中英文剧本及难点解析（第一季第10集）</title>
+    <link href="https://forwork1010.github.io/xiao-zhu-pei-qi-zhong-ying-wen-ju-ben-ji-nan-dian-jie-xi-di-yi-ji-di-10-ji/"/>
+    <id>https://forwork1010.github.io/xiao-zhu-pei-qi-zhong-ying-wen-ju-ben-ji-nan-dian-jie-xi-di-yi-ji-di-10-ji/</id>
+    <published>2021-01-21T06:57:00.000Z</published>
+    <updated>2021-01-21T09:35:28.260Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;Part8-模板注入&quot;&gt;&lt;a href=&quot;#Part8-模板注入&quot; class=&quot;headerlink&quot; title=&quot;Part8 模板注入&quot;&gt;&lt;/a&gt;&lt;center&gt;Part8 模板注入&lt;/center&gt;&lt;/h1&gt;&lt;p&gt;&lt;font</summary>
+    <summary type="html">&lt;center&gt;&lt;h1&gt;
+    小猪佩奇中英文剧本及难点解析（第一季第10集）&lt;/h1&gt;&lt;/center&gt;
+
+
+&lt;h2&gt;难点解析&lt;/h2&gt;
+
+&lt;p&gt;planting seeds&lt;br&gt;    埋下种子;&lt;/p&gt;
+&lt;p&gt;make a hole&lt;br&gt;   </summary>
         
       
     
     
     
-    <category term="WebHacking101" scheme="https://forwork1010.github.io/categories/WebHacking101/"/>
+    <category term="-看动漫学英语" scheme="https://forwork1010.github.io/categories/%E7%9C%8B%E5%8A%A8%E6%BC%AB%E5%AD%A6%E8%8B%B1%E8%AF%AD/"/>
     
     
-    <category term="漏洞挖掘" scheme="https://forwork1010.github.io/tags/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/"/>
+    <category term="小猪佩奇" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87/"/>
     
-    <category term="web安全" scheme="https://forwork1010.github.io/tags/web%E5%AE%89%E5%85%A8/"/>
+    <category term="看动漫学英语" scheme="https://forwork1010.github.io/tags/%E7%9C%8B%E5%8A%A8%E6%BC%AB%E5%AD%A6%E8%8B%B1%E8%AF%AD/"/>
     
-    <category term="SSTI" scheme="https://forwork1010.github.io/tags/SSTI/"/>
+    <category term="小猪佩奇第一季" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87%E7%AC%AC%E4%B8%80%E5%AD%A3/"/>
+    
+    <category term="小猪佩奇台词" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87%E5%8F%B0%E8%AF%8D/"/>
     
   </entry>
   
   <entry>
-    <title>Part7 XSS</title>
-    <link href="https://forwork1010.github.io/part7-xss/"/>
-    <id>https://forwork1010.github.io/part7-xss/</id>
-    <published>2020-10-17T12:43:40.000Z</published>
-    <updated>2020-10-20T04:58:23.412Z</updated>
+    <title>小猪佩奇中英文剧本及难点解析（第一季第12集）</title>
+    <link href="https://forwork1010.github.io/xiao-zhu-pei-qi-zhong-ying-wen-ju-ben-ji-nan-dian-jie-xi-di-yi-ji-di-12-ji/"/>
+    <id>https://forwork1010.github.io/xiao-zhu-pei-qi-zhong-ying-wen-ju-ben-ji-nan-dian-jie-xi-di-yi-ji-di-12-ji/</id>
+    <published>2021-01-21T06:57:00.000Z</published>
+    <updated>2021-01-21T09:57:49.483Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;Part7-XSS&quot;&gt;&lt;a href=&quot;#Part7-XSS&quot; class=&quot;headerlink&quot; title=&quot; Part7 XSS &quot;&gt;&lt;/a&gt;&lt;center&gt; Part7 XSS &lt;/center&gt;&lt;/h1&gt;&lt;p&gt;&lt;font</summary>
+    <summary type="html">&lt;center&gt;&lt;h1&gt;
+    小猪佩奇中英文剧本及难点解析（第一季第12集）&lt;/h1&gt;&lt;/center&gt;
+
+
+&lt;h2&gt;难点解析&lt;/h2&gt;
+
+&lt;p&gt;race to    [reɪs tu]&lt;br&gt;    跑到; 快速地把…送到&lt;/p&gt;
+&lt;p&gt;bump into   </summary>
         
       
     
     
     
-    <category term="WebHacking101" scheme="https://forwork1010.github.io/categories/WebHacking101/"/>
+    <category term="-看动漫学英语" scheme="https://forwork1010.github.io/categories/%E7%9C%8B%E5%8A%A8%E6%BC%AB%E5%AD%A6%E8%8B%B1%E8%AF%AD/"/>
     
     
-    <category term="漏洞挖掘" scheme="https://forwork1010.github.io/tags/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/"/>
+    <category term="小猪佩奇" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87/"/>
     
-    <category term="web安全" scheme="https://forwork1010.github.io/tags/web%E5%AE%89%E5%85%A8/"/>
+    <category term="看动漫学英语" scheme="https://forwork1010.github.io/tags/%E7%9C%8B%E5%8A%A8%E6%BC%AB%E5%AD%A6%E8%8B%B1%E8%AF%AD/"/>
     
-    <category term="XSS" scheme="https://forwork1010.github.io/tags/XSS/"/>
+    <category term="小猪佩奇第一季" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87%E7%AC%AC%E4%B8%80%E5%AD%A3/"/>
+    
+    <category term="小猪佩奇台词" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87%E5%8F%B0%E8%AF%8D/"/>
     
   </entry>
   
   <entry>
-    <title>Part6 CRLF注入</title>
-    <link href="https://forwork1010.github.io/part6-crlf-zhu-ru/"/>
-    <id>https://forwork1010.github.io/part6-crlf-zhu-ru/</id>
-    <published>2020-10-17T08:23:18.000Z</published>
-    <updated>2020-10-20T04:58:53.957Z</updated>
+    <title>小猪佩奇中英文剧本及难点解析（第一季第13集）</title>
+    <link href="https://forwork1010.github.io/xiao-zhu-pei-qi-zhong-ying-wen-ju-ben-ji-nan-dian-jie-xi-di-yi-ji-di-13-ji/"/>
+    <id>https://forwork1010.github.io/xiao-zhu-pei-qi-zhong-ying-wen-ju-ben-ji-nan-dian-jie-xi-di-yi-ji-di-13-ji/</id>
+    <published>2021-01-21T06:57:00.000Z</published>
+    <updated>2021-01-21T10:15:00.527Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;Part6-CRLF注入&quot;&gt;&lt;a href=&quot;#Part6-CRLF注入&quot; class=&quot;headerlink&quot; title=&quot;Part6 CRLF注入&quot;&gt;&lt;/a&gt;&lt;center&gt;Part6 CRLF注入&lt;/center&gt;&lt;/h1&gt;&lt;p&gt; &lt;font</summary>
+    <summary type="html">&lt;center&gt;&lt;h1&gt;
+    小猪佩奇中英文剧本及难点解析（第一季第13集）&lt;/h1&gt;&lt;/center&gt;
+
+
+&lt;h2&gt;难点解析&lt;/h2&gt;
+
+&lt;p&gt;on the count of&lt;br&gt;    数到&lt;/p&gt;
+&lt;p&gt;drum    [drʌm]&lt;br&gt;n.   </summary>
         
       
     
     
     
-    <category term="WebHacking101" scheme="https://forwork1010.github.io/categories/WebHacking101/"/>
+    <category term="-看动漫学英语" scheme="https://forwork1010.github.io/categories/%E7%9C%8B%E5%8A%A8%E6%BC%AB%E5%AD%A6%E8%8B%B1%E8%AF%AD/"/>
     
     
-    <category term="漏洞挖掘" scheme="https://forwork1010.github.io/tags/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/"/>
+    <category term="小猪佩奇" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87/"/>
     
-    <category term="web安全" scheme="https://forwork1010.github.io/tags/web%E5%AE%89%E5%85%A8/"/>
+    <category term="看动漫学英语" scheme="https://forwork1010.github.io/tags/%E7%9C%8B%E5%8A%A8%E6%BC%AB%E5%AD%A6%E8%8B%B1%E8%AF%AD/"/>
     
-    <category term="CRLF" scheme="https://forwork1010.github.io/tags/CRLF/"/>
+    <category term="小猪佩奇第一季" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87%E7%AC%AC%E4%B8%80%E5%AD%A3/"/>
+    
+    <category term="小猪佩奇台词" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87%E5%8F%B0%E8%AF%8D/"/>
     
   </entry>
   
   <entry>
-    <title>Part5 HTML注入和内容欺骗</title>
-    <link href="https://forwork1010.github.io/part5-html-zhu-ru-he-nei-rong-tian-chong/"/>
-    <id>https://forwork1010.github.io/part5-html-zhu-ru-he-nei-rong-tian-chong/</id>
-    <published>2020-10-15T17:16:42.000Z</published>
-    <updated>2020-10-20T05:07:15.496Z</updated>
+    <title>小猪佩奇中英文剧本及难点解析（第一季第3集）</title>
+    <link href="https://forwork1010.github.io/xiao-zhu-pei-qi-zhong-ying-wen-ju-ben-ji-nan-dian-jie-xi-di-yi-ji-di-14-ji/"/>
+    <id>https://forwork1010.github.io/xiao-zhu-pei-qi-zhong-ying-wen-ju-ben-ji-nan-dian-jie-xi-di-yi-ji-di-14-ji/</id>
+    <published>2021-01-21T06:57:00.000Z</published>
+    <updated>2021-01-21T10:25:53.047Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;Part5-HTML注入和内容欺骗&quot;&gt;&lt;a href=&quot;#Part5-HTML注入和内容欺骗&quot; class=&quot;headerlink&quot; title=&quot;Part5 HTML注入和内容欺骗&quot;&gt;&lt;/a&gt;&lt;center&gt;Part5</summary>
+    <summary type="html">&lt;center&gt;&lt;h1&gt;
+    小猪佩奇中英文剧本及难点解析（第一季第3集）&lt;/h1&gt;&lt;/center&gt;
+
+
+&lt;h2&gt;难点解析&lt;/h2&gt;
+
+&lt;p&gt;flying a kite&lt;/p&gt;
+&lt;p&gt;​    放风筝&lt;/p&gt;
+&lt;p&gt;picks up a bit&lt;br&gt;   </summary>
         
       
     
     
     
-    <category term="WebHacking101" scheme="https://forwork1010.github.io/categories/WebHacking101/"/>
+    <category term="-看动漫学英语" scheme="https://forwork1010.github.io/categories/%E7%9C%8B%E5%8A%A8%E6%BC%AB%E5%AD%A6%E8%8B%B1%E8%AF%AD/"/>
     
     
-    <category term="漏洞挖掘" scheme="https://forwork1010.github.io/tags/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/"/>
+    <category term="小猪佩奇" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87/"/>
     
-    <category term="web安全" scheme="https://forwork1010.github.io/tags/web%E5%AE%89%E5%85%A8/"/>
+    <category term="看动漫学英语" scheme="https://forwork1010.github.io/tags/%E7%9C%8B%E5%8A%A8%E6%BC%AB%E5%AD%A6%E8%8B%B1%E8%AF%AD/"/>
     
-    <category term="HTML注入" scheme="https://forwork1010.github.io/tags/HTML%E6%B3%A8%E5%85%A5/"/>
+    <category term="小猪佩奇第一季" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87%E7%AC%AC%E4%B8%80%E5%AD%A3/"/>
+    
+    <category term="小猪佩奇台词" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87%E5%8F%B0%E8%AF%8D/"/>
     
   </entry>
   
   <entry>
-    <title>Part4 跨站请求伪造</title>
-    <link href="https://forwork1010.github.io/part4-kua-zhan-qing-qiu-wei-zao/"/>
-    <id>https://forwork1010.github.io/part4-kua-zhan-qing-qiu-wei-zao/</id>
-    <published>2020-10-14T16:27:55.000Z</published>
-    <updated>2020-10-20T05:01:15.392Z</updated>
+    <title>小猪佩奇中英文剧本及难点解析（第一季第15集）</title>
+    <link href="https://forwork1010.github.io/xiao-zhu-pei-qi-zhong-ying-wen-ju-ben-ji-nan-dian-jie-xi-di-yi-ji-di-15-ji/"/>
+    <id>https://forwork1010.github.io/xiao-zhu-pei-qi-zhong-ying-wen-ju-ben-ji-nan-dian-jie-xi-di-yi-ji-di-15-ji/</id>
+    <published>2021-01-21T06:57:00.000Z</published>
+    <updated>2021-01-21T10:38:13.947Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;Part4-跨站请求伪造&quot;&gt;&lt;a href=&quot;#Part4-跨站请求伪造&quot; class=&quot;headerlink&quot; title=&quot;Part4 跨站请求伪造&quot;&gt;&lt;/a&gt;&lt;center&gt;Part4 跨站请求伪造&lt;/center&gt;&lt;/h1&gt;&lt;p&gt; &lt;font</summary>
+    <summary type="html">&lt;center&gt;&lt;h1&gt;
+    小猪佩奇中英文剧本及难点解析（第一季第15集）&lt;/h1&gt;&lt;/center&gt;
+
+
+&lt;h2&gt;难点解析&lt;/h2&gt;
+
+&lt;p&gt;home-made&lt;br&gt;adj.    家里制作的;&lt;/p&gt;
+&lt;p&gt;run around&lt;br&gt;    东奔西跑;</summary>
         
       
     
     
     
-    <category term="WebHacking101" scheme="https://forwork1010.github.io/categories/WebHacking101/"/>
+    <category term="-看动漫学英语" scheme="https://forwork1010.github.io/categories/%E7%9C%8B%E5%8A%A8%E6%BC%AB%E5%AD%A6%E8%8B%B1%E8%AF%AD/"/>
     
     
-    <category term="漏洞挖掘" scheme="https://forwork1010.github.io/tags/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/"/>
+    <category term="小猪佩奇" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87/"/>
     
-    <category term="web安全" scheme="https://forwork1010.github.io/tags/web%E5%AE%89%E5%85%A8/"/>
+    <category term="看动漫学英语" scheme="https://forwork1010.github.io/tags/%E7%9C%8B%E5%8A%A8%E6%BC%AB%E5%AD%A6%E8%8B%B1%E8%AF%AD/"/>
     
-    <category term="CSRF" scheme="https://forwork1010.github.io/tags/CSRF/"/>
+    <category term="小猪佩奇第一季" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87%E7%AC%AC%E4%B8%80%E5%AD%A3/"/>
+    
+    <category term="小猪佩奇台词" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87%E5%8F%B0%E8%AF%8D/"/>
     
   </entry>
   
   <entry>
-    <title>Part3 HTTP参数污染</title>
-    <link href="https://forwork1010.github.io/part3-http-can-shu-wu-ran/"/>
-    <id>https://forwork1010.github.io/part3-http-can-shu-wu-ran/</id>
-    <published>2020-10-14T06:30:49.000Z</published>
-    <updated>2020-10-20T05:02:15.549Z</updated>
+    <title>小猪佩奇中英文剧本及难点解析（第一季第16集）</title>
+    <link href="https://forwork1010.github.io/xiao-zhu-pei-qi-zhong-ying-wen-ju-ben-ji-nan-dian-jie-xi-di-yi-ji-di-16-ji/"/>
+    <id>https://forwork1010.github.io/xiao-zhu-pei-qi-zhong-ying-wen-ju-ben-ji-nan-dian-jie-xi-di-yi-ji-di-16-ji/</id>
+    <published>2021-01-21T06:57:00.000Z</published>
+    <updated>2021-01-21T10:45:36.620Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;Part3-HTTP参数污染&quot;&gt;&lt;a href=&quot;#Part3-HTTP参数污染&quot; class=&quot;headerlink&quot; title=&quot;Part3 HTTP参数污染&quot;&gt;&lt;/a&gt;&lt;center&gt;Part3 HTTP参数污染&lt;/center&gt;&lt;/h1&gt;&lt;p&gt;</summary>
+    <summary type="html">&lt;center&gt;&lt;h1&gt;
+    小猪佩奇中英文剧本及难点解析（第一季第16集）&lt;/h1&gt;&lt;/center&gt;
+
+
+&lt;h2&gt;难点解析&lt;/h2&gt;
+
+&lt;p&gt;attic    [ˈætɪk]&lt;br&gt;n.    (紧靠屋顶的)阁楼，顶楼;&lt;/p&gt;
+&lt;p&gt;Tin Drum    [tɪn</summary>
         
       
     
     
     
-    <category term="WebHacking101" scheme="https://forwork1010.github.io/categories/WebHacking101/"/>
+    <category term="-看动漫学英语" scheme="https://forwork1010.github.io/categories/%E7%9C%8B%E5%8A%A8%E6%BC%AB%E5%AD%A6%E8%8B%B1%E8%AF%AD/"/>
     
     
-    <category term="漏洞挖掘" scheme="https://forwork1010.github.io/tags/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/"/>
+    <category term="小猪佩奇" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87/"/>
     
-    <category term="web安全" scheme="https://forwork1010.github.io/tags/web%E5%AE%89%E5%85%A8/"/>
+    <category term="看动漫学英语" scheme="https://forwork1010.github.io/tags/%E7%9C%8B%E5%8A%A8%E6%BC%AB%E5%AD%A6%E8%8B%B1%E8%AF%AD/"/>
     
-    <category term="HPP" scheme="https://forwork1010.github.io/tags/HPP/"/>
+    <category term="小猪佩奇第一季" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87%E7%AC%AC%E4%B8%80%E5%AD%A3/"/>
+    
+    <category term="小猪佩奇台词" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87%E5%8F%B0%E8%AF%8D/"/>
     
   </entry>
   
   <entry>
-    <title>Part2 开放式重定向</title>
-    <link href="https://forwork1010.github.io/part2-kai-fang-shi-chong-ding-xiang/"/>
-    <id>https://forwork1010.github.io/part2-kai-fang-shi-chong-ding-xiang/</id>
-    <published>2020-10-14T04:35:16.000Z</published>
-    <updated>2020-10-19T11:28:10.117Z</updated>
+    <title>小猪佩奇中英文剧本及难点解析（第一季第17集）</title>
+    <link href="https://forwork1010.github.io/xiao-zhu-pei-qi-zhong-ying-wen-ju-ben-ji-nan-dian-jie-xi-di-yi-ji-di-17-ji/"/>
+    <id>https://forwork1010.github.io/xiao-zhu-pei-qi-zhong-ying-wen-ju-ben-ji-nan-dian-jie-xi-di-yi-ji-di-17-ji/</id>
+    <published>2021-01-21T06:57:00.000Z</published>
+    <updated>2021-01-21T10:51:35.694Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;Part2-开放式重定向&quot;&gt;&lt;a href=&quot;#Part2-开放式重定向&quot; class=&quot;headerlink&quot; title=&quot;Part2 开放式重定向 &quot;&gt;&lt;/a&gt;&lt;center&gt;Part2 开放式重定向 &lt;/center&gt;&lt;/h1&gt;&lt;p&gt;&lt;font</summary>
+    <summary type="html">&lt;center&gt;&lt;h1&gt;
+    小猪佩奇中英文剧本及难点解析（第一季第17集）&lt;/h1&gt;&lt;/center&gt;
+
+
+&lt;h2&gt;难点解析&lt;/h2&gt;
+
+&lt;p&gt;wriggly&lt;br&gt;    蠕动的,不安的;&lt;/p&gt;
+&lt;h2&gt;剧本（台词）&lt;/h2&gt;
+
+&lt;center&gt;&lt;b&gt;Frogs</summary>
         
       
     
     
     
-    <category term="WebHacking101" scheme="https://forwork1010.github.io/categories/WebHacking101/"/>
+    <category term="-看动漫学英语" scheme="https://forwork1010.github.io/categories/%E7%9C%8B%E5%8A%A8%E6%BC%AB%E5%AD%A6%E8%8B%B1%E8%AF%AD/"/>
     
     
-    <category term="漏洞挖掘" scheme="https://forwork1010.github.io/tags/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/"/>
+    <category term="小猪佩奇" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87/"/>
     
-    <category term="web安全" scheme="https://forwork1010.github.io/tags/web%E5%AE%89%E5%85%A8/"/>
+    <category term="看动漫学英语" scheme="https://forwork1010.github.io/tags/%E7%9C%8B%E5%8A%A8%E6%BC%AB%E5%AD%A6%E8%8B%B1%E8%AF%AD/"/>
     
-    <category term="开放重定向" scheme="https://forwork1010.github.io/tags/%E5%BC%80%E6%94%BE%E9%87%8D%E5%AE%9A%E5%90%91/"/>
+    <category term="小猪佩奇第一季" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87%E7%AC%AC%E4%B8%80%E5%AD%A3/"/>
+    
+    <category term="小猪佩奇台词" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87%E5%8F%B0%E8%AF%8D/"/>
     
   </entry>
   
   <entry>
-    <title>Part1 漏洞挖掘基础知识</title>
-    <link href="https://forwork1010.github.io/part1-lou-dong-wa-jue-ji-chu-zhi-shi/"/>
-    <id>https://forwork1010.github.io/part1-lou-dong-wa-jue-ji-chu-zhi-shi/</id>
-    <published>2020-10-13T11:01:05.000Z</published>
-    <updated>2020-10-19T12:34:11.625Z</updated>
+    <title>小猪佩奇中英文剧本及难点解析（第一季第18集）</title>
+    <link href="https://forwork1010.github.io/xiao-zhu-pei-qi-zhong-ying-wen-ju-ben-ji-nan-dian-jie-xi-di-yi-ji-di-18-ji/"/>
+    <id>https://forwork1010.github.io/xiao-zhu-pei-qi-zhong-ying-wen-ju-ben-ji-nan-dian-jie-xi-di-yi-ji-di-18-ji/</id>
+    <published>2021-01-21T06:57:00.000Z</published>
+    <updated>2021-01-21T10:57:27.979Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;Part1-漏洞挖掘基础知识&quot;&gt;&lt;a href=&quot;#Part1-漏洞挖掘基础知识&quot; class=&quot;headerlink&quot; title=&quot;Part1 漏洞挖掘基础知识&quot;&gt;&lt;/a&gt;&lt;center&gt;Part1</summary>
+    <summary type="html">&lt;center&gt;&lt;h1&gt;
+    小猪佩奇中英文剧本及难点解析（第一季第18集）&lt;/h1&gt;&lt;/center&gt;
+
+
+&lt;h2&gt;难点解析&lt;/h2&gt;
+
+&lt;p&gt;make-up box&lt;br&gt;    化妆箱&lt;/p&gt;
+&lt;p&gt;powder&lt;br&gt;   </summary>
         
       
     
     
     
-    <category term="WebHacking101" scheme="https://forwork1010.github.io/categories/WebHacking101/"/>
+    <category term="-看动漫学英语" scheme="https://forwork1010.github.io/categories/%E7%9C%8B%E5%8A%A8%E6%BC%AB%E5%AD%A6%E8%8B%B1%E8%AF%AD/"/>
     
     
-    <category term="漏洞挖掘" scheme="https://forwork1010.github.io/tags/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/"/>
+    <category term="小猪佩奇" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87/"/>
     
-    <category term="web安全" scheme="https://forwork1010.github.io/tags/web%E5%AE%89%E5%85%A8/"/>
+    <category term="看动漫学英语" scheme="https://forwork1010.github.io/tags/%E7%9C%8B%E5%8A%A8%E6%BC%AB%E5%AD%A6%E8%8B%B1%E8%AF%AD/"/>
+    
+    <category term="小猪佩奇第一季" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87%E7%AC%AC%E4%B8%80%E5%AD%A3/"/>
+    
+    <category term="小猪佩奇台词" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87%E5%8F%B0%E8%AF%8D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>小猪佩奇中英文剧本及难点解析（第一季第19集）</title>
+    <link href="https://forwork1010.github.io/xiao-zhu-pei-qi-zhong-ying-wen-ju-ben-ji-nan-dian-jie-xi-di-yi-ji-di-19-ji/"/>
+    <id>https://forwork1010.github.io/xiao-zhu-pei-qi-zhong-ying-wen-ju-ben-ji-nan-dian-jie-xi-di-yi-ji-di-19-ji/</id>
+    <published>2021-01-21T06:57:00.000Z</published>
+    <updated>2021-01-21T11:05:01.452Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;center&gt;&lt;h1&gt;
+    小猪佩奇中英文剧本及难点解析（第一季第19集）&lt;/h1&gt;&lt;/center&gt;
+
+
+&lt;h2&gt;难点解析&lt;/h2&gt;
+
+&lt;p&gt;flowerbed&lt;br&gt;n.    花圃；花床;&lt;/p&gt;
+&lt;p&gt;wheelbarrow   </summary>
+        
+      
+    
+    
+    
+    <category term="-看动漫学英语" scheme="https://forwork1010.github.io/categories/%E7%9C%8B%E5%8A%A8%E6%BC%AB%E5%AD%A6%E8%8B%B1%E8%AF%AD/"/>
+    
+    
+    <category term="小猪佩奇" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87/"/>
+    
+    <category term="看动漫学英语" scheme="https://forwork1010.github.io/tags/%E7%9C%8B%E5%8A%A8%E6%BC%AB%E5%AD%A6%E8%8B%B1%E8%AF%AD/"/>
+    
+    <category term="小猪佩奇第一季" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87%E7%AC%AC%E4%B8%80%E5%AD%A3/"/>
+    
+    <category term="小猪佩奇台词" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87%E5%8F%B0%E8%AF%8D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>小猪佩奇中英文剧本及难点解析（第一季第1集）</title>
+    <link href="https://forwork1010.github.io/xiao-zhu-pei-qi-zhong-ying-wen-ju-ben-ji-nan-dian-jie-xi-di-yi-ji-di-1-ji/"/>
+    <id>https://forwork1010.github.io/xiao-zhu-pei-qi-zhong-ying-wen-ju-ben-ji-nan-dian-jie-xi-di-yi-ji-di-1-ji/</id>
+    <published>2021-01-21T06:57:00.000Z</published>
+    <updated>2021-01-21T07:59:39.080Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;center&gt;&lt;h1&gt;
+    小猪佩奇中英文剧本及难点解析（第一季第1集）&lt;/h1&gt;&lt;/center&gt;
+
+
+&lt;h2&gt;难点解析&lt;/h2&gt;
+
+&lt;p&gt;muddy    [ˈmʌdi]&lt;br&gt;adj.    多泥的; 泥泞的; 浑浊的;&lt;br&gt;v.    使变得泥泞;</summary>
+        
+      
+    
+    
+    
+    <category term="-看动漫学英语" scheme="https://forwork1010.github.io/categories/%E7%9C%8B%E5%8A%A8%E6%BC%AB%E5%AD%A6%E8%8B%B1%E8%AF%AD/"/>
+    
+    
+    <category term="小猪佩奇" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87/"/>
+    
+    <category term="看动漫学英语" scheme="https://forwork1010.github.io/tags/%E7%9C%8B%E5%8A%A8%E6%BC%AB%E5%AD%A6%E8%8B%B1%E8%AF%AD/"/>
+    
+    <category term="小猪佩奇第一季" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87%E7%AC%AC%E4%B8%80%E5%AD%A3/"/>
+    
+    <category term="小猪佩奇台词" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87%E5%8F%B0%E8%AF%8D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>小猪佩奇中英文剧本及难点解析（第一季第20集）</title>
+    <link href="https://forwork1010.github.io/xiao-zhu-pei-qi-zhong-ying-wen-ju-ben-ji-nan-dian-jie-xi-di-yi-ji-di-20-ji/"/>
+    <id>https://forwork1010.github.io/xiao-zhu-pei-qi-zhong-ying-wen-ju-ben-ji-nan-dian-jie-xi-di-yi-ji-di-20-ji/</id>
+    <published>2021-01-21T06:57:00.000Z</published>
+    <updated>2021-01-21T11:11:51.427Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;center&gt;&lt;h1&gt;
+    小猪佩奇中英文剧本及难点解析（第一季第20集）&lt;/h1&gt;&lt;/center&gt;
+
+
+&lt;h2&gt;难点解析&lt;/h2&gt;
+
+&lt;p&gt;fete    [feɪt]&lt;br&gt;n.    露天游乐会;庆祝活动;&lt;br&gt;v.    盛宴欢迎; 热情招待;</summary>
+        
+      
+    
+    
+    
+    <category term="-看动漫学英语" scheme="https://forwork1010.github.io/categories/%E7%9C%8B%E5%8A%A8%E6%BC%AB%E5%AD%A6%E8%8B%B1%E8%AF%AD/"/>
+    
+    
+    <category term="小猪佩奇" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87/"/>
+    
+    <category term="看动漫学英语" scheme="https://forwork1010.github.io/tags/%E7%9C%8B%E5%8A%A8%E6%BC%AB%E5%AD%A6%E8%8B%B1%E8%AF%AD/"/>
+    
+    <category term="小猪佩奇第一季" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87%E7%AC%AC%E4%B8%80%E5%AD%A3/"/>
+    
+    <category term="小猪佩奇台词" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87%E5%8F%B0%E8%AF%8D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>小猪佩奇中英文剧本及难点解析（第一季第21集）</title>
+    <link href="https://forwork1010.github.io/xiao-zhu-pei-qi-zhong-ying-wen-ju-ben-ji-nan-dian-jie-xi-di-yi-ji-di-21-ji/"/>
+    <id>https://forwork1010.github.io/xiao-zhu-pei-qi-zhong-ying-wen-ju-ben-ji-nan-dian-jie-xi-di-yi-ji-di-21-ji/</id>
+    <published>2021-01-21T06:57:00.000Z</published>
+    <updated>2021-01-21T11:18:20.507Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;center&gt;&lt;h1&gt;
+    小猪佩奇中英文剧本及难点解析（第一季第21集）&lt;/h1&gt;&lt;/center&gt;
+
+
+&lt;h2&gt;难点解析&lt;/h2&gt;
+
+&lt;p&gt;sitting room&lt;br&gt;    客厅&lt;/p&gt;
+&lt;p&gt;put up the decoration&lt;br&gt;   </summary>
+        
+      
+    
+    
+    
+    <category term="-看动漫学英语" scheme="https://forwork1010.github.io/categories/%E7%9C%8B%E5%8A%A8%E6%BC%AB%E5%AD%A6%E8%8B%B1%E8%AF%AD/"/>
+    
+    
+    <category term="小猪佩奇" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87/"/>
+    
+    <category term="看动漫学英语" scheme="https://forwork1010.github.io/tags/%E7%9C%8B%E5%8A%A8%E6%BC%AB%E5%AD%A6%E8%8B%B1%E8%AF%AD/"/>
+    
+    <category term="小猪佩奇第一季" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87%E7%AC%AC%E4%B8%80%E5%AD%A3/"/>
+    
+    <category term="小猪佩奇台词" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87%E5%8F%B0%E8%AF%8D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>小猪佩奇中英文剧本及难点解析（第一季第22集）</title>
+    <link href="https://forwork1010.github.io/xiao-zhu-pei-qi-zhong-ying-wen-ju-ben-ji-nan-dian-jie-xi-di-yi-ji-di-22-ji/"/>
+    <id>https://forwork1010.github.io/xiao-zhu-pei-qi-zhong-ying-wen-ju-ben-ji-nan-dian-jie-xi-di-yi-ji-di-22-ji/</id>
+    <published>2021-01-21T06:57:00.000Z</published>
+    <updated>2021-01-21T11:25:32.543Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;center&gt;&lt;h1&gt;
+    小猪佩奇中英文剧本及难点解析（第一季第22集）&lt;/h1&gt;&lt;/center&gt;
+
+
+&lt;h2&gt;难点解析&lt;/h2&gt;
+
+&lt;p&gt;look in the mirror&lt;br&gt;    照镜子&lt;/p&gt;
+&lt;p&gt;milk tooth&lt;br&gt;   </summary>
+        
+      
+    
+    
+    
+    <category term="-看动漫学英语" scheme="https://forwork1010.github.io/categories/%E7%9C%8B%E5%8A%A8%E6%BC%AB%E5%AD%A6%E8%8B%B1%E8%AF%AD/"/>
+    
+    
+    <category term="小猪佩奇" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87/"/>
+    
+    <category term="看动漫学英语" scheme="https://forwork1010.github.io/tags/%E7%9C%8B%E5%8A%A8%E6%BC%AB%E5%AD%A6%E8%8B%B1%E8%AF%AD/"/>
+    
+    <category term="小猪佩奇第一季" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87%E7%AC%AC%E4%B8%80%E5%AD%A3/"/>
+    
+    <category term="小猪佩奇台词" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87%E5%8F%B0%E8%AF%8D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>小猪佩奇中英文剧本及难点解析（第一季第23集）</title>
+    <link href="https://forwork1010.github.io/xiao-zhu-pei-qi-zhong-ying-wen-ju-ben-ji-nan-dian-jie-xi-di-yi-ji-di-23-ji/"/>
+    <id>https://forwork1010.github.io/xiao-zhu-pei-qi-zhong-ying-wen-ju-ben-ji-nan-dian-jie-xi-di-yi-ji-di-23-ji/</id>
+    <published>2021-01-21T06:57:00.000Z</published>
+    <updated>2021-01-21T11:31:43.065Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;center&gt;&lt;h1&gt;
+    小猪佩奇中英文剧本及难点解析（第一季第23集）&lt;/h1&gt;&lt;/center&gt;
+
+
+&lt;h2&gt;难点解析&lt;/h2&gt;
+
+&lt;p&gt;roof    [ruːf]&lt;br&gt;n.    顶部; 屋顶; 车顶;&lt;br&gt;v.    给…盖顶&lt;/p&gt;
+&lt;p&gt;go for</summary>
+        
+      
+    
+    
+    
+    <category term="-看动漫学英语" scheme="https://forwork1010.github.io/categories/%E7%9C%8B%E5%8A%A8%E6%BC%AB%E5%AD%A6%E8%8B%B1%E8%AF%AD/"/>
+    
+    
+    <category term="小猪佩奇" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87/"/>
+    
+    <category term="看动漫学英语" scheme="https://forwork1010.github.io/tags/%E7%9C%8B%E5%8A%A8%E6%BC%AB%E5%AD%A6%E8%8B%B1%E8%AF%AD/"/>
+    
+    <category term="小猪佩奇第一季" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87%E7%AC%AC%E4%B8%80%E5%AD%A3/"/>
+    
+    <category term="小猪佩奇台词" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87%E5%8F%B0%E8%AF%8D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>小猪佩奇中英文剧本及难点解析（第一季第24集）</title>
+    <link href="https://forwork1010.github.io/xiao-zhu-pei-qi-zhong-ying-wen-ju-ben-ji-nan-dian-jie-xi-di-yi-ji-di-24-ji/"/>
+    <id>https://forwork1010.github.io/xiao-zhu-pei-qi-zhong-ying-wen-ju-ben-ji-nan-dian-jie-xi-di-yi-ji-di-24-ji/</id>
+    <published>2021-01-21T06:57:00.000Z</published>
+    <updated>2021-01-21T11:39:52.812Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;center&gt;&lt;h1&gt;
+    小猪佩奇中英文剧本及难点解析（第一季第24集）&lt;/h1&gt;&lt;/center&gt;
+
+
+&lt;h2&gt;难点解析&lt;/h2&gt;
+
+&lt;p&gt;treasure hunt&lt;br&gt;n.    寻宝游戏&lt;/p&gt;
+&lt;p&gt;treasure map&lt;br&gt;   </summary>
+        
+      
+    
+    
+    
+    <category term="-看动漫学英语" scheme="https://forwork1010.github.io/categories/%E7%9C%8B%E5%8A%A8%E6%BC%AB%E5%AD%A6%E8%8B%B1%E8%AF%AD/"/>
+    
+    
+    <category term="小猪佩奇" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87/"/>
+    
+    <category term="看动漫学英语" scheme="https://forwork1010.github.io/tags/%E7%9C%8B%E5%8A%A8%E6%BC%AB%E5%AD%A6%E8%8B%B1%E8%AF%AD/"/>
+    
+    <category term="小猪佩奇第一季" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87%E7%AC%AC%E4%B8%80%E5%AD%A3/"/>
+    
+    <category term="小猪佩奇台词" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87%E5%8F%B0%E8%AF%8D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>小猪佩奇中英文剧本及难点解析（第一季第2集）</title>
+    <link href="https://forwork1010.github.io/xiao-zhu-pei-qi-zhong-ying-wen-ju-ben-ji-nan-dian-jie-xi-di-yi-ji-di-2-ji/"/>
+    <id>https://forwork1010.github.io/xiao-zhu-pei-qi-zhong-ying-wen-ju-ben-ji-nan-dian-jie-xi-di-yi-ji-di-2-ji/</id>
+    <published>2021-01-21T06:57:00.000Z</published>
+    <updated>2021-01-21T07:59:55.110Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;center&gt;&lt;h1&gt;
+    小猪佩奇中英文剧本及难点解析（第一季第2集）&lt;/h1&gt;&lt;/center&gt;
+
+
+&lt;h2&gt;难点解析&lt;/h2&gt;
+
+&lt;p&gt;At bath time&lt;br&gt;在洗澡的时候&lt;/p&gt;
+&lt;p&gt;shares with&lt;br&gt;与…共享&lt;/p&gt;
+&lt;p&gt;be</summary>
+        
+      
+    
+    
+    
+    <category term="-看动漫学英语" scheme="https://forwork1010.github.io/categories/%E7%9C%8B%E5%8A%A8%E6%BC%AB%E5%AD%A6%E8%8B%B1%E8%AF%AD/"/>
+    
+    
+    <category term="小猪佩奇" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87/"/>
+    
+    <category term="看动漫学英语" scheme="https://forwork1010.github.io/tags/%E7%9C%8B%E5%8A%A8%E6%BC%AB%E5%AD%A6%E8%8B%B1%E8%AF%AD/"/>
+    
+    <category term="小猪佩奇第一季" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87%E7%AC%AC%E4%B8%80%E5%AD%A3/"/>
+    
+    <category term="小猪佩奇台词" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87%E5%8F%B0%E8%AF%8D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>小猪佩奇中英文剧本及难点解析（第一季第3集）</title>
+    <link href="https://forwork1010.github.io/xiao-zhu-pei-qi-zhong-ying-wen-ju-ben-ji-nan-dian-jie-xi-di-yi-ji-di-3-ji/"/>
+    <id>https://forwork1010.github.io/xiao-zhu-pei-qi-zhong-ying-wen-ju-ben-ji-nan-dian-jie-xi-di-yi-ji-di-3-ji/</id>
+    <published>2021-01-21T06:57:00.000Z</published>
+    <updated>2021-01-21T08:20:23.322Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;center&gt;&lt;h1&gt;
+    小猪佩奇中英文剧本及难点解析（第一季第3集）&lt;/h1&gt;&lt;/center&gt;
+
+
+&lt;h2&gt;难点解析&lt;/h2&gt;
+
+&lt;p&gt;fairy    [ˈfeəri]&lt;br&gt;n.    (故事中的)小仙人，小精灵; &lt;/p&gt;
+&lt;p&gt;wand       </summary>
+        
+      
+    
+    
+    
+    <category term="-看动漫学英语" scheme="https://forwork1010.github.io/categories/%E7%9C%8B%E5%8A%A8%E6%BC%AB%E5%AD%A6%E8%8B%B1%E8%AF%AD/"/>
+    
+    
+    <category term="小猪佩奇" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87/"/>
+    
+    <category term="看动漫学英语" scheme="https://forwork1010.github.io/tags/%E7%9C%8B%E5%8A%A8%E6%BC%AB%E5%AD%A6%E8%8B%B1%E8%AF%AD/"/>
+    
+    <category term="小猪佩奇第一季" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87%E7%AC%AC%E4%B8%80%E5%AD%A3/"/>
+    
+    <category term="小猪佩奇台词" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87%E5%8F%B0%E8%AF%8D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>小猪佩奇中英文剧本及难点解析（第一季第4集）</title>
+    <link href="https://forwork1010.github.io/xiao-zhu-pei-qi-zhong-ying-wen-ju-ben-ji-nan-dian-jie-xi-di-yi-ji-di-4-ji/"/>
+    <id>https://forwork1010.github.io/xiao-zhu-pei-qi-zhong-ying-wen-ju-ben-ji-nan-dian-jie-xi-di-yi-ji-di-4-ji/</id>
+    <published>2021-01-21T06:57:00.000Z</published>
+    <updated>2021-01-21T08:30:42.823Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;center&gt;&lt;h1&gt;
+    小猪佩奇中英文剧本及难点解析（第一季第4集）&lt;/h1&gt;&lt;/center&gt;
+
+
+&lt;h2&gt;难点解析&lt;/h2&gt;
+
+&lt;p&gt;in a hurry    [ɪn ə ˈhʌri]&lt;br&gt;                    迅速地，匆忙地; 赶紧;</summary>
+        
+      
+    
+    
+    
+    <category term="-看动漫学英语" scheme="https://forwork1010.github.io/categories/%E7%9C%8B%E5%8A%A8%E6%BC%AB%E5%AD%A6%E8%8B%B1%E8%AF%AD/"/>
+    
+    
+    <category term="小猪佩奇" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87/"/>
+    
+    <category term="看动漫学英语" scheme="https://forwork1010.github.io/tags/%E7%9C%8B%E5%8A%A8%E6%BC%AB%E5%AD%A6%E8%8B%B1%E8%AF%AD/"/>
+    
+    <category term="小猪佩奇第一季" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87%E7%AC%AC%E4%B8%80%E5%AD%A3/"/>
+    
+    <category term="小猪佩奇台词" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87%E5%8F%B0%E8%AF%8D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>小猪佩奇中英文剧本及难点解析（第一季第5集）</title>
+    <link href="https://forwork1010.github.io/xiao-zhu-pei-qi-zhong-ying-wen-ju-ben-ji-nan-dian-jie-xi-di-yi-ji-di-5-ji/"/>
+    <id>https://forwork1010.github.io/xiao-zhu-pei-qi-zhong-ying-wen-ju-ben-ji-nan-dian-jie-xi-di-yi-ji-di-5-ji/</id>
+    <published>2021-01-21T06:57:00.000Z</published>
+    <updated>2021-01-21T08:41:30.541Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;center&gt;&lt;h1&gt;
+    小猪佩奇中英文剧本及难点解析（第一季第5集）&lt;/h1&gt;&lt;/center&gt;
+
+
+&lt;h2&gt;难点解析&lt;/h2&gt;
+
+&lt;p&gt;hide and seek [ˌhaɪd ən ˈsiːk]&lt;br&gt;           藏猫猫;&lt;/p&gt;
+&lt;p&gt;it’s</summary>
+        
+      
+    
+    
+    
+    <category term="-看动漫学英语" scheme="https://forwork1010.github.io/categories/%E7%9C%8B%E5%8A%A8%E6%BC%AB%E5%AD%A6%E8%8B%B1%E8%AF%AD/"/>
+    
+    
+    <category term="小猪佩奇" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87/"/>
+    
+    <category term="看动漫学英语" scheme="https://forwork1010.github.io/tags/%E7%9C%8B%E5%8A%A8%E6%BC%AB%E5%AD%A6%E8%8B%B1%E8%AF%AD/"/>
+    
+    <category term="小猪佩奇第一季" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87%E7%AC%AC%E4%B8%80%E5%AD%A3/"/>
+    
+    <category term="小猪佩奇台词" scheme="https://forwork1010.github.io/tags/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87%E5%8F%B0%E8%AF%8D/"/>
     
   </entry>
   
